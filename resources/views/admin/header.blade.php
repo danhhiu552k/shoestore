@@ -1,8 +1,19 @@
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ $title }}</title>
-<!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="/template/admin/logo.jpg">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
-<link href="/template/admin/css/style.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+<meta name="author" content="Creative Tim">
+<title>{{ $title }} @if (Session::has('login') && Session::get('login') == true)
+       - {{ Session::get('name') }}
+    @endif
+</title>
+<!-- Favicon -->
+<link rel="icon" href="/template/admin/image/logo.jpg" type="image/png">
+<!-- Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+<!-- Icons -->
+<link rel="stylesheet" href="/template/admin/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+<link rel="stylesheet" href="/template/admin/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    type="text/css">
+<!-- Page plugins -->
+<!-- Argon CSS -->
+<link rel="stylesheet" href="/template/admin/assets/css/argon.css?v=1.2.0" type="text/css">

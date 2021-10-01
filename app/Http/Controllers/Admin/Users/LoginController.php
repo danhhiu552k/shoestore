@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserFormRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -14,7 +18,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('admin.user.login',['title'=>'Trang Đăng Nhập Hệ Thống']);
+        return view('admin.user.login', ['title' => 'Trang Đăng Nhập Hệ Thống']);
     }
 
     /**
@@ -33,9 +37,46 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
-        //
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $minutes = 60;
+        if (Auth::attempt(
+            [
+                'email' => $email,
+                'password' => $password,
+                'active' => 1,
+                'level' => 1
+            ],
+            $request->input('remember')
+        )) {
+            $name = User::select('name')->where('email', $email)->first();
+            $cookie = cookie('name', $name->name, $minutes);
+            // Cookie::set('NameAccount',$name->name, $minutes);
+            // CookieJar::set('login',true, $minutes);
+            return redirect()->route('admin', [$name])->cookie($cookie);
+        }
+        Session::flash('error', 'Email hoặc mật khẩu không đúng');
+        return redirect()->back();
+    }
+
+    /**
+     * Log out resources stored in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/admin/login');
     }
 
     /**

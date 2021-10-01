@@ -1,5 +1,7 @@
-<script src="/template/admin/plugins/common/common.min.js"></script>
-<script src="/template/admin/js/custom.min.js"></script>
-<script src="/template/admin/js/settings.js"></script>
-<script src="/template/admin/js/gleek.js"></script>
-<script src="/template/admin/js/styleSwitcher.js"></script>
+<script src="/template/admin/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/template/admin/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/template/admin/assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="/template/admin/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="/template/admin/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Argon JS -->
+    <script src="/template/admin/assets/js/argon.js?v=1.2.0"></script>
