@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/template/admin/images/logo.jpg">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="/template/admin/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/template/admin/image/logo_admin.png" type="image/png">
 </head>
 
 <body class="h-100">
@@ -27,7 +28,7 @@
                                 </a>
                                 <form action="/admin/login/store" method="POST" class="mt-5 mb-5 login-input">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <input name="email" class="form-control" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control" placeholder="Password">
@@ -35,15 +36,13 @@
                                     <div class="form-group">
                                         <input type="checkbox" name="remember">
                                         <label class="ml-2">
-                                            Remember Me
+                                            Nhớ mật khẩu
                                         </label>
                                     </div>
                                     @include('admin.alert')
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
+                                    <button class="btn login-form__btn submit w-100">Đăng Nhập</button>
                                     @csrf
                                 </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="#"
-                                        class="text-primary">Sign Up</a> now</p>
                             </div>
                         </div>
                     </div>

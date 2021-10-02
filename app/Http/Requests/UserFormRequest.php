@@ -32,6 +32,7 @@ class UserFormRequest extends FormRequest
     public function messages()
     {
         return [
+            'email.email' => 'Email phải là một địa chỉ email hợp lệ.',
             'email.required' => 'Bạn phải nhập email',
             'password.required' => 'Bạn phải nhập mật khẩu'
         ];

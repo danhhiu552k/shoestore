@@ -111,8 +111,12 @@
             </footer>
         </div>
     </div>
-
     @include('admin.footer')
+    @if (Session::has('login')&&Session::get('login')==true)
+        <script>
+            alert('Login success');
+        </script>
+    @endif
 </body>
 
 </html>

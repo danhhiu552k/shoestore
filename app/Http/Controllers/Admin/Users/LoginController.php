@@ -53,8 +53,7 @@ class LoginController extends Controller
         )) {
             $name = User::select('name')->where('email', $email)->first();
             $cookie = cookie('name', $name->name, $minutes);
-            // Cookie::set('NameAccount',$name->name, $minutes);
-            // CookieJar::set('login',true, $minutes);
+            Session::flash('login', true);
             return redirect()->route('admin', [$name])->cookie($cookie);
         }
         Session::flash('error', 'Email hoặc mật khẩu không đúng');
