@@ -1,3 +1,6 @@
+- Cách cài đặt dự án laravel clone từ github
+
+link: https://viblo.asia/p/cach-cai-dat-du-an-laravel-clone-tu-github-63vKjkpkZ2R
 - Vào mysql tạo cơ sở dữ liệu
 
 tên cở dữ liệu: shopgiayonline
