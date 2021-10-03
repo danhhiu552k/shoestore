@@ -7,3 +7,6 @@
 <script src="/template/admin/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/template/admin/dist/js/demo.js"></script>
+<script src="/template/admin/main.js"></script>
+
+@yield('footer')
