@@ -1,7 +1,9 @@
-<script src="/template/admin/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="/template/admin/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/template/admin/assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="/template/admin/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="/template/admin/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Argon JS -->
-    <script src="/template/admin/assets/js/argon.js?v=1.2.0"></script>
+<script src="/template/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/template/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/template/admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/template/admin/dist/js/demo.js"></script>

@@ -1,19 +1,16 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-<meta name="author" content="Creative Tim">
-<title>{{ $title }} @if (Session::has('login') && Session::get('login') == true)
-       - {{ Session::get('name') }}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+    {{ $title }}
+    @if (Session::has('login') && Session::get('login') == true)
+        - {{ Session::get('name') }}
     @endif
 </title>
-<!-- Favicon -->
-<link rel="icon" href="/template/admin/image/logo.jpg" type="image/png">
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-<!-- Icons -->
-<link rel="stylesheet" href="/template/admin/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-<link rel="stylesheet" href="/template/admin/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-    type="text/css">
-<!-- Page plugins -->
-<!-- Argon CSS -->
-<link rel="stylesheet" href="/template/admin/assets/css/argon.css?v=1.2.0" type="text/css">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/template/admin/plugins/fontawesome-free/css/all.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="/template/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/template/admin/dist/css/adminlte.min.css">
