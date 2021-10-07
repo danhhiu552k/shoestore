@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
         #DanhMuc
         Route::get('menus/add', [MenuController::class, 'create']);
-
+        Route::post('menus/add/store', [MenuController::class, 'store']);
 
 
         #Upload

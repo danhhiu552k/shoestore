@@ -25,20 +25,20 @@
                         </div>
                     </div>
                 </a>
-                <div class="dropdown-menu  dropdown-menu-right ">
+                <div class="dropdown-menu  dropdown-menu-right">
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
+                        <h6 class="text-overflow m-0 text-dark">Welcome!</h6>
                     </div>
-                    <a href="#!" class="dropdown-item">
-                        <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
+                    <a href="#!" class="dropdown-item text-dark">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="text-dark ml-2">My profile</span>
                     </a>
-                    <a href="#!" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
+                    <a href="#!" class="dropdown-item text-dark">
+                        <i class="fas fa-cog"></i>
+                        <span class="text-dark ml-2">Settings</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="/admin/logout" class="dropdown-item">
+                    <a href="/admin/logout" class="dropdown-item text-dark">
                         <i class="ni ni-user-run"></i>
                         <span>Logout</span>
                     </a>

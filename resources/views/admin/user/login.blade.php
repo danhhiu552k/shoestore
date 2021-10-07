@@ -22,16 +22,20 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#">
-                                    {{-- <h4>Shoe Store</h4> --}}
-                                    <img src="/template/admin/image/logo.jpg" class="mx-auto d-block rounded-circle"
+
+                                    <img src="/template/admin/image/logo.jpg" class="mx-auto d-block rounded-circle btn btn-primary"
                                         alt="Logo Store" width="120">
+                                    <h4 class="text text-primary">ADMIN</h4>
                                 </a>
                                 <form action="/admin/login/store" method="POST" class="mt-5 mb-5 login-input">
                                     <div class="form-group">
-                                        <input name="email" class="form-control" placeholder="Email">
+                                        <input name="email" class="form-control" placeholder="Email" style="padding-left: 22px;">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="Password" style="padding-left: 22px;">
+                                        <span toggle="#password-field"
+                                            class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="checkbox" name="remember">
@@ -51,6 +55,29 @@
         </div>
     </div>
     @include('admin.footer')
+    <style>
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 2;
+            color: black;
+        }
+
+    </style>
+    <script>
+        $(".toggle-password").click(function() {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $("#password");
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
 </body>
 
 </html>

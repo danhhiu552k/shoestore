@@ -9,13 +9,16 @@
         <div class="card-header bg-primary">
             <h3 class=" text-center">{{ $title }}</h3>
         </div>
+        <div>
+            @include('admin.alert')
+        </div>
         <div class="card-body">
-            <form action="" method="POST">
+            <form action="/admin/menus/add/store" method="POST">
                 <div class="card-body">
 
                     <div class="form-group">
                         <label for="menu">Tên Danh Mục</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nhập tên danh mục">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Nhập tên danh mục">
                     </div>
 
                     <div class="form-group">
@@ -30,12 +33,12 @@
 
                     <div class="form-group">
                         <label>Mô Tả </label>
-                        <textarea name="description" class="form-control"></textarea>
+                        <textarea name="description" class="form-control">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Mô Tả Chi Tiết</label>
-                        <textarea name="content" id="content" class="form-control"></textarea>
+                        <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
                     </div>
 
                     <div class="form-group">

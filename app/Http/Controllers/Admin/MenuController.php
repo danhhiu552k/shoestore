@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuFormRequest;
+use App\Http\Services\Menu\MenuService;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+
+    protected $menuService;
+
+    public function __construct(MenuService $menuService)
+    {
+        $this->menuService = $menuService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +46,10 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuFormRequest $request)
     {
-        //
+        $this->menuService->create($request);
+        return redirect()->back();
     }
 
     /**
