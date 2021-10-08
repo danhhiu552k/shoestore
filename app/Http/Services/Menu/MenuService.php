@@ -8,6 +8,10 @@ use Illuminate\Support\Str;
 
 class MenuService
 {
+    public function getParent()
+    {
+        return Menu::where('parent_id', 0)->where('active', 1)->get();
+    }
 
     public function create($request)
     {

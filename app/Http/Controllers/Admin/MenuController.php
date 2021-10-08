@@ -36,7 +36,10 @@ class MenuController extends Controller
     {
         return view(
             'admin.menu.add',
-            ['title' => 'Thêm Danh Mục']
+            [
+                'title' => 'Thêm Danh Mục',
+                'menus' => $this->menuService->getParent()
+            ]
         );
     }
 

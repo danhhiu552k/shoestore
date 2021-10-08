@@ -25,9 +25,9 @@
                         <label>Danh Mục</label>
                         <select class="form-control" name="parent_id">
                             <option value="0"> Danh Mục Cha </option>
-                            {{-- @foreach ($menus as $menu)
+                            @foreach ($menus as $menu)
                             <option value="{{ $menu->id }}">{{ $menu->name }}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                     </div>
 
@@ -42,8 +42,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="menu">Ảnh Sản Phẩm</label>
-                        <input type="file" class="form-control" id="upload">
+                        <label for="menu">Ảnh Danh Mục Sản Phẩm</label>
+                        <input type="file" class="form-control" id="upload"  accept=".jpg, .png">
                         <div id="image_show">
 
                         </div>
@@ -61,7 +61,6 @@
                             <label for="no_active" class="custom-control-label">Không</label>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="card-footer">
