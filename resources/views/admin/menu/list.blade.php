@@ -1,6 +1,14 @@
 @extends('admin.main')
 
 @section('content')
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class=" text-center">{{ $title }}</h3>
+        </div>
+        <div>
+            @include('admin.alert')
+        </div>
+        <div class="card-body">
     <table class="table">
         <thead>
             <tr>
@@ -15,6 +23,8 @@
             {!! \App\Helpers\Helper::menu($menus) !!}
         </tbody>
     </table>
+        </div>
+    </div>
 @endsection
 
 

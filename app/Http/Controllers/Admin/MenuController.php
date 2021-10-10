@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuFormRequest;
 use App\Http\Services\Menu\MenuService;
+use App\Models\Menu;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MenuController extends Controller
 {
@@ -24,9 +26,43 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.menu.list',[
+            'title' =>'Danh sách danh mục mới nhất',
+            'menus' => $this ->menuService->getAll()
+        ]);
     }
 
+
+    public  function show(Menu $menu)
+    {
+        return view('admin.menu.edit',[
+            'title' =>'Chỉnh sửa danh mục ' . $menu->name,
+            'menu' => $menu,
+            'menus' => $this->menuService->getParent()
+        ]);
+    }
+
+    public function update(Menu $menu, MenuFormRequest $request)
+    {
+        $this->menuService->update($request,$menu);
+        return redirect('/admin/menus/list');
+    }
+
+    public function destroy(Request $request): JsonResponse
+    {
+        $result =$this->menuService->destroy($request);
+        if ($result){
+            return response()->json([
+                'error'=>false,
+                'message' =>'Xóa thành công danh mục'
+            ]);
+
+        }
+        return response()->json([
+            'error'=>true
+
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -61,10 +97,6 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,10 +116,6 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -95,8 +123,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
+
+
 }

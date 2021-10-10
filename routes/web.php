@@ -28,8 +28,14 @@ Route::middleware(['auth'])->group(function () {
         #DanhMuc
         Route::get('menus/add', [MenuController::class, 'create']);
         Route::post('menus/add/store', [MenuController::class, 'store']);
-
+        Route::get('menus/list', [MenuController::class, 'index']);
+        Route::DELETE('menus/destroy', [MenuController::class, 'destroy']);
+        Route::get('menus/edit/{menu}', [MenuController::class, 'show']);
+        Route::post('menus/edit/{menu}', [MenuController::class, 'update']);
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
+
+
+
     });
 });

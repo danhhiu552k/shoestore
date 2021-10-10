@@ -1,10 +1,19 @@
 @extends('admin.main')
 
-@section('head')
-    <script src="/ckeditor/ckeditor.js"></script>
+@section('header')
+    <script src="/template/admin/ckeditor/ckeditor.js"></script>
+
 @endsection
 
 @section('content')
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class=" text-center">{{ $title }}</h3>
+        </div>
+        <div>
+            @include('admin.alert')
+        </div>
+        <div class="card-body">
     <form action="" method="POST">
         <div class="card-body">
 
@@ -36,6 +45,15 @@
                 <textarea name="content" id="content" class="form-control">{{ $menu->content }}</textarea>
             </div>
 
+            <div class="form-group">
+                <label for="menu">Ảnh Danh Mục Sản Phẩm</label>
+                <input type="file" class="form-control" id="upload"  accept=".jpg, .png">
+                <div id="image_show">
+                    <img src="{{$menu->thumb}}" alt="ảnh lỗi" width="200px" height="200px">
+                </div>
+                <input type="hidden" name="thumb" id="thumb" value="{{$menu->thumb}}">
+
+            </div>
 
             <div class="form-group">
                 <label>Kích Hoạt</label>
@@ -58,6 +76,8 @@
         </div>
         @csrf
     </form>
+        </div>
+    </div>
 @endsection
 
 @section('footer')
