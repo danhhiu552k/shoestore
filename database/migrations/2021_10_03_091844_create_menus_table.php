@@ -21,7 +21,7 @@ class CreateMenusTable extends Migration
             $table->longText('content');
             $table->string('thumb');
             $table->string('slug', 255)->unique();
-            $table->integer('active');            
+            $table->integer('active');
             $table->timestamps();
         });
     }

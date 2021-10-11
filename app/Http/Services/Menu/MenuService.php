@@ -13,6 +13,12 @@ class MenuService
         return Menu::where('parent_id', 0)->where('active', 1)->get();
     }
 
+    public function getAll()
+    {
+        return Menu::orderby('id')->paginate(20);
+    }
+
+
     public function create($request)
     {
         try {
@@ -31,5 +37,36 @@ class MenuService
             return false;
         }
         return true;
+    }
+
+    public function  update($request,$menu) : bool
+    {
+        if ($request->input('parent_id')!= $menu->id){
+            $menu->parent_id = $request->input('parent_id');
+        }
+        $menu->name =  $request->input('name');
+
+        $menu->description = $request->input('description');
+        $menu->content =$request->input('content');
+        $menu->thumb = $request->input('thumb');
+        $menu->active = $request->input('active');
+        $menu->save();
+
+        Session::flash('success', 'Cập Nhập Danh Mục Thành Công');
+        return true;
+
+    }
+
+    public function destroy($request)
+    {
+        $id =(int) $request->input('id');
+
+        $menu = Menu::where('id',$id)->first();
+
+        if($menu){
+            return Menu::where('id',$id)->orWhere('parent_id',$id)->delete();
+        }
+
+        return false;
     }
 }
