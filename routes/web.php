@@ -33,14 +33,9 @@ Route::middleware(['auth'])->group(function () {
         Route::DELETE('menus/destroy', [MenuController::class, 'destroy']);
         Route::get('menus/edit/{menu}', [MenuController::class, 'show']);
         Route::post('menus/edit/{menu}', [MenuController::class, 'update']);
-<<<<<<< HEAD
         Route::post('menus/active/{menu}', [MenuController::class, 'edit']);
-=======
->>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
+
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
-
-
-
     });
 });

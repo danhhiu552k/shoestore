@@ -43,61 +43,41 @@ class MenuService
         return true;
     }
 
-<<<<<<< HEAD
+
     public function  update($request, $menu): bool
     {
         if ($request->input('parent_id') != $menu->id) {
-=======
-    public function  update($request,$menu) : bool
-    {
-        if ($request->input('parent_id')!= $menu->id){
->>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
             $menu->parent_id = $request->input('parent_id');
         }
         $menu->name =  $request->input('name');
 
         $menu->description = $request->input('description');
-<<<<<<< HEAD
+
         $menu->content = $request->input('content');
         $menu->thumb = $request->input('thumb');
         $menu->active = $request->input('active');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $date =  date_default_timezone_get();
         $menu->updated_at = $date;
-=======
-        $menu->content =$request->input('content');
+
+        $menu->content = $request->input('content');
         $menu->thumb = $request->input('thumb');
         $menu->active = $request->input('active');
->>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
+
         $menu->save();
 
         Session::flash('success', 'Cập Nhập Danh Mục Thành Công');
         return true;
-<<<<<<< HEAD
-=======
-
->>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
     }
 
     public function destroy($request)
     {
-<<<<<<< HEAD
+
         $id = (int) $request->input('id');
-
         $menu = Menu::where('id', $id)->first();
-
         if ($menu) {
             return Menu::where('id', $id)->orWhere('parent_id', $id)->delete();
-=======
-        $id =(int) $request->input('id');
-
-        $menu = Menu::where('id',$id)->first();
-
-        if($menu){
-            return Menu::where('id',$id)->orWhere('parent_id',$id)->delete();
->>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
         }
-
         return false;
     }
 }
