@@ -4,6 +4,7 @@ $.ajaxSetup({
     }
 });
 
+<<<<<<< HEAD
 /**
  * Upload Image
  */
@@ -51,9 +52,30 @@ function removeRow(id, url) {
                     location.reload();
 
                 } else {
+=======
+function removeRow(id,url)
+{
+    if(confirm('Bạn có muốn xóa thật không ?')){
+        $.ajax({
+            type:'DELETE',
+            datatype:'JSON',
+            data: { id },
+            url:url,
+            success:function(result){
+                if (result.error == false){
+                    alert(result.message);
+                    location.reload();
+
+                }
+                else{
+>>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
                     alert('Xóa không thành công');
                 }
             }
         })
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1

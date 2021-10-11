@@ -29,6 +29,7 @@ class MenuController extends Controller
             'title' =>'Danh sách danh mục mới nhất',
             'menus' => $this ->menuService->getAll()
         ]);
+<<<<<<< HEAD
     }
 
      /*
@@ -58,6 +59,26 @@ class MenuController extends Controller
      * Xoá danh mục 
      */
 
+=======
+    }
+
+
+    public  function show(Menu $menu)
+    {
+        return view('admin.menu.edit',[
+            'title' =>'Chỉnh sửa danh mục ' . $menu->name,
+            'menu' => $menu,
+            'menus' => $this->menuService->getParent()
+        ]);
+    }
+
+    public function update(Menu $menu, MenuFormRequest $request)
+    {
+        $this->menuService->update($request,$menu);
+        return redirect('/admin/menus/list');
+    }
+
+>>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
     public function destroy(Request $request): JsonResponse
     {
         $result =$this->menuService->destroy($request);
@@ -101,4 +122,43 @@ class MenuController extends Controller
         $this->menuService->create($request);
         return redirect()->back();
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+>>>>>>> 5d00466800bcb12153d78cc97c7f97cc0ed94aa1
 }
