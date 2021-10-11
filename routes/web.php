@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/main', [MainController::class, 'index'])->name('admin');
         Route::get('logout', [LoginController::class, 'logout']);
-        
+
         #DanhMuc
         Route::get('menus/add', [MenuController::class, 'create']);
         Route::post('menus/add/store', [MenuController::class, 'store']);
@@ -33,8 +33,8 @@ Route::middleware(['auth'])->group(function () {
         Route::DELETE('menus/destroy', [MenuController::class, 'destroy']);
         Route::get('menus/edit/{menu}', [MenuController::class, 'show']);
         Route::post('menus/edit/{menu}', [MenuController::class, 'update']);
+        Route::post('menus/active/{menu}', [MenuController::class, 'edit']);
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
-
     });
 });
