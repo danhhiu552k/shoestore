@@ -39,3 +39,31 @@ Route::middleware(['auth'])->group(function () {
         Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
+
+
+Route::get('/main', function () {
+    return view('client.home');
+});
+Route::get('/cart', function () {
+    return view('client.cart.list');
+});
+
+Route::get('/check', function () {
+    return view('client.cart.checkout');
+});
+
+Route::get('/details', function () {
+    return view('client.product.detail');
+});
+
+Route::get('/about', function () {
+    return view('client.infor.about');
+});
+
+Route::get('/login', function () {
+    return view('client.login.login');
+});
+
+Route::get('/quick', function () {
+    return view('client.product.quick');
+});

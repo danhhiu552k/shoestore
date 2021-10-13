@@ -51,10 +51,12 @@ class LoginController extends Controller
             ],
             $request->input('remember')
         )) {
-            $name = User::select('name')->where('email', $email)->first();
-            $cookie = cookie('name', $name->name, $minutes);
+            $name = User::select('name', 'id', 'email')->where('email', $email)->first();           
+            Session::put('admin_name', $name->name);
+            Session::put('admin_id', $name->id);
+            Session::put('admin_email', $name->email);
             Session::flash('login', true);
-            return redirect()->route('admin', [$name])->cookie($cookie);
+            return redirect()->route('admin');
         }
         Session::flash('error', 'Email hoặc mật khẩu không đúng');
         return redirect()->back();

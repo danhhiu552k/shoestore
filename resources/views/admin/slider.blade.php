@@ -21,7 +21,12 @@
                                 class="img-circle elevation-2" alt="User Image">
                         </span>
                         <div class="media-body  ml-2  d-none d-lg-block">
-                            <span class="mb-0 text-md-center  font-weight-bold">{{ Cookie::get('name') }}</span>
+                            <span class="mb-0 text-md-center  font-weight-bold">
+
+                                @if (Session::has('admin_name'))
+                                    {{ Session::get('admin_name') }}
+                                @endif
+                            </span>
                         </div>
                     </div>
                 </a>
@@ -29,7 +34,7 @@
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0 text-dark">Welcome!</h6>
                     </div>
-                    <a href="profile/{{Cookie::get('email')}}" class="dropdown-item text-dark">
+                    <a href="profile/{{ Cookie::get('email') }}" class="dropdown-item text-dark">
                         <i class="fas fa-info-circle"></i>
                         <span class="text-dark ml-2">My profile</span>
                     </a>
