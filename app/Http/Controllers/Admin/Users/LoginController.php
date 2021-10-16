@@ -7,6 +7,7 @@ use App\Http\Requests\UserFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -18,6 +19,9 @@ class LoginController extends Controller
      */
     public function index()
     {
+        if (Cookie::get('remember_me') == "on") {
+            return redirect()->route('admin');
+        }
         return view('admin.user.login', ['title' => 'Trang Đăng Nhập Hệ Thống']);
     }
 
@@ -41,6 +45,7 @@ class LoginController extends Controller
     {
         $email = $request->input('email');
         $password = $request->input('password');
+        $remember = $request->input('remember');
         $minutes = 60;
         if (Auth::attempt(
             [
@@ -49,9 +54,10 @@ class LoginController extends Controller
                 'active' => 1,
                 'level' => 1
             ],
-            $request->input('remember')
+            $remember
         )) {
-            $name = User::select('name', 'id', 'email')->where('email', $email)->first();           
+            $name = User::select('name', 'id', 'email')->where('email', $email)->first();
+            Cookie::queue("remember_me", $remember, 525600);
             Session::put('admin_name', $name->name);
             Session::put('admin_id', $name->id);
             Session::put('admin_email', $name->email);
@@ -72,7 +78,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
+        Cookie::queue("remember_me", "", 525600);
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

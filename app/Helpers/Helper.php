@@ -2,25 +2,27 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Str;
+
 class Helper
 {
-    public static function menu($menus,$parent_id =0 ,$char = '')
+    public static function menu($menus, $parent_id = 0, $char = '')
     {
         $html = '';
-        foreach ($menus as $key =>$menu){
-            if($menu->parent_id == $parent_id){
+        foreach ($menus as $key => $menu) {
+            if ($menu->parent_id == $parent_id) {
                 $html .= '
                 <tr>
-                <td style="width: 50px">'. $menu->id .'</td>
-                <td>'. $char . $menu->name .'</td>
-                <td>' .  self::active($menu->active).'</td>
-                <td>'.$menu->updated_at .'</td>
+                <td style="width: 50px">' . $menu->id . '</td>
+                <td>' . $char . $menu->name . '</td>
+                <td>' .  self::active($menu->active) . '</td>
+                <td>' . $menu->updated_at . '</td>
                 <td>
-                    <a class = "btn btn-primary btn-sm" href="/admin/menus/edit/'. $menu->id .'">
+                    <a class = "btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">
                         <i class="fas fa-edit"></i>
                     </a>
                     <a  href="#" class = "btn btn-danger btn-sm"
-                        onclick="removeRow('. $menu->id .', \'/admin/menus/destroy\')">
+                        onclick="removeRow(' . $menu->id . ', \'/admin/menus/destroy\')">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>
@@ -29,16 +31,50 @@ class Helper
 
                 unset($menus[$key]);
 
-                $html .= self::menu($menus,$menu->id,$char .'--');
+                $html .= self::menu($menus, $menu->id, $char . '--');
             }
         }
         return $html;
     }
 
-    public static function active($active = 0) :string
+    public static function active($active = 0): string
     {
-        return $active ==0 ?'<span class="btn btn-danger">No</span>'
-        :'<span class="btn btn-success">Yes</span>';
+        return $active == 0 ? '<span class="btn btn-danger">No</span>'
+            : '<span class="btn btn-success">Yes</span>';
+    }
+
+    #Show Menu main page
+
+    public static function menus($menus, $parent_id = 0)
+    {
+        $html = '';
+        foreach ($menus as $key => $menu) {
+            if ($menu->parent_id == $parent_id) {
+                $html .= '
+                <li>
+                    <a href="/danh-muc/' . $menu->id . '-' . Str::slug($menu->name, '-') . '.html">
+                        ' . $menu->name . '
+                    </a>';
+                unset($menus[$key]);
+                if (self::isChild($menus, $menu->id)) {
+                    $html .= '<ul>';
+                    $html .= self::menus($menus, $menu->id);                    
+                    $html .= '</ul>';
+                }
+                $html .= '</li>';
+            }
+        }
+        return $html;
+    }
+
+    public static function isChild($menus, $id): bool
+    {
+        foreach ($menus as $menu) {
+            if ($menu->parent_id == $id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
-?>

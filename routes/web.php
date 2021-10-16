@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('/main', function () {
+Route::get('/', function () {
     return view('client.home');
 });
 Route::get('/cart', function () {

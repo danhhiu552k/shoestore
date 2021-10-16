@@ -398,7 +398,7 @@ blockquote.text-white cite span {
 }
 
 .mmenu-active .page-wrapper {
-    transform: translateX(200px)
+    /* transform: translateX(200px) */
 }
 
 @media all and (-ms-high-contrast: none),
@@ -1968,9 +1968,9 @@ blockquote.text-white cite span {
 }
 
 .menu li>a {
-    color: #999999;
+    color: #312e2e;
     font-weight: 300;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     letter-spacing: 0;
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -3053,7 +3053,7 @@ blockquote.text-white cite span {
 }
 
 a {
-    font-family: 'Poppins'
+    font-family: '"Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
 }
 
 p {
