@@ -10,7 +10,7 @@ class MenuService
 {
     public function getParent()
     {
-        return Menu::where('active', 1)->get();
+        return Menu::where('parent_id', 0)->where('active', 1)->get();
     }
 
     public function getAll()

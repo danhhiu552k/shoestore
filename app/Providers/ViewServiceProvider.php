@@ -25,6 +25,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['client.menu', 'client.footer'], MenuComposer::class);
+        View::composer(['client.menu', 'client.footer', 'client.banner'], MenuComposer::class);
     }
 }
