@@ -146,84 +146,87 @@
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                                     <form action="#">
                                         <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
+                                            <input type="email" class="form-control" id="register-email" name="register-email" required placeholder="E-mail">
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
+                                            <input type="password" class="form-control" id="register-password" name="register-password" required placeholder="Mật khẩu">
                                         </div><!-- End .form-group -->
 
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
+                                                <span>Đăng Nhập</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
 
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                                <label class="custom-control-label" for="signin-remember">Nhớ mật khẩu</label>
                                             </div><!-- End .custom-checkbox -->
 
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                            <a href="#" class="forgot-link">Quên mật khẩu?</a>
                                         </div><!-- End .form-footer -->
                                     </form>
                                     <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
+                                        <p class="text-center">hoặc đăng nhập với</p>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <a href="#" class="btn btn-login btn-g">
                                                     <i class="icon-google"></i>
-                                                    Login With Google
+                                                    Đăng nhập bằng Google
                                                 </a>
                                             </div><!-- End .col-6 -->
                                             <div class="col-sm-6">
                                                 <a href="#" class="btn btn-login btn-f">
                                                     <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
+                                                    Đăng nhập bằng Facebook
                                                 </a>
                                             </div><!-- End .col-6 -->
                                         </div><!-- End .row -->
                                     </div><!-- End .form-choice -->
                                 </div><!-- .End .tab-pane -->
                                 <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="#">
+                                    <form action="/register" method="POST">
                                         <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
+                                            <input type="text" class="form-control" name="fistname" required placeholder="Họ">
+                                        </div><!-- End .form-group -->
+                                        <div class="form-group">
+                                            
+                                            <input type="text" class="form-control" name="lastname" required placeholder="Tên">
+                                        </div><!-- End .form-group -->
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="email" required placeholder="E-mail">
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
+                                            <input type="password" class="form-control" name="password" required placeholder="Mật khẩu">
                                         </div><!-- End .form-group -->
 
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
+                                                <span>Đăng Kí</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
 
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                                <input type="checkbox" class="custom-control-input" name="checked" required>
+                                                <label class="custom-control-label" for="register-policy">Tôi đồng ý với <a href="#">chính sách bảo mật</a> *</label>
                                             </div><!-- End .custom-checkbox -->
                                         </div><!-- End .form-footer -->
                                     </form>
                                     <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
+                                        <p class="text-center">hoặc đăng nhập với</p>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <a href="#" class="btn btn-login btn-g">
                                                     <i class="icon-google"></i>
-                                                    Login With Google
+                                                    Đăng nhập bằng Google
                                                 </a>
                                             </div><!-- End .col-6 -->
                                             <div class="col-sm-6">
                                                 <a href="#" class="btn btn-login  btn-f">
                                                     <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
+                                                    Đăng nhập bằng Facebook
                                                 </a>
                                             </div><!-- End .col-6 -->
                                         </div><!-- End .row -->
