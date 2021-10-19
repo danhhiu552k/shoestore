@@ -24,7 +24,6 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="register-2" role="tabpanel"
                             aria-labelledby="register-tab-2">
-                            @include('client.alert')
                             @if (Session::has('error'))
                                 <div class="alert alert-danger">
                                     {{ Session::get('error') }}
