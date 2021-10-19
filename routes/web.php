@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Client\Users\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,10 +41,11 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::post('/register/store', [RegisterController::class, 'store']);
 
 Route::get('/', function () {
     return view('client.home');
-});
+})->name('home');
 Route::get('/cart', function () {
     return view('client.cart.list');
 });
@@ -63,7 +65,9 @@ Route::get('/about', function () {
 Route::get('/login', function () {
     return view('client.login.login');
 });
-
+Route::get('/register', function () {
+    return view('client.login.register');
+});
 Route::get('/quick', function () {
     return view('client.product.quick');
 });

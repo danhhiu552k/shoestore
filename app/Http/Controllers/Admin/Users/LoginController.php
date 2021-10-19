@@ -19,10 +19,11 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if (Cookie::get('remember_me') == "on") {
+        if (Auth::check()) {
             return redirect()->route('admin');
+        } else {
+            return view('admin.user.login', ['title' => 'Trang Đăng Nhập Hệ Thống']);
         }
-        return view('admin.user.login', ['title' => 'Trang Đăng Nhập Hệ Thống']);
     }
 
     /**
@@ -56,11 +57,11 @@ class LoginController extends Controller
             ],
             $remember
         )) {
-            $name = User::select('name', 'id', 'email')->where('email', $email)->first();
+            $user = Auth::user();
             Cookie::queue("remember_me", $remember, 525600);
-            Session::put('admin_name', $name->name);
-            Session::put('admin_id', $name->id);
-            Session::put('admin_email', $name->email);
+            Session::put('admin_name', $user->name);
+            Session::put('admin_id', $user->id);
+            Session::put('admin_email', $user->email);
             Session::flash('login', true);
             return redirect()->route('admin');
         }

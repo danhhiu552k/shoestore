@@ -25,7 +25,7 @@ class UserFormRequest extends FormRequest
     {
         return [
             'email' => 'bail|required|email:filter',
-            'password' => 'bail|required',
+            'password' => 'bail|required'
         ];
     }
 
