@@ -46,19 +46,15 @@ class LoginController extends Controller
     {
         $email = $request->input('email');
         $password = $request->input('password');
-        $remember = $request->input('remember');
-        $minutes = 60;
         if (Auth::attempt(
             [
                 'email' => $email,
                 'password' => $password,
                 'active' => 1,
                 'level' => 1
-            ],
-            $remember
+            ]
         )) {
             $user = Auth::user();
-            Cookie::queue("remember_me", $remember, 525600);
             Session::put('admin_name', $user->name);
             Session::put('admin_id', $user->id);
             Session::put('admin_email', $user->email);
@@ -79,7 +75,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        Cookie::queue("remember_me", "", 525600);
+        
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

@@ -14,7 +14,7 @@
 </head>
 
 <body class="h-100">
-    <div class="login-form-bg h-100">
+    <div class="login-form-bg h-100 container">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
                 <div class="col-xl-6">
@@ -37,12 +37,6 @@
                                         <span toggle="#password-field"
                                             class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" name="remember">
-                                        <label class="ml-2">
-                                            Nhớ mật khẩu
-                                        </label>
-                                    </div>
                                     @include('admin.alert')
                                     <button class="btn login-form__btn submit w-100">Đăng Nhập</button>
                                     @csrf
@@ -58,6 +52,7 @@
     <style>
         .field-icon {
             float: right;
+            width: 3.5em !important;
             margin-left: -25px;
             margin-top: -30px;
             position: relative;

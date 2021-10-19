@@ -27,7 +27,7 @@ Route::post('admin/login/store', [LoginController::class, 'store']);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/main', [MainController::class, 'index'])->name('admin');
-        Route::get('logout/admin', [LoginController::class, 'logout']);
+        Route::get('logout', [LoginController::class, 'logout']);
 
         #DanhMuc
         Route::get('menus/add', [MenuController::class, 'create']);
