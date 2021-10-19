@@ -6,10 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserFormRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
+    public function logout(Request $request)
+    {
+        Session::put('login', false);
+        Session::put('firstname', null);
+        Session::put('lastname', null);
+        Session::put('email', null);
+        return redirect('/');
+    }
+
     public function store(CreateUserFormRequest $request)
     {
         if ($request->input('checked') == 'on') {
@@ -32,27 +42,17 @@ class RegisterController extends Controller
                     'created_at' =>  $date,
                     'updated_at' =>  $date
                 ]);
+
+                $user = Customer::select('firstname', 'lastname', 'id', 'email')->where('email', $request->input('email'))->first();
+                Session::put('login', true);
+                Session::put('firstname', $user->firstname);
+                Session::put('lastname', $user->lastname);
+                Session::put('email', $user->email);
+                return redirect()->route('home');
             } else {
                 Session::flash('error', 'Tài khoản đã tồn tại');
                 return redirect()->back();
             }
-
-            // if (Auth::attempt(
-            //     [
-            //         'email' => $request->input('email'),
-            //         'password' => $request->input('password'),
-            //         'active' => 1,
-            //         'level' => 0
-            //     ]
-            // )) {
-            //     // $name = Customer::select('name', 'id', 'email')->where('email', $request->input('email'))->first();
-            //     // Session::put('admin_name', $name->name);
-            //     // Session::put('admin_id', $name->id);
-            //     // Session::put('admin_email', $name->email);
-            //     // Session::flash('login', true);
-            //     return redirect()->route('home');
-            // }
-            dd($request->input());
         } catch (\Exception $err) {
             Session::flash('error', 'Tạo Tài Khoản Lỗi: ' . $err->getMessage());
             return redirect()->back();

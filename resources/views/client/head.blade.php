@@ -1,3 +1,4 @@
+
 <div class="header-top">
     <div class="container">
         <div class="header-left">
@@ -31,6 +32,24 @@
                         <li><a href="about">About Us</a></li>
                         <li><a href="/register"><i class="icon-user"></i>Đăng Kí</a></li>
                         <li><a href="/login"><i class="icon-user"></i>Đăng Nhập</a></li>
+                        @if (Session::get('login'))
+                            <li>
+                                <div>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{ Session::get('firstname') }}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="/logout">Đăng Xuất</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             </ul><!-- End .top-menu -->

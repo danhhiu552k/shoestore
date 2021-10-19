@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Client\Users\RegisterController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,7 @@ Route::post('admin/login/store', [LoginController::class, 'store']);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/main', [MainController::class, 'index'])->name('admin');
-        Route::get('logout', [LoginController::class, 'logout']);
+        Route::get('logout/admin', [LoginController::class, 'logout']);
 
         #DanhMuc
         Route::get('menus/add', [MenuController::class, 'create']);
@@ -42,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/register/store', [RegisterController::class, 'store']);
+
+Route::get('/logout',[RegisterController::class, 'logout']);
 
 Route::get('/', function () {
     return view('client.home');
