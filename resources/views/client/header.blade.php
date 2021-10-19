@@ -7,10 +7,10 @@
 <meta name="author" content="p-themes">
 <!-- Favicon -->
 
-<link rel="icon" type="image/png" sizes="32x32" href="/template/client/images/logo/logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/template/client/images/logo/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/template/client/images/logo/shoes_32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/template/client/images/logo/shoes_16.png">
 <link rel="mask-icon" href="/template/client/images/icons/safari-pinned-tab.svg" color="#666666">
-<link rel="shortcut icon" href="/template/client/images/logo/logo.png">
+<link rel="shortcut icon" href="/template/client/images/logo/shoes_32.png">
 <meta name="apple-mobile-web-app-title" content="Molla">
 <meta name="application-name" content="Molla">
 <meta name="msapplication-TileColor" content="#cc9966">
