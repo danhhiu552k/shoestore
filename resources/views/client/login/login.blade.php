@@ -17,21 +17,30 @@
                 <div class="form-tab">
                     <ul class="nav nav-pills nav-fill" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab"
-                                aria-controls="signin-2" aria-selected="false">Đăng Nhập</a>
+                            <a class="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab"
+                                aria-controls="signin-2" aria-selected="true">Đăng Nhập</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-                            <form action="#">
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
+                            <form action="/login/store" method="POST">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="register-email" name="register-email"
-                                        required placeholder="E-mail">
+                                    <input type="email" class="form-control" name="email" placeholder="E-mail">
+                                    @error('email')
+                                        <div class="text-danger mt-1">{{ $message }} *</div>
+                                    @enderror
                                 </div><!-- End .form-group -->
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="register-password"
-                                        name="register-password" required placeholder="Mật khẩu">
+                                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                                    @error('password')
+                                        <div class="text-danger mt-1">{{ $message }} *</div>
+                                    @enderror
                                 </div><!-- End .form-group -->
 
                                 <div class="form-footer">
@@ -40,11 +49,7 @@
                                         <i class="icon-long-arrow-right"></i>
                                     </button>
 
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                        <label class="custom-control-label" for="signin-remember">Nhớ mật
-                                            khẩu</label>
-                                    </div><!-- End .custom-checkbox -->
+
 
                                     <a href="#" class="forgot-link">Quên mật khẩu?</a>
                                 </div><!-- End .form-footer -->

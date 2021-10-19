@@ -46,18 +46,21 @@ class LoginController extends Controller
     {
         $email = $request->input('email');
         $password = $request->input('password');
+        $remember = $request->input('remember');
+        $minutes = 60;
         if (Auth::attempt(
             [
                 'email' => $email,
                 'password' => $password,
                 'active' => 1,
                 'level' => 1
-            ]
+            ],
+            $remember
         )) {
-            $user = Auth::user();
-            Session::put('admin_name', $user->name);
-            Session::put('admin_id', $user->id);
-            Session::put('admin_email', $user->email);
+            $name = Auth::user();
+            Session::put('admin_name', $name->name);
+            Session::put('admin_id', $name->id);
+            Session::put('admin_email', $name->email);
             Session::flash('login', true);
             return redirect()->route('admin');
         }
@@ -75,7 +78,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        
+
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

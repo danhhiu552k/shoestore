@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Client\Users\LoginController as UsersLoginController;
 use App\Http\Controllers\Client\Users\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/register/store', [RegisterController::class, 'store']);
+
+Route::post('/login/store', [UsersLoginController::class, 'store']);
 
 Route::get('/logout',[RegisterController::class, 'logout']);
 

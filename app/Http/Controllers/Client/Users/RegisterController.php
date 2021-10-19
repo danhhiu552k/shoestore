@@ -13,6 +13,7 @@ class RegisterController extends Controller
 {
     public function logout(Request $request)
     {
+        Session::flush();
         Session::put('login', false);
         Session::put('firstname', null);
         Session::put('lastname', null);
