@@ -25,9 +25,7 @@
                         <label>Danh Mục</label>
                         <select class="form-control" name="parent_id">
                             <option value="0"> Danh Mục Cha </option>
-                            @foreach ($menus as $menu)
-                            <option value="{{ $menu->id }}">{{ $menu->name }}</option>
-                            @endforeach
+                           {!! \App\Helpers\Helper::getParent($menus) !!}
                         </select>
                     </div>
 

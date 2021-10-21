@@ -6,6 +6,19 @@ use Illuminate\Support\Str;
 
 class Helper
 {
+    public static function getParent($menus, $parent_id = 0, $char = '')
+    {
+        $html = '';
+        foreach ($menus as $key => $menu) {
+            if ($menu->parent_id == $parent_id) {
+                $html .= ' <option value="' . $menu->id . '">' . $char .' '. $menu->name . '</option> ';
+                unset($menus[$key]);
+                $html .= self::getParent($menus, $menu->id, $char . '━');
+            }
+        }
+        return $html;
+    }
+
     public static function menu($menus, $parent_id = 0, $char = '')
     {
         $html = '';
@@ -14,7 +27,7 @@ class Helper
                 $html .= '
                 <tr>
                 <td style="width: 50px">' . $menu->id . '</td>
-                <td>' . $char . $menu->name . '</td>
+                <td>' . $char .' '. $menu->name . '</td>
                 <td>' .  self::active($menu->active) . '</td>
                 <td>' . $menu->updated_at . '</td>
                 <td>
@@ -31,7 +44,7 @@ class Helper
 
                 unset($menus[$key]);
 
-                $html .= self::menu($menus, $menu->id, $char . '--');
+                $html .= self::menu($menus, $menu->id, $char . '━');
             }
         }
         return $html;
