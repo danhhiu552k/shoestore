@@ -19,6 +19,32 @@ class Helper
         return $html;
     }
 
+    public static function getParent_edit($menus, $id, $parent_id = 0, $char = '')
+    {
+        $html = '';
+        foreach ($menus as $key => $menu) {
+            if ($menu->parent_id == $parent_id) {
+                $html .= ' <option value="' . $menu->id . '" ' . self::selected($menu->id, $id) .
+                    ' >' . $char . $menu->name . '</option> ';
+                unset($menus[$key]);
+                $html .= self::getParent_edit($menus, $id, $menu->id, $char . '━');
+            }
+        }
+//        foreach ($menus as $menu) {
+//            $html .= ' <option value="' . $menu->id . '" ' . self::selected($menu->id, $parent_id) . ' > ' . $menu->name . '</option>';
+//        }
+        return $html;
+    }
+
+    public static function selected($id, $parent)
+    {
+        if ($id == $parent) {
+            return 'selected';
+        } else {
+            return '';
+        }
+    }
+
     public static function menu($menus, $parent_id = 0, $char = '')
     {
         $html = '';
