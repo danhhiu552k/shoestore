@@ -22,9 +22,10 @@
                         </span>
                         <div class="media-body  ml-2  d-none d-lg-block">
                             <span class="mb-0 text-md-center  font-weight-bold">
-
-                                @if (Session::has('admin_name'))
-                                    {{ Session::get('admin_name') }}
+                                @if (Session::has('admin_email'))
+                                    {{ Session::get('admin_firstname') . ' ' . Session::get('admin_lastname') }}
+                                @else
+                                    No
                                 @endif
                             </span>
                         </div>
@@ -34,9 +35,11 @@
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0 text-dark">Welcome!</h6>
                     </div>
-                    <a href="profile/{{ Cookie::get('email') }}" class="dropdown-item text-dark">
+                    <a class="dropdown-item text-dark">
                         <i class="fas fa-info-circle"></i>
-                        <span class="text-dark ml-2">My profile</span>
+                        <span type="button" class="mb-2" data-toggle="modal" data-target="#exampleModal">
+                            Thông tin chi tiết
+                        </span>
                     </a>
                     <a href="#!" class="dropdown-item text-dark">
                         <i class="fas fa-cog"></i>

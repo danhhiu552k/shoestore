@@ -47,21 +47,22 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $remember = $request->input('remember');
-        $minutes = 60;
         if (Auth::attempt(
             [
                 'email' => $email,
                 'password' => $password,
-                'active' => 1,
-                'level' => 1
+                'active' => 1
             ],
             $remember
         )) {
-            $name = Auth::user();
-            Session::put('admin_name', $name->name);
-            Session::put('admin_id', $name->id);
-            Session::put('admin_email', $name->email);
-            Session::flash('login', true);
+            $admins = Auth::user();
+            Session::put('admin_firstname', $admins->firstname);
+            Session::put('admin_lastname', $admins->lastname);
+            Session::put('admin_phone', $admins->phone);
+            Session::put('admin_birthday', $admins->birthday);
+            Session::put('admin_email', $admins->email);
+            Session::put('admin_address', $admins->address);
+            Session::put('admin_avatar', $admins->avatar);
             return redirect()->route('admin');
         }
         Session::flash('error', 'Email hoặc mật khẩu không đúng');

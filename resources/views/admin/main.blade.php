@@ -95,6 +95,7 @@
 
     <!-- jQuery -->
     @include('admin.footer')
+    @include('admin.user.profile')
 </body>
 
 </html>
