@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{$slider->id}}</td>
                     <td>{{$slider->name}}</td>
-                    <td>{{$slider->link}}</td>
+                    <td  style="width: 200px;">{{$slider->link}}</td>
                     <td><a href="{{$slider->thumb}}" target="_blank" >
                             <img src="{{$slider->thumb}}" height="40px">
                         </a></td>

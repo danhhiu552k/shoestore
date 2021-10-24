@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('header')
-<script src="/template/admin/ckeditor/ckeditor.js"></script>
+    <script src="/template/admin/ckeditor/ckeditor.js"></script>
 @endsection
 
 @section('content')
@@ -10,15 +10,15 @@
             <h3 class=" text-center">{{ $title }}</h3>
         </div>
         <div>
-            @if(Session::has('error'))
+            @if (Session::has('error'))
                 <div class="alert alert-danger">
-                    {{Session::get('error')}}
+                    {{ Session::get('error') }}
                 </div>
             @endif
 
-            @if(Session::has('success'))
+            @if (Session::has('success'))
                 <div class="alert alert-success">
-                    {{Session::get('success')}}
+                    {{ Session::get('success') }}
                 </div>
             @endif
         </div>
@@ -28,40 +28,36 @@
 
                     <div class="form-group">
                         <label for="menu">Tên slider</label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Nhập tên slider">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control"
+                            placeholder="Nhập tên slider">
                         @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="menu">Đường link</label>
-                        <input type="text" name="link" value="{{ old('link') }}" class="form-control" placeholder="Nhập đường link">
+                        <input type="text" name="link" value="{{ old('link') }}" class="form-control"
+                            placeholder="Nhập đường link">
                         @error('link')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Mô Tả Chi Tiết</label>
-                        <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
+                        <textarea name="description" id="description"
+                            class="form-control">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="menu">Ảnh slider</label>
-                        <input type="file" class="form-control" id="upload"  accept=".jpg, .png">
+                        <input type="file" class="form-control" id="upload" accept=".jpg, .png">
                         <div id="image_show">
 
                         </div>
                         <input type="hidden" name="thumb" id="thumb">
                     </div>
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="menu">Sắp xếp</label>--}}
-{{--                        <input type="number" class="sort-by" value="1" class="form-control">--}}
-
-
-{{--                    </div>--}}
 
                     <div class="form-group">
                         <label>Kích Hoạt</label>
@@ -92,6 +88,6 @@
 
 @section('footer')
     <script>
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('description');
     </script>
 @endsection

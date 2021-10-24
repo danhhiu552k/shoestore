@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Client\MainController as ClientMainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,9 +68,8 @@ Route::post('/login/store', [UsersLoginController::class, 'store']);
 
 Route::get('/logout',[RegisterController::class, 'logout']);
 
-Route::get('/', function () {
-    return view('client.home');
-})->name('home');
+Route::get('/', [ClientMainController::class, 'index'])->name('home');
+
 Route::get('/cart', function () {
     return view('client.cart.list');
 });
@@ -87,10 +87,10 @@ Route::get('/about', function () {
 });
 
 Route::get('/login', function () {
-    return view('client.login.login');
+    return view('client.login.login',['title'=>'Đăng Nhập']);
 });
 Route::get('/register', function () {
-    return view('client.login.register');
+    return view('client.login.register',['title'=>'Đăng Kí']);
 });
 Route::get('/quick', function () {
     return view('client.product.quick');
