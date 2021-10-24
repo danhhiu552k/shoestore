@@ -25,7 +25,7 @@ class MenuFormRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'thumb' => 'required'
+            
         ];
     }
 
@@ -38,7 +38,7 @@ class MenuFormRequest extends FormRequest
     {
         return [
             'name.required' => 'Tên danh mục không được để trống',
-            'thumb.required' => 'Ảnh không được để trống',
+           
         ];
     }
 }

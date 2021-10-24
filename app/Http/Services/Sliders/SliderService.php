@@ -12,7 +12,7 @@ class SliderService
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $date = date("Y-m-d H:i:s");
         $name = $request->input('name');
-        $decription = $request->input('description');
+        $description = $request->input('description');
         $active = $request->input('active');
         $link = $request->input('link');
         $thumb = $request->input('thumb');
@@ -20,7 +20,7 @@ class SliderService
             Slider::insert([
                 'name' => $name,
                 'active' => $active,
-                'description' => $decription,
+                'description' => $description,
                 'link' => $link,
                 'thumb' => $thumb,
                 'created_at' => $date,
@@ -32,5 +32,10 @@ class SliderService
             Session::flash('error', 'Thêm slider lỗi ' . $err);
             return false;
         }
+    }
+
+    public function show()
+    {
+        return Slider::where('active', 1)->get();
     }
 }
