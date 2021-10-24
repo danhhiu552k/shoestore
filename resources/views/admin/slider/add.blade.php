@@ -56,6 +56,13 @@
                         <input type="hidden" name="thumb" id="thumb">
                     </div>
 
+{{--                    <div class="form-group">--}}
+{{--                        <label for="menu">Sắp xếp</label>--}}
+{{--                        <input type="number" class="sort-by" value="1" class="form-control">--}}
+
+
+{{--                    </div>--}}
+
                     <div class="form-group">
                         <label>Kích Hoạt</label>
                         <div class="custom-control custom-radio">

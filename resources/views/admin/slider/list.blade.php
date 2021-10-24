@@ -13,16 +13,37 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name</th>
-                <th>Active</th>
-                <th>Update</th>
+                <th>Tiêu đề</th>
+                <th>Link</th>
+                <th>Ảnh</th>
+                <th>Trạng thái</th>
+                <th>Cập nhập</th>
                 <th style="width: 100px">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
-            {!! \App\Helpers\Helper::menu($menus) !!}
+            @foreach($sliders as $key =>$slider)
+                <tr>
+                    <td>{{$slider->id}}</td>
+                    <td>{{$slider->name}}</td>
+                    <td>{{$slider->link}}</td>
+                    <td><a href="{{$slider->thumb}}" target="_blank" >
+                            <img src="{{$slider->thumb}}" height="40px">
+                        </a></td>
+                    <td>{!! \App\Helpers\Helper::active($slider->active) !!}</td>
+                    <td><a class="btn btn-primary btn-sm" href="/admin/slider/edit/{{$slider->id}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-sm"
+                           onclick="removeRow({{$slider->id}},'/admin/slider/destroy')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
+            {!! $sliders->links() !!}
         </div>
     </div>
 @endsection

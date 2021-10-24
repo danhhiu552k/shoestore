@@ -25,7 +25,7 @@ class SliderRequest extends FormRequest
     {
         return [
            "link"=>"required",
-            "name"=>"required"
+            "name"=>"required",
         ];
     }
     public function messages()
