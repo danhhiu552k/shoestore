@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;
 use App\Http\Services\Sliders\SliderService;
 use App\Models\Slider;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -51,6 +52,20 @@ class SliderController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function destroy(Request $request)
+    {
+        $result=$this->slider->destroy($request);
+        if ($result){
+            return response()->json([
+                'error' =>false,
+                'message'=>'Xóa thành công '
+            ]);
+        }
+
+        return response()->json(['error'=>true]);
+
     }
 
 
