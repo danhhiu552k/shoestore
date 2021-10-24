@@ -87,10 +87,10 @@ Route::get('/about', function () {
 });
 
 Route::get('/login', function () {
-    return view('client.login.login');
+    return view('client.login.login',['title'=>'Đăng Nhập']);
 });
 Route::get('/register', function () {
-    return view('client.login.register');
+    return view('client.login.register',['title'=>'Đăng Kí']);
 });
 Route::get('/quick', function () {
     return view('client.product.quick');

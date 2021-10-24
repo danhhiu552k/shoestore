@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Mô Tả Chi Tiết</label>
-                        <textarea name="content" id="content" class="form-control">{{ $slider->content }}</textarea>
+                        <label>Mô Tả</label>
+                        <textarea name="description" id="description" class="form-control">{{ $slider->description }}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -98,6 +98,6 @@
 
 @section('footer')
     <script>
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('description');
     </script>
 @endsection
