@@ -3,6 +3,7 @@
 namespace App\Http\Services\Sliders;
 
 use App\Models\Slider;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class SliderService
@@ -34,8 +35,31 @@ class SliderService
         }
     }
 
+
     public function show()
     {
         return Slider::where('active', 1)->get();
+    }
+    
+    public function update($request,$slider)
+    {
+        try {
+            $slider ->fill($request ->input());
+            $slider->save();
+            Session::flash('success', 'Sửa slider thành công');
+        }
+        catch (\Exception $err){
+            Session::flash('error', 'Sửa slider lỗi');
+            Log::info($err);
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public function get()
+    {
+        return Slider::orderBy('id')->paginate(15);
     }
 }
