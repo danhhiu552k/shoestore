@@ -80,4 +80,10 @@ class MenuService
         }
         return false;
     }
+
+
+    public function show()
+    {
+        return Menu::where('active', 1)->orderBy('id')->get();
+    }
 }
