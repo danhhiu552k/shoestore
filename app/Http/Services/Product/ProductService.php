@@ -93,4 +93,16 @@ class ProductService
         }
         return true;
     }
+
+    #Show sản phẩm ra main page
+    public function show($value)
+    {
+        $products = '';
+        if ($value == 'hot') {
+            $products = Product::where('active', 1)->where($value, 1)->take(7)->get();
+        } elseif ($value == 'price_sale') {
+            $products = Product::where('active', 1)->whereNotNull($value)->take(7)->get();
+        }
+        return $products;
+    }
 }

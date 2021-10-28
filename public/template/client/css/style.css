@@ -55,6 +55,12 @@ hr {
     border: none;
     border-top: 1px solid #ebebeb;
     margin: 3rem auto 2.5rem
+
+}
+.hr-style{
+    border: none;
+    border-top: 1px solid #000;
+    margin: 0px;
 }
 
 sub,
@@ -7731,6 +7737,11 @@ p {
 .product-label.label-sale {
     color: #fff;
     background-color: #ef837b
+}
+
+.product-label.label-hot{
+    color: #fff;
+    background-color: #de1010
 }
 
 .product-label.label-new {
