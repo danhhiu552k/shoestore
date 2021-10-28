@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Client\Users\LoginController as UsersLoginController;
@@ -54,6 +55,20 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+        #Product
+        Route::prefix('product')->group(function () {
+            Route::get('add', [ProductController::class, 'create']);
+            Route::post('add', [ProductController::class, 'store']);
+
+            Route::get('edit/{product}', [ProductController::class, 'show']);
+            Route::post('edit/{product}', [ProductController::class, 'update']);
+
+            Route::get('list', [ProductController::class, 'index']);
+            Route::delete('destroy', [ProductController::class, 'destroy']);
+
+            Route::get('list-image/{id}', [ProductImageController::class, 'list_image']);
+
+        });
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
 
