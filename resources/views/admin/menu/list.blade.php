@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            {!! \App\Helpers\Helper::menu($menus) !!}
+            {!! \App\Helpers\Menu::menu($menus) !!}
         </tbody>
     </table>
         </div>

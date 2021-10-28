@@ -17,7 +17,7 @@
                 <li class="active">
                     <a href="/" class="">Trang chủ</a>
                 </li>
-                {!! \App\Helpers\Helper::menus($menus) !!}
+                {!! \App\Helpers\Menu::menus($menus) !!}
             </ul>
         </nav><!-- End .mobile-nav -->
 

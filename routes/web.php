@@ -99,7 +99,7 @@ Route::get('/details', function () {
 });
 
 Route::get('/about', function () {
-    return view('client.infor.about');
+    return view('client.infor.about',['title'=>'Thông tin về chúng tôi']);
 });
 
 Route::get('/login', function () {

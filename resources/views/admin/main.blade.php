@@ -59,7 +59,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-           
+
             <!-- Main content -->
             <section class="content">
 
@@ -81,7 +81,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021 <a href="https://adminlte.io">Shoe Store</a>.</strong> All rights
+            <strong>Copyright &copy; 2021 <a href="#">Shoe Store</a>.</strong> All rights
             reserved.
         </footer>
 
