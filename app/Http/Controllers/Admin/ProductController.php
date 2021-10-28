@@ -33,5 +33,12 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function index()
+    {
+        return view('admin.products.list', [
+            'title' => 'Danh sách sản phẩm',
+            'products' => $this->productService->getAll()
+        ]);
+    }
 
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\MainController as ClientMainController;
+use \App\Http\Controllers\Admin\ProductImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Route::post('/register/store', [RegisterController::class, 'store']);
 
 Route::post('/login/store', [UsersLoginController::class, 'store']);
 
-Route::get('/logout',[RegisterController::class, 'logout']);
+Route::get('/logout', [RegisterController::class, 'logout']);
 
 Route::get('/', [ClientMainController::class, 'index'])->name('home');
 
@@ -94,7 +95,7 @@ Route::get('/check', function () {
 });
 
 Route::get('/details', function () {
-    return view('client.product.detail');
+    return view('client.product.detail',['title'=>'Chi tiết']);
 });
 
 Route::get('/about', function () {
@@ -102,11 +103,8 @@ Route::get('/about', function () {
 });
 
 Route::get('/login', function () {
-    return view('client.login.login',['title'=>'Đăng Nhập']);
+    return view('client.login.login', ['title' => 'Đăng Nhập']);
 });
 Route::get('/register', function () {
-    return view('client.login.register',['title'=>'Đăng Kí']);
-});
-Route::get('/quick', function () {
-    return view('client.product.quick');
+    return view('client.login.register', ['title' => 'Đăng Kí']);
 });

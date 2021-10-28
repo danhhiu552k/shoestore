@@ -25,6 +25,8 @@ class ProductFormRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'thumb'=>'required',
+            'menu_id'=>'required'
         ];
     }
 
@@ -32,6 +34,8 @@ class ProductFormRequest extends FormRequest
     {
         return[
             'name.required'=>'Bạn phải nhập tên sản phẩm',
+            'thumb.required'=>'Bạn phải chọn ảnh đại diện cho sản phẩm',
+            'menu_id.required'=>'Bạn phải chọn danh mục cho sản phẩm',
         ];
     }
 }

@@ -3,37 +3,37 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('content')
-    <div class="col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="text-center">{{ $title }}</h3>
-            </div>
-            <div class="panel-body">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="text-center" style="width: 45px;">#</th>
-                                    <th>Tên Sản Phẩm</th>
-                                    <th>Giá gốc</th>
-                                    <th>Ảnh</th>
-                                    <th class="text-center" style="width: 100px;">Active</th>
-                                    <th class="text-center">Ngày cập nhật</th>
-                                    <th style="width: 150px;">&ensp;</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {!! \App\Helpers\Product::list($products) !!}
-                                </tbody>
-                            </table>
-                        </div>
+
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class=" text-center">{{ $title }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="width: 45px;">#</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá gốc</th>
+                                <th>Ảnh</th>
+                                <th class="text-center" style="width: 100px;">Active</th>
+                                <th class="text-center">Ngày cập nhật</th>
+                                <th style="width: 150px;">&ensp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {!! \App\Helpers\Product::list($products) !!}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -79,7 +79,7 @@
             $.ajax({
                 type: 'GET',
                 dataType: "JSON",
-                url: '/admin/products/list-image/' + id + '',
+                url: '/admin/product/list-image/' + id + '',
                 success: function (result) {
                     if (result.error === false) {
                         let n = result.product_images.length;
@@ -87,7 +87,7 @@
                         for (let i = 0; i < n; i++) {
                             html += '<tr>' +
                                 '<td>' + result.product_images[i].id + '</td>' +
-                                '<td><a href="/' + result.product_images[i].image + '"  target="_blank"><img src="/' + result.product_images[i].image + '" width="100px"></a></td>' +
+                                '<td><a href="' + result.product_images[i].image + '"  target="_blank"><img src="' + result.product_images[i].image + '" width="100px"></a></td>' +
                                 '<td>' + result.product_images[i].image_name + '</td>' +
                                 '<td>' + result.product_images[i].updated_at + '</td>' +
                                 '<td class="text-center" >  ' +
