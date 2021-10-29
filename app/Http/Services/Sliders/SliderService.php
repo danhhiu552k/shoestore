@@ -41,7 +41,7 @@ class SliderService
     {
         return Slider::where('active', 1)->get();
     }
-    
+
     public function update($request,$slider)
     {
         try {
@@ -63,7 +63,6 @@ class SliderService
     {
         return Slider::orderBy('id')->paginate(15);
     }
-<<<<<<< HEAD
     public function destroy($request){
         $slider=Slider::where('id',$request->input('id'))->first();
         if ($slider){
@@ -76,6 +75,3 @@ class SliderService
         return false;
     }
 }
-=======
-}
->>>>>>> 0fbab09345c8199381d246f14e9886526d0d0b6c
