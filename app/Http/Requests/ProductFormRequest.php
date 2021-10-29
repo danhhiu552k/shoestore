@@ -24,18 +24,18 @@ class ProductFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'thumb'=>'required',
-            'menu_id'=>'required'
+            'name' => 'required',
+            'thumb' => 'required',
+            'menu_id' => 'required'
         ];
     }
 
     public function messages()
     {
-        return[
-            'name.required'=>'Bạn phải nhập tên sản phẩm',
-            'thumb.required'=>'Bạn phải chọn ảnh đại diện cho sản phẩm',
-            'menu_id.required'=>'Bạn phải chọn danh mục cho sản phẩm',
+        return [
+            'name.required' => 'Bạn phải nhập tên sản phẩm',
+            'thumb.required' => 'Bạn phải chọn ảnh đại diện cho sản phẩm',
+            'menu_id.required' => 'Bạn phải chọn danh mục cho sản phẩm',
         ];
     }
 }

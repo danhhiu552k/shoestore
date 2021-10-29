@@ -7736,12 +7736,17 @@ p {
 
 .product-label.label-sale {
     color: #fff;
-    background-color: #ef837b
+    background-color: #567fe6
 }
 
 .product-label.label-hot{
     color: #fff;
     background-color: #de1010
+}
+
+.product-label.label-hot-persent{
+    color: #fff;
+    background-color: #ef837b
 }
 
 .product-label.label-new {
@@ -7782,8 +7787,8 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4.6rem;
-    height: 4.6rem;
+    width: 4rem;
+    height: 4rem;
     min-width: 0;
     border-radius: 50%;
     line-height: 1

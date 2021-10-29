@@ -94,14 +94,72 @@ class ProductService
         return true;
     }
 
+    public function update($request, $product): bool
+    {
+        $isValidPrice = $this->isValidPrice($request);
+        if ($isValidPrice == false) {
+            return false;
+        }
+        $data_file = $this->storageUpload($request, 'thumb', 'products');
+        if ($data_file == null) {
+            $thumb = $request->input('thumb_late');
+        } else {
+            $thumb = $data_file['file_data'];
+        }
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("Y-m-d H:i:s");
+        $name = $request->input('name');
+        $menu_id = $request->input('menu_id');
+        $price = $request->input('price');
+        $price_sale = $request->input('price_sale');
+        $active = $request->input('active');
+        $quantity = $request->input('quantity');
+        $hot = $request->input('hot');
+        $description = $request->input('description');
+        $content = $request->input('content');
+
+        if ($request->hasFile('path_image')) {
+            $image_multiple = $request->file('path_image');
+            foreach ($image_multiple as $item) {
+                $data_file_multiple = $this->storageUpload_Multiple($item, 'products');
+                $product->images()->create([
+                    'image' => $data_file_multiple['file_data'],
+                    'image_name' => $data_file_multiple['file_name'],
+                    'created_at' => $date,
+                    'updated_at' => $date
+                ]);
+            }
+        }
+
+        $product->name = $name;
+        $product->menu_id = $menu_id;
+        $product->active = $active;
+        $product->price = $price;
+        $product->price_sale = $price_sale;
+        $product->quantity = $quantity;
+        $product->hot = $hot;
+        $product->description = $description;
+        $product->content = $content;
+        $product->thumb = $thumb;
+        $product->updated_at = $date;
+        $product->save();
+
+        Session::flash('success', 'Cập nhật thành công sản phẩm');
+        return true;
+    }
+
     #Show sản phẩm ra main page
     public function show($value)
     {
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("m");
         $products = '';
         if ($value == 'hot') {
             $products = Product::where('active', 1)->where($value, 1)->take(7)->get();
         } elseif ($value == 'price_sale') {
             $products = Product::where('active', 1)->whereNotNull($value)->take(7)->get();
+        } elseif ($value == 'new') {
+            $products = Product::where('active', 1)->whereMonth('created_at', $date)->take(7)->get();
         }
         return $products;
     }

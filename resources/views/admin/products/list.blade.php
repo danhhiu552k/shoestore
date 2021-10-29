@@ -8,6 +8,7 @@
         <div class="card-header bg-primary">
             <h3 class=" text-center">{{ $title }}</h3>
         </div>
+        @include('admin.alert')
         <div class="card-body">
             <div class="panel panel-default">
                 <div class="panel-body">

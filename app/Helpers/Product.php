@@ -27,7 +27,7 @@ class Product
                         <td class="text-center">' . self::active($product->active) . '</td>
                         <td>' . $product->updated_at . '</td>
                         <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="/admin/products/edit/' . $product->id . '">
+                            <a class="btn btn-primary btn-sm" href="/admin/product/edit/' . $product->id . '">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-sm"
@@ -105,11 +105,10 @@ class Product
     {
         $html = '';
         if ($hot == 1) {
-            $html .= '<span class="product-label label-sale">Hot</span>';
+            $html = '<span class="product-label label-circle label-hot">Hot</span>';
         }
-        if ($price_sale != 0) {
-            $html = ' <span class="product-label label-primary">Sale</span>';
-            $html .= '<span class="product-label label-hot">' . self::discount_calculation($price, $price_sale) . '% off</span>';
+        if ($price_sale != null) {
+            $html .= '<span class="product-label label-circle label-sale">-' . self::discount_calculation($price, $price_sale) . '%</span>';
         }
         if ($price == 0 && $price_sale == 0) {
             $html .= '<span class="product-label label-out">Sản phẩm sắp có</span>';

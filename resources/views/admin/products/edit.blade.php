@@ -25,8 +25,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Danh mục</label>
-                                <select class="form-control" name="menu_id" id="exampleFormControlSelect1">
-                                    {!! \App\Helpers\Menu::getParent($menus) !!}
+                                <select class="form-control" name="menu_id">
+                                    {!! \App\Helpers\Menu::getParent_edit($menus, $product->menu_id) !!}
                                 </select>
                                 @error('menu_id')
                                 <div class="text text-danger mb-3">{{ $message }}</div>
@@ -70,7 +70,7 @@
                                 <label for="menu">Ảnh đại diện</label>
                                 <input type="file" class="form-control" name="thumb">
                                 <input type="hidden" value="{{$product->thumb}}" class="form-control" name="thumb_late">
-                                <img src="/{{$product->thumb}}" width="200px">
+                                <img src="{{$product->thumb}}" width="200px">
                                 @error('thumb')
                                 <div class="text text-danger mb-3">{{ $message }}</div>
                                 @enderror
@@ -89,67 +89,48 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Kích Hoạt</label>
-
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input"
-                                           {{ $product->active == 1 ? 'checked=""' : '' }}
-                                           value="1"
-                                           type="radio"
-                                           name="active"
-                                           checked="">
-                                    <label class="custom-control-label">Có</label>
-                                </div>
-
-
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input"
-                                           {{ $product->active == 0 ? 'checked=""' : '' }}
-                                           value="0"
-                                           type="radio"
+                                    <input class="custom-control-input" value="1"
+                                           {{ $product->active == 1 ? 'checked=""' : '' }} type="radio" id="active"
                                            name="active">
-                                    <label class="custom-control-label">Không</label>
+                                    <label for="active" class="custom-control-label">Có</label>
                                 </div>
-
-                                @error('active')
-                                <div class="text text-danger mb-3">{{ $message }}</div>
-                                @enderror
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" value="0" type="radio" id="no_active"
+                                           name="active" {{ $product->active == 0 ? 'checked=""' : '' }}>
+                                    <label for="no_active" class="custom-control-label">Không</label>
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Hot</label>
-
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" value="1" type="radio" id="active"
+                                    <input class="custom-control-input" value="1"
+                                           type="radio" id="hot"
                                            name="hot"
-                                           checked="">
-                                    <label class="custom-control-label">Có</label>
+                                        {{ $product->hot == 1 ? 'checked=""' : '' }}>
+                                    <label for="hot" class="custom-control-label">Có</label>
                                 </div>
-
-
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" value="0" type="radio" id="no_active"
-                                           name="hot">
-                                    <label class="custom-control-label">Không</label>
+                                    <input class="custom-control-input" value="0" type="radio" id="no_hot"
+                                           name="hot" {{ $product->hot == 0 ? 'checked=""' : '' }}>
+                                    <label for="no_hot" class="custom-control-label">Không</label>
                                 </div>
-
-                                @error('hot')
-                                <div class="text text-danger mb-3">{{ $message }}</div>
-                                @enderror
                             </div>
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <textarea class="form-control" name="description" rows="5">{{$product->price_sale}}</textarea>
+                        <textarea class="form-control" name="description" rows="5">{{$product->description}}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Mô tả chi tiết</label>
                         <textarea class="form-control" name="content" id="content"
-                                  rows="5">{{$product->price_sale}}</textarea>
+                                  rows="5">{{$product->content}}</textarea>
                     </div>
 
                     <div class="form-group">
