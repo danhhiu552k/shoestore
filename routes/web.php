@@ -70,6 +70,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('list-image/{id}', [ProductImageController::class, 'list_image']);
 
         });
+
+        #Product_image
+        Route::prefix('products-image')->group(function () {
+            Route::get('edit/{product_image}', [ProductImageController::class, 'show']);
+            Route::post('edit/{product_image}', [ProductImageController::class, 'update']);
+            Route::delete('destroy', [ProductImageController::class, 'destroy']);
+        });
+
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
 

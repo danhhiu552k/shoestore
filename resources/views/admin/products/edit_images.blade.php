@@ -20,7 +20,9 @@
                         <input type="file" class="form-control" name="thumb">
                         <input type="hidden" value="{{$product_image->image}}" class="form-control"
                                name="thumb_late">
-                        <img src="/{{$product_image->image}}" width="200px">
+                        <input type="hidden" value="{{$product_image->image_name}}" class="form-control"
+                               name="image_name_late">
+                        <img src="{{$product_image->image}}" width="200px">
                         @error('thumb')
                         <div class="text text-danger mb-3">{{ $message }}</div>
                         @enderror

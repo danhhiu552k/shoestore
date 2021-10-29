@@ -84,47 +84,34 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Kích Hoạt</label>
-
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" value="1" type="radio" id="active"
-                                       name="active"
-                                       checked="">
-                                <label class="custom-control-label">Có</label>
+                                <input class="custom-control-input" value="1"
+                                       type="radio" id="active"
+                                       name="active" checked="">
+                                <label for="active" class="custom-control-label">Có</label>
                             </div>
-
-
                             <div class="custom-control custom-radio">
                                 <input class="custom-control-input" value="0" type="radio" id="no_active"
                                        name="active">
-                                <label class="custom-control-label">Không</label>
+                                <label for="no_active" class="custom-control-label">Không</label>
                             </div>
-
-                            @error('active')
-                            <div class="text text-danger mb-3">{{ $message }}</div>
-                            @enderror
                         </div>
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Hot</label>
-
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" value="1" type="radio" id="active"
-                                       name="hot"
-                                       checked="">
-                                <label class="custom-control-label">Có</label>
+                                <input class="custom-control-input" value="1"
+                                       type="radio" id="hot"
+                                       name="hot" checked="">
+                                <label for="hot" class="custom-control-label">Có</label>
                             </div>
-
-
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" value="0" type="radio" id="no_active"
+                                <input class="custom-control-input" value="0" type="radio" id="no_hot"
                                        name="hot">
-                                <label class="custom-control-label">Không</label>
+                                <label for="no_hot" class="custom-control-label">Không</label>
                             </div>
-
-                            @error('hot')
-                            <div class="text text-danger mb-3">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
                 </div>

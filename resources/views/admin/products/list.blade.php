@@ -16,12 +16,12 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center" style="width: 45px;">#</th>
+                                <th style="width: 45px;text-align: center;">#</th>
                                 <th>Tên Sản Phẩm</th>
-                                <th>Giá gốc</th>
-                                <th>Ảnh</th>
-                                <th class="text-center" style="width: 100px;">Active</th>
-                                <th class="text-center">Ngày cập nhật</th>
+                                <th style="text-align: center;">Giá gốc</th>
+                                <th style="text-align: center;">Ảnh</th>
+                                <th style="text-align: center;width: 100px;">Active</th>
+                                <th style="text-align: center;">Ngày cập nhật</th>
                                 <th style="width: 150px;">&ensp;</th>
                             </tr>
                             </thead>
@@ -48,10 +48,10 @@
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="text-center" style="width: 45px;">#</th>
-                                    <th>Ảnh</th>
-                                    <th>Tên ảnh</th>
-                                    <th class="text-center">Ngày cập nhật</th>
+                                    <th style="width: 45px; text-align: center;">#</th>
+                                    <th style="text-align: center;">Ảnh</th>
+                                    <th style="text-align: center;">Tên ảnh</th>
+                                    <th style="text-align: center;">Ngày cập nhật</th>
                                     <th style="width: 150px;">&ensp;</th>
                                 </tr>
                                 </thead>
@@ -90,7 +90,7 @@
                                 '<td>' + result.product_images[i].id + '</td>' +
                                 '<td><a href="' + result.product_images[i].image + '"  target="_blank"><img src="' + result.product_images[i].image + '" width="100px"></a></td>' +
                                 '<td>' + result.product_images[i].image_name + '</td>' +
-                                '<td>' + result.product_images[i].updated_at + '</td>' +
+                                '<td style="text-align: center;">' + result.product_images[i].updated_at + '</td>' +
                                 '<td class="text-center" >  ' +
                                 '<a class="btn btn-primary btn-sm" style="margin-right: 1rem;" href=\"/admin/products-image/edit/' + result.product_images[i].id + '\">' +
                                 '<i class="fas fa-edit"></i>' +
