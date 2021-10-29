@@ -5,6 +5,7 @@ namespace App\Http\Services\Sliders;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class SliderService
 {
@@ -62,4 +63,19 @@ class SliderService
     {
         return Slider::orderBy('id')->paginate(15);
     }
+<<<<<<< HEAD
+    public function destroy($request){
+        $slider=Slider::where('id',$request->input('id'))->first();
+        if ($slider){
+            $path=str_replace('storage','public',$slider->thumb);
+            Storage::delete($path);
+            $slider->delete();
+            return true;
+        }
+
+        return false;
+    }
 }
+=======
+}
+>>>>>>> 0fbab09345c8199381d246f14e9886526d0d0b6c
