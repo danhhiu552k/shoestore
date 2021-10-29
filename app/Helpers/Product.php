@@ -119,7 +119,7 @@ class Product
     public static function checkprice($price, $price_sale)
     {
         if ($price_sale != 0) {
-            return '<span class="new-price">Now ' . number_format($price_sale) . '</span>
+            return '<span class="new-price">' . number_format($price_sale) . '</span>
                                     <span class="old-price">' . number_format($price) . '</span>';
         } else {
             return number_format($price);
