@@ -16,7 +16,7 @@ class ProductService
 
     public function getAll()
     {
-        return Product::simplePaginate(6);
+        return Product::paginate(6);
     }
 
     public function isValidPrice($request)

@@ -23,7 +23,7 @@ class MenuService
     {
         try {
             date_default_timezone_set('Asia/Ho_Chi_Minh');
-            $date =  date_default_timezone_get();
+            $date = date_default_timezone_get();
             Menu::create([
                 'name' => $request->input('name'),
                 'parent_id' => $request->input('parent_id'),
@@ -32,8 +32,8 @@ class MenuService
                 'thumb' => $request->input('thumb'),
                 'slug' => Str::slug((string)$request->input('name'), '-'),
                 'active' => $request->input('active'),
-                'created_at' =>  $date,
-                'updated_at' =>  $date
+                'created_at' => $date,
+                'updated_at' => $date
             ]);
             Session::flash('success', 'Thêm Danh Mục Thành Công');
         } catch (\Exception $err) {
@@ -44,12 +44,12 @@ class MenuService
     }
 
 
-    public function  update($request, $menu): bool
+    public function update($request, $menu): bool
     {
         if ($request->input('parent_id') != $menu->id) {
             $menu->parent_id = $request->input('parent_id');
         }
-        $menu->name =  $request->input('name');
+        $menu->name = $request->input('name');
 
         $menu->description = $request->input('description');
 
@@ -57,7 +57,7 @@ class MenuService
         $menu->thumb = $request->input('thumb');
         $menu->active = $request->input('active');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $date =  date_default_timezone_get();
+        $date = date_default_timezone_get();
         $menu->updated_at = $date;
 
         $menu->content = $request->input('content');
@@ -73,7 +73,7 @@ class MenuService
     public function destroy($request)
     {
 
-        $id = (int) $request->input('id');
+        $id = (int)$request->input('id');
         $menu = Menu::where('id', $id)->first();
         if ($menu) {
             return Menu::where('id', $id)->orWhere('parent_id', $id)->delete();
@@ -86,4 +86,30 @@ class MenuService
     {
         return Menu::where('active', 1)->orderBy('id')->get();
     }
+
+    public function getId($id)
+    {
+        return Menu::where('id', $id)->where('active', 1)->firstOrFail();
+    }
+
+    public function getProduct($menu)
+    {
+        $products = $menu->products()
+            ->select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->where('active', 1)
+            ->orderBy('id')
+            ->paginate(12);
+
+        return $products;
+    }
+
+    public static function isChild($menu, $id)
+    {
+        if ($menu->parent_id == $id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

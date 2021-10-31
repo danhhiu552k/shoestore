@@ -21,21 +21,21 @@
 
     <footer class="footer footer-dark">
         <div class="cta bg-image bg-dark pt-4 pb-5 mb-0"
-             style="background-image: url(/template/client/images/demo-3.jpg);">
+             style="background-image: url(/template/client/images/banner-1.jpg); height: 17em;">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="cta-heading text-center">
-                            <h3 class="cta-title text-danger">Đăng ký nhận thông tin sản phẩm của chúng tôi</h3>
+                            <h3 class="cta-title text-warning">Đăng ký nhận thông tin sản phẩm của chúng tôi</h3>
                             <!-- End .cta-title -->
                         </div><!-- End .text-center -->
                         <br>
                         <form action="#">
                             <div class="input-group input-group-round">
                                 <input type="email" class="form-control form-control-white"
-                                       placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                                       placeholder="Email" aria-label="Email Adress" required>
                                 <div class="input-group-append">
-                                    <button class="btn btn-white" type="submit"><span>Subscribe</span><i
+                                    <button class="btn btn-white" type="submit"><span>Đăng Kí</span><i
                                             class="icon-long-arrow-right"></i></button>
                                 </div><!-- .End .input-group-append -->
                             </div><!-- .End .input-group -->
@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
-                            <img src="/template/client/images/logo.jpg" class="footer-logo" alt="Footer Logo"
+                            <img src="/template/client/images/coutinho.gif" class="footer-logo" alt="Footer Logo"
                                  width="105" height="25">
                             <br>
                             <br>
@@ -103,7 +103,7 @@
 
                             <ul class="widget-list">
                                 <li><a href="/login">Đăng Nhập</a></li>
-                                <li><a href="cart.html">Giỏ Hàng</a></li>
+                                <li><a href="/cart.html">Giỏ Hàng</a></li>
                                 <li><a href="#">Danh Sách Yêu Thích</a></li>
                                 <li><a href="#">Kiểm tra đơn hàng</a></li>
                                 <li><a href="#">Trợ giúp</a></li>

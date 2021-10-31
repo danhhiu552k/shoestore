@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\MainController as ClientMainController;
 use \App\Http\Controllers\Admin\ProductImageController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,8 +95,10 @@ Route::get('/logout', [RegisterController::class, 'logout']);
 
 Route::get('/', [ClientMainController::class, 'index'])->name('home');
 
+Route::get('danh-muc/{id}-{slug}.html', [\App\Http\Controllers\Client\MenuController::class, 'index']);
+
 Route::get('/cart', function () {
-    return view('client.cart.list');
+    return view('client.cart.list', ['title' => 'Giỏ Hàng']);
 });
 
 Route::get('/check', function () {
@@ -103,16 +106,17 @@ Route::get('/check', function () {
 });
 
 Route::get('/details', function () {
-    return view('client.product.detail',['title'=>'Chi tiết']);
+    return view('client.product.detail', ['title' => 'Chi tiết']);
 });
 
 Route::get('/about', function () {
-    return view('client.infor.about',['title'=>'Thông tin về chúng tôi']);
+    return view('client.infor.about', ['title' => 'Thông tin về chúng tôi']);
 });
 
 Route::get('/login', function () {
     return view('client.login.login', ['title' => 'Đăng Nhập']);
 });
+
 Route::get('/register', function () {
     return view('client.login.register', ['title' => 'Đăng Kí']);
 });

@@ -41,7 +41,7 @@ class Product
         return $html;
     }
 
-
+    #Product home
     public static function show_product($products)
     {
         $html = '';
@@ -85,13 +85,66 @@ class Product
                                 </div><!-- End .product-nav -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    <a href="quick" class="btn-product btn-quickview"><span>quick view</span></a>
+                                    <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
+                                    <a href="" class="btn-product btn-quickview" title="Xem nhanh"></a>
+                                    <a href="#" class="btn-product btn-compare" title="Thêm vào danh sách yêu thích"></a>
                                 </div><!-- End .product-action -->
                             </div>
                         </div>';
         }
 
+        return $html;
+    }
+
+    #Product menu
+    public static function show_product_menu($products)
+    {
+        $html = '';
+        foreach ($products as $item) {
+            $html .= ' <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                        <div class="product">
+                            <figure class="product-media">
+                                ' . self::checksale($item->price, $item->price_sale, $item->hot) . '
+                                <a href="/detail">
+                                    <img src="' . $item->thumb . '" alt="' . $item->name . '"
+                                         class="product-image">
+                                </a>
+
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                </div><!-- End .product-action -->
+
+                                <div class="product-action action-icon-top">
+                                    <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
+                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Xem nhanh"></a>
+                                    <a href="#" class="btn-product btn-compare" title="Thêm vào danh sách yêu thích"></a>
+                                </div><!-- End .product-action -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#">Women</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="product.html">' . $item->name . '</a></h3>
+                                <!-- End .product-title -->
+                                <div class="product-price">
+                                    ' . self::checkprice($item->price, $item->price_sale) . '
+                                </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 0 Reviews )</span>
+                                </div><!-- End .rating-container -->
+
+                                <div class="product-nav product-nav-dots">
+                                    <a href="#" style="background: #cc9966;"><span class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #ebebeb;"><span class="sr-only">Color name</span></a>
+                                </div><!-- End .product-nav -->
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->';
+        }
         return $html;
     }
 
@@ -122,7 +175,7 @@ class Product
             return '<span class="new-price">' . number_format($price_sale) . '</span>
                                     <span class="old-price">' . number_format($price) . '</span>';
         } else {
-            return number_format($price);
+            return '<span class="text-dark">' . number_format($price) . '</span>';
         }
     }
 }
