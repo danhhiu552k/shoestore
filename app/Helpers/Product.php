@@ -50,7 +50,7 @@ class Product
             $html .= '<div class="product product-3 text-center">
                             <figure class="product-media">
                             <div>
-                               ' . self::checksale($item->price, $item->price_sale, $item->hot) . '
+                               ' . self::checksale($item->price, $item->price_sale, $item->hot, $item->quantity) . '
                               </div
                                 <a href="' . $item->thumb . '">
                                     <img src="' . $item->thumb . '" alt="' . $item->name . '" class="product-image">
@@ -68,7 +68,7 @@ class Product
                                 </div><!-- End .product-cat -->
                                 <h3 class="product-title"><a href="product.html">' . $item->name . '</a></h3><!-- End .product-title -->
                                 <div class="product-price">
-                                ' . self::checkprice($item->price, $item->price_sale) . '
+                                ' . self::checkprice($item->price, $item->price_sale, $item->quantity) . '
                                 </div><!-- End .product-price -->
                             </div><!-- End .product-body -->
                             <div class="product-footer">
