@@ -183,7 +183,9 @@ class Product
                 if ($price_sale != 0) {
                     return '<span class="new-price">' . number_format($price_sale) . '</span>
                                     <span class="old-price">' . number_format($price) . '</span>';
-                } else {
+                } elseif ($price == 0 && $price_sale == 0) {
+                    return '<span class="text-dark">Liên hệ</span>';
+                }else{
                     return '<span class="text-dark">' . number_format($price) . '</span>';
                 }
         }
