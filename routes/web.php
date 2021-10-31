@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Client\Users\LoginController as UsersLoginController;
 use App\Http\Controllers\Client\Users\RegisterController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\MainController as ClientMainController;
@@ -92,6 +91,8 @@ Route::post('/register/store', [RegisterController::class, 'store']);
 Route::post('/login/store', [UsersLoginController::class, 'store']);
 
 Route::get('/logout', [RegisterController::class, 'logout']);
+
+Route::get('/search', [ClientMainController::class, 'search']);
 
 Route::get('/', [ClientMainController::class, 'index'])->name('home');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Services\Product\ProductService;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Menu\MenuService;
@@ -32,5 +33,17 @@ class MainController extends Controller
             'products_hot' => $this->product->show('hot'),
             'banners' => $this->slider->show()
         ]);
+    }
+
+    public function search(Request $request)
+    {
+
+        $key_product = $request->products;
+        $products = Product::where('active', 1)->where('name', 'LIKE', '%' . $key_product . '%')->paginate(12);
+        return view('client.product.list',
+            [
+                'title' => 'Tìm kiếm sản phẩm',
+                'products' => $products
+            ]);
     }
 }
