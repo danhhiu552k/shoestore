@@ -45,7 +45,7 @@ class MenuController extends Controller
     }
 
     /*
-     * Chỉnh sửa danh mục 
+     * Chỉnh sửa danh mục
      */
 
     public function update(Menu $menu, MenuFormRequest $request)
@@ -56,9 +56,9 @@ class MenuController extends Controller
 
 
     /*
-     * Xoá danh mục 
+     * Xoá danh mục
      */
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $result = $this->menuService->destroy($request);
         if ($result) {

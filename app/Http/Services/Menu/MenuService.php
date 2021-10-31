@@ -15,7 +15,7 @@ class MenuService
 
     public function getAll()
     {
-        return Menu::orderby('id')->paginate(20);
+        return Menu::orderby('id')->get();
     }
 
 

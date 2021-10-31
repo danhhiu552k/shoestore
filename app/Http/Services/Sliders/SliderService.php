@@ -61,7 +61,7 @@ class SliderService
 
     public function get()
     {
-        return Slider::orderBy('id')->paginate(15);
+        return Slider::orderBy('id')->paginate(6);
     }
     public function destroy($request){
         $slider=Slider::where('id',$request->input('id'))->first();
