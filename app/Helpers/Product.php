@@ -104,7 +104,7 @@ class Product
             $html .= ' <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                         <div class="product">
                             <figure class="product-media">
-                                ' . self::checksale($item->price, $item->price_sale, $item->hot) . '
+                                ' . self::checksale($item->price, $item->price_sale, $item->hot, $item->quantity) . '
                                 <a href="/detail">
                                     <img src="' . $item->thumb . '" alt="' . $item->name . '"
                                          class="product-image">
@@ -128,7 +128,7 @@ class Product
                                 <h3 class="product-title"><a href="product.html">' . $item->name . '</a></h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
-                                    ' . self::checkprice($item->price, $item->price_sale) . '
+                                    ' . self::checkprice($item->price, $item->price_sale, $item->quantity) . '
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
@@ -154,28 +154,38 @@ class Product
         return round($result * 100);
     }
 
-    public static function checksale($price, $price_sale, $hot)
+    public static function checksale($price, $price_sale, $hot, $quantity)
     {
-        $html = '';
-        if ($hot == 1) {
-            $html = '<span class="product-label label-circle label-hot">Hot</span>';
+        switch ($quantity) {
+            case 0:
+                return '<span class="product-label label-out">Hết hàng</span>';
+            default:
+                $html = '';
+                if ($hot == 1) {
+                    $html = '<span class="product-label label-hot">Hot</span>';
+                }
+                if ($price_sale != null || $price_sale != 0) {
+                    $html .= '<span class="product-label label-sale">-' . self::discount_calculation($price, $price_sale) . '%</span>';
+                }
+                if ($price == 0 && $price_sale == 0) {
+                    $html = '<span class="product-label label-out">Sản phẩm sắp có</span>';
+                }
+                return $html;
         }
-        if ($price_sale != null) {
-            $html .= '<span class="product-label label-circle label-sale">-' . self::discount_calculation($price, $price_sale) . '%</span>';
-        }
-        if ($price == 0 && $price_sale == 0) {
-            $html .= '<span class="product-label label-out">Sản phẩm sắp có</span>';
-        }
-        return $html;
     }
 
-    public static function checkprice($price, $price_sale)
+    public static function checkprice($price, $price_sale, $quantity)
     {
-        if ($price_sale != 0) {
-            return '<span class="new-price">' . number_format($price_sale) . '</span>
+        switch ($quantity) {
+            case 0:
+                return '<span class="text-dark">Liên hệ</span>';
+            default:
+                if ($price_sale != 0) {
+                    return '<span class="new-price">' . number_format($price_sale) . '</span>
                                     <span class="old-price">' . number_format($price) . '</span>';
-        } else {
-            return '<span class="text-dark">' . number_format($price) . '</span>';
+                } else {
+                    return '<span class="text-dark">' . number_format($price) . '</span>';
+                }
         }
     }
 }

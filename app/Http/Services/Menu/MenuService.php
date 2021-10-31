@@ -95,7 +95,7 @@ class MenuService
     public function getProduct($menu)
     {
         $products = $menu->products()
-            ->select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
             ->where('active', 1)
             ->orderBy('id')
             ->paginate(12);
