@@ -19,7 +19,11 @@
                         <li class="active">
                             <a href="/" class="">Trang chủ</a>
                         </li>
-                        {!! \App\Helpers\Menu::menus($menus) !!}
+                        <li>
+                            <a href="#" class="">Sản phẩm</a>
+                            <ul>{!! \App\Helpers\Menu::menus($menus) !!}</ul>
+                        </li>
+
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
 
@@ -30,7 +34,7 @@
                             <label for="q" class="sr-only">Tìm kiếm</label>
                             <input type="search" class="form-control" name="products" placeholder="Tên sản phẩm"
                                    required>
-                        </div><!-- End .header-search-wrapper -->
+                        </div><!-- End .header-search-wrapper -->S
                     </form>
                 </div><!-- End .header-search -->
 
