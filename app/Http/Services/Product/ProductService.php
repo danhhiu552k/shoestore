@@ -7,6 +7,7 @@ namespace App\Http\Services\Product;
 use App\Models\Product;
 
 
+use App\Models\Product_image;
 use App\Traits\UploadFile;
 use Illuminate\Support\Facades\Session;
 
@@ -146,6 +147,17 @@ class ProductService
 
         Session::flash('success', 'Cập nhật thành công sản phẩm');
         return true;
+    }
+
+    public function destroy($request)
+    {
+        $product = Product::where('id', $request->input('id'))->first();
+        if ($product) {
+            $product->delete();
+            Product_image::where('product_id', $request->input('id'))->delete();
+            return true;
+        }
+        return false;
     }
 
     #Show sản phẩm ra main page

@@ -51,11 +51,26 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Product $product, ProductFormRequest $request)
+    public function update(Product $product, Request $request)
     {
         $this->productService->update($request, $product);
 
         return redirect('/admin/product/list');
+    }
+
+    public function destroy(Request $request)
+    {
+        $result = $this->productService->destroy($request);
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công sản phẩm'
+            ]);
+        }
+
+        return response()->json([
+            'error' => true
+        ]);
     }
 
 }
