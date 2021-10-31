@@ -3,14 +3,23 @@
 @section('content')
     <div class="page-header text-center" style="background-image: url('/template/client/images/page-header-bg.jpg');">
         <div class="container">
-            <h1 class="page-title">{{$title}}<span></span></h1>
+            @if(isset($menu))
+                <h1 class="page-title">{{$menu->name}}<span></span></h1>
+            @else
+                <h1 class="page-title">{{ $title}}<span></span></h1>
+            @endif
+
         </div><!-- End .container -->
     </div><!-- End .page-header -->
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                <li class="breadcrumb-item active"><a href="#">{{$title}}</a></li>
+                @if(isset($menu))
+                    <li class="breadcrumb-item active"><a href="#">{{$menu->name}}</a></li>
+                @else
+                    <li class="breadcrumb-item active"><a href="#">{{$title}}</a></li>
+                @endif
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->

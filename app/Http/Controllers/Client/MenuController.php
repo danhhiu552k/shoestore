@@ -21,7 +21,7 @@ class MenuController extends Controller
 
         $products = $this->menu->getProduct($menu);
 
-        return view('client.menu.product_list', [
+        return view('client.product.list', [
             'title' => 'Danh sách sản phẩm',
             'menu' => $menu,
             'products' => $products
