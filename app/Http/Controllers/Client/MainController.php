@@ -46,4 +46,15 @@ class MainController extends Controller
                 'products' => $products
             ]);
     }
+
+    public function show()
+    {
+        $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+            ->where('active', 1)->paginate(12);
+        return view('client.product.list',
+            [
+                'title' => 'Tất cả sản phẩm',
+                'products' => $products
+            ]);
+    }
 }

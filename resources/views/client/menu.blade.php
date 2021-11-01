@@ -20,7 +20,7 @@
                             <a href="/" class="">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="#" class="">Sản phẩm</a>
+                            <a href="/san-pham.html" class="">Sản phẩm</a>
                             <ul>{!! \App\Helpers\Menu::menus($menus) !!}</ul>
                         </li>
 

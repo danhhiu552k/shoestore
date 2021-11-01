@@ -167,11 +167,14 @@ class ProductService
         $date = date("m");
         $products = '';
         if ($value == 'hot') {
-            $products = Product::where('active', 1)->where($value, 1)->take(7)->get();
+            $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                ->where('active', 1)->where($value, 1)->take(7)->get();
         } elseif ($value == 'price_sale') {
-            $products = Product::where('active', 1)->whereNotNull($value)->take(7)->get();
+            $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                ->where('active', 1)->whereNotNull($value)->take(7)->get();
         } elseif ($value == 'new') {
-            $products = Product::where('active', 1)->whereMonth('created_at', $date)->take(7)->get();
+            $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                ->where('active', 1)->whereMonth('created_at', $date)->take(7)->get();
         }
         return $products;
     }

@@ -98,6 +98,8 @@ Route::get('/', [ClientMainController::class, 'index'])->name('home');
 
 Route::get('danh-muc/{id}-{slug}.html', [\App\Http\Controllers\Client\MenuController::class, 'index']);
 
+Route::get('san-pham.html', [ClientMainController::class, 'show']);
+
 Route::get('/cart', function () {
     return view('client.cart.list', ['title' => 'Giỏ Hàng']);
 });
