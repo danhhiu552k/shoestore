@@ -168,13 +168,13 @@ class ProductService
         $products = '';
         if ($value == 'hot') {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                ->where('active', 1)->where($value, 1)->take(7)->get();
+                ->where('active', 1)->inRandomOrder()->where($value, 1)->take(7)->get();
         } elseif ($value == 'price_sale') {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                ->where('active', 1)->whereNotNull($value)->take(7)->get();
+                ->where('active', 1)->inRandomOrder()->whereNotNull($value)->take(7)->get();
         } elseif ($value == 'new') {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                ->where('active', 1)->whereMonth('created_at', $date)->take(7)->get();
+                ->where('active', 1)->inRandomOrder()->whereMonth('created_at', $date)->take(7)->get();
         }
         return $products;
     }
