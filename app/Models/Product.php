@@ -27,4 +27,10 @@ class Product extends Model
         return $this->hasMany(Product_image::class, 'product_id', 'id');
     }
 
+    public static function search($key_product, $paginate)
+    {
+        $products = Product::where('active', 1)->where('name', 'LIKE', '%' . $key_product . '%')->paginate($paginate, ['*'], 'product');
+        return $products;
+    }
+
 }

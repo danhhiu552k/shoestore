@@ -61,26 +61,36 @@
                 <div class="row">
                     @if($products->total()!=0)
                         {!! \App\Helpers\Product::show_product_menu($products) !!}
-                        <div class="col-md-12 mt-4">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
-                                    <a class="page-link" href="{{ $products->url(1) }}">Previous</a>
-                                </li>
-                                @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                    <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
-                                        <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                        @if($products->hasPages())
+                            <div class="col-md-12 mt-4">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                        <a class="page-link" href="{{ $products->url(1) }}">Sau</a>
                                     </li>
-                                @endfor
-                                <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
-                                    <a class="page-link"
-                                       href="{{ $products->url($products->currentPage()+1) }}">Next</a>
-                                </li>
-                            </ul>
-                        </div>
+                                    @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                        @if(isset($_GET['products']))
+                                            <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
+                                                <a class="page-link"
+                                                   href="{{ '?products='.$_GET['products'].'&page='.$i }}">{{ $i }}</a>
+                                            </li>
+                                        @else
+                                            <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
+                                                <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                                            </li>
+                                        @endif
+                                    @endfor
+                                    <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                        <a class="page-link"
+                                           href="{{ $products->url($products->currentPage()+1) }}">Trước</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else
+
+                        @endif
                     @else
                         <h4>Không có sản phẩm</h4>
                     @endif
-
 
                 </div><!-- End .row -->
 

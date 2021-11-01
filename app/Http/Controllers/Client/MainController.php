@@ -24,7 +24,6 @@ class MainController extends Controller
 
     public function index()
     {
-
         return view('client.home', [
             'title' => 'Cửa hàng bán giày Nhóm4',
             'sliders' => $this->slider->show(),
@@ -37,14 +36,12 @@ class MainController extends Controller
 
     public function search(Request $request)
     {
-
         $key_product = $request->products;
-        $products = Product::where('active', 1)->where('name', 'LIKE', '%' . $key_product . '%')->paginate(12);
+        $products = Product::where('active', 1)->where('name', 'LIKE', '%' . $key_product . '%')->paginate(8);
         return view('client.product.list',
             [
                 'title' => 'Tìm kiếm sản phẩm',
-                'products' => $products
-            ]);
+            ])->with( 'products', $products);
     }
 
     public function show()
