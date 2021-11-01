@@ -71,25 +71,26 @@
     </div><!-- End .banner-group -->
 
     <div class="bg-light pt-5 pb-10 mb-3">
-        <div class="container">
-            <div class="heading  mb-3">
-                <span class="heading-left title-lg">Các sản phẩm hot</span><!-- End .title -->
+        @if($products_hot->count()!=0)
+            <div class="container">
+                <div class="heading  mb-3">
+                    <span class="heading-left title-lg">Các sản phẩm hot</span><!-- End .title -->
 
-                <span style="float: right;">
+                    <span style="float: right;">
                     <a href="/hot" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
                 </span>
 
-                <hr class="hr-style">
-            </div><!-- End .heading -->
+                    <hr class="hr-style">
+                </div><!-- End .heading -->
 
-            <div class="tab-content tab-content-carousel">
-                <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
-                     aria-labelledby="new-all-link">
-                    <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
-                         data-owl-options='{
+                <div class="tab-content tab-content-carousel">
+                    <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
+                         aria-labelledby="new-all-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
+                             data-owl-options='{
                         "nav": false,
                         "dots": true,
                         "margin": 0,
@@ -113,33 +114,36 @@
                             }
                         }
                     }'>
-                        {!! \App\Helpers\Product::show_product($products_hot) !!}
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .container -->
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="heading  mb-3">
-                <span class="heading-left title-lg">Các sản phẩm mới</span><!-- End .title -->
+                            {!! \App\Helpers\Product::show_product($products_hot) !!}
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container -->
+            <br>
+            <br>
+            <br>
+        @endif
 
-                <span style="float: right;">
+        @if($products_new->count()!=0)
+            <div class="container">
+                <div class="heading  mb-3">
+                    <span class="heading-left title-lg">Các sản phẩm mới</span><!-- End .title -->
+
+                    <span style="float: right;">
                     <a href="/sale" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
                 </span>
 
-                <hr class="hr-style">
-            </div><!-- End .heading -->
+                    <hr class="hr-style">
+                </div><!-- End .heading -->
 
-            <div class="tab-content tab-content-carousel">
-                <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
-                     aria-labelledby="new-all-link">
-                    <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
-                         data-owl-options='{
+                <div class="tab-content tab-content-carousel">
+                    <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
+                         aria-labelledby="new-all-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
+                             data-owl-options='{
                         "nav": false,
                         "dots": true,
                         "margin": 0,
@@ -163,33 +167,35 @@
                             }
                         }
                     }'>
-                        {!! \App\Helpers\Product::show_product($products_new) !!}
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .container -->
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="heading  mb-3">
-                <span class="heading-left title-lg">Các sản phẩm giảm giá sock</span><!-- End .title -->
+                            {!! \App\Helpers\Product::show_product($products_new) !!}
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container -->
+            <br>
+            <br>
+            <br>
+        @endif
+        @if($products_sale->count()!=0)
+            <div class="container">
+                <div class="heading  mb-3">
+                    <span class="heading-left title-lg">Các sản phẩm giảm giá sock</span><!-- End .title -->
 
-                <span style="float: right;">
+                    <span style="float: right;">
                     <a href="/sale" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
                 </span>
 
-                <hr class="hr-style">
-            </div><!-- End .heading -->
+                    <hr class="hr-style">
+                </div><!-- End .heading -->
 
-            <div class="tab-content tab-content-carousel">
-                <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
-                     aria-labelledby="new-all-link">
-                    <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
-                         data-owl-options='{
+                <div class="tab-content tab-content-carousel">
+                    <div class="tab-pane tab-pane-shadow p-0 fade show active" id="new-all-tab" role="tabpanel"
+                         aria-labelledby="new-all-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
+                             data-owl-options='{
                         "nav": false,
                         "dots": true,
                         "margin": 0,
@@ -213,11 +219,12 @@
                             }
                         }
                     }'>
-                        {!! \App\Helpers\Product::show_product($products) !!}
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .container -->
+                            {!! \App\Helpers\Product::show_product($products_sale) !!}
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container -->
+        @endif
     </div><!-- End .bg-light -->
 
 

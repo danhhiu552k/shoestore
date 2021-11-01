@@ -103,7 +103,9 @@ class Product
         foreach ($products as $item) {
             $html .= ' <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                         <div class="product">
+                      
                             <figure class="product-media">
+
                                 ' . self::checksale($item->price, $item->price_sale, $item->hot, $item->quantity) . '
                                 <a href="/detail">
                                     <img src="' . $item->thumb . '" alt="' . $item->name . '"
@@ -185,7 +187,7 @@ class Product
                                     <span class="old-price">' . number_format($price) . '</span>';
                 } elseif ($price == 0 && $price_sale == 0) {
                     return '<span class="text-dark">Liên hệ</span>';
-                }else{
+                } else {
                     return '<span class="text-dark">' . number_format($price) . '</span>';
                 }
         }

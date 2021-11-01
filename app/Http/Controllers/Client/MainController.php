@@ -27,7 +27,7 @@ class MainController extends Controller
         return view('client.home', [
             'title' => 'Cửa hàng bán giày Nhóm4',
             'sliders' => $this->slider->show(),
-            'products' => $this->product->show('price_sale'),
+            'products_sale' => $this->product->show('price_sale'),
             'products_new' => $this->product->show('new'),
             'products_hot' => $this->product->show('hot'),
             'banners' => $this->slider->show()
