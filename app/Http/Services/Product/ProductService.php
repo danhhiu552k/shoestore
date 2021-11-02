@@ -4,12 +4,14 @@
 namespace App\Http\Services\Product;
 
 
+use App\Models\Menu;
 use App\Models\Product;
 
 
 use App\Models\Product_image;
 use App\Traits\UploadFile;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class ProductService
 {
@@ -177,5 +179,37 @@ class ProductService
                 ->where('active', 1)->inRandomOrder()->whereMonth('created_at', $date)->take(7)->get();
         }
         return $products;
+    }
+
+    #Details sản phẩm
+//
+//    public function detail($id, $slug)
+//    {
+//        $product = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'content', 'description')
+//            ->where('id', $id)->get();
+//        return $product;
+//    }
+
+    public function getMenu()
+    {
+        return Menu::where('active', 1)->get();
+    }
+
+    public function detail($id)
+    {
+        return Product::where('id', $id)
+            ->where('active', 1)
+            ->with('menu')
+            ->firstOrFail();
+    }
+
+    public function more($id)
+    {
+        return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->where('active', 1)
+            ->where('id', '!=', $id)
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
     }
 }

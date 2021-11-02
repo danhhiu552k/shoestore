@@ -87,9 +87,9 @@ class MenuService
         return Menu::where('active', 1)->orderBy('id')->get();
     }
 
-    public function getId($id)
+    public function getId($id, $slug)
     {
-        return Menu::where('id', $id)->where('active', 1)->firstOrFail();
+        return Menu::where('id', $id)->where('active', 1)->where('slug', $slug)->firstOrFail();
     }
 
     public function getProduct($menu)

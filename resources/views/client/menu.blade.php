@@ -8,7 +8,7 @@
                     <i class="icon-bars"></i>
                 </button>
 
-                <a href="index.html" class="logo">
+                <a href="\" class="logo">
                     <img src="/template/client/images/logo/logo.png" alt="Molla Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
@@ -23,6 +23,8 @@
                             <a href="/san-pham.html" class="">Sản phẩm</a>
                             <ul>{!! \App\Helpers\Menu::menus($menus) !!}</ul>
                         </li>
+
+                        <li><a href="about">About Us</a></li>
 
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->

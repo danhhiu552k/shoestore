@@ -22,6 +22,12 @@ class Product extends Model
         'thumb',
     ];
 
+    public function menu()
+    {
+        return $this->hasOne(Menu::class, 'id', 'menu_id')
+            ->withDefault(['name' => '']);
+    }
+
     public function images()
     {
         return $this->hasMany(Product_image::class, 'product_id', 'id');

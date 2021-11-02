@@ -25,6 +25,6 @@
 <link rel="stylesheet" href="/template/client/css/style.css">
 <link rel="stylesheet" href="/template/client/css/skins/skin-demo-10.css">
 <link rel="stylesheet" href="/template/client/css/demos/demo-10.css">
-
+@yield('header')
 
 <link rel="stylesheet" href="/template/client/css/plugins/nouislider/nouislider.css">

@@ -43,24 +43,24 @@
                 @endforeach
                 </tbody>
             </table>
-            @if($sliders->total()!=0)
-                <div class="col-md-12 mt-4">
-                    <ul class="pagination">
-                        <li class="paginate_button page-item {{($sliders->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $sliders->url(1) }}">Previous</a>
-                        </li>
-                        @for ($i = 1; $i <= $sliders->lastPage(); $i++)
-                            <li class="paginate_button page-item {{($sliders->currentPage() == $i) ? ' active' : '' }}">
-                                <a class="page-link" href="{{ $sliders->url($i) }}">{{ $i }}</a>
-                            </li>
-                        @endfor
-                        <li class="paginate_button page-item {{ ($sliders->currentPage() == $sliders->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link"
-                               href="{{ $sliders->url($sliders->currentPage()+1) }}">Next</a>
-                        </li>
-                    </ul>
-                </div>
-            @else
+{{--            @if($sliders->total()!=0)--}}
+{{--                <div class="col-md-12 mt-4">--}}
+{{--                    <ul class="pagination">--}}
+{{--                        <li class="paginate_button page-item {{($sliders->currentPage() == 1) ? ' disabled' : '' }}">--}}
+{{--                            <a class="page-link" href="{{ $sliders->url(1) }}">Previous</a>--}}
+{{--                        </li>--}}
+{{--                        @for ($i = 1; $i <= $sliders->lastPage(); $i++)--}}
+{{--                            <li class="paginate_button page-item {{($sliders->currentPage() == $i) ? ' active' : '' }}">--}}
+{{--                                <a class="page-link" href="{{ $sliders->url($i) }}">{{ $i }}</a>--}}
+{{--                            </li>--}}
+{{--                        @endfor--}}
+{{--                        <li class="paginate_button page-item {{ ($sliders->currentPage() == $sliders->lastPage()) ? ' disabled' : '' }}">--}}
+{{--                            <a class="page-link"--}}
+{{--                               href="{{ $sliders->url($sliders->currentPage()+1) }}">Next</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            @else--}}
         </div>
     </div>
 @endsection

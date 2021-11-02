@@ -100,6 +100,8 @@ Route::get('danh-muc/{id}-{slug}.html', [\App\Http\Controllers\Client\MenuContro
 
 Route::get('san-pham.html', [ClientMainController::class, 'show']);
 
+Route::get('san-pham/{id}-{slug}.html', [\App\Http\Controllers\Client\ProductController::class, 'index']);
+
 Route::get('/cart', function () {
     return view('client.cart.list', ['title' => 'Giỏ Hàng']);
 });

@@ -3,6 +3,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Str;
 
 class Product
 {
@@ -66,7 +67,7 @@ class Product
                                     <a href="#">Men’s</a>,
                                     <a href="#">Boots</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">' . $item->name . '</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html">' . $item->name . '</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                 ' . self::checkprice($item->price, $item->price_sale, $item->quantity) . '
                                 </div><!-- End .product-price -->
@@ -127,7 +128,7 @@ class Product
                                 <div class="product-cat">
                                     <a href="#">Women</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">' . $item->name . '</a></h3>
+                                <h3 class="product-title"><a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html">' . $item->name . '</a></h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
                                     ' . self::checkprice($item->price, $item->price_sale, $item->quantity) . '
@@ -160,7 +161,7 @@ class Product
     {
         switch ($quantity) {
             case 0:
-                return '<span class="product-label label-hot">Hot</span>'.'<span class="product-label label-out">Hết hàng</span>';
+                return '<span class="product-label label-hot">Hot</span>' . '<span class="product-label label-out">Hết hàng</span>';
             default:
                 $html = '';
                 if ($hot == 1) {

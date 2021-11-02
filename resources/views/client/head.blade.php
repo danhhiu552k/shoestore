@@ -28,7 +28,7 @@
                     <a href="#">Links</a>
                     <ul>
                         <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
-                        <li><a href="about">About Us</a></li>
+
                         <li><a href="/register"><i class="icon-user"></i>Đăng Kí</a></li>
                         @if (Session::get('login'))
                             <div class="dropdown">

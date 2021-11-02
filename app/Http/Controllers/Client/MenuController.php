@@ -17,7 +17,7 @@ class MenuController extends Controller
 
     public function index(Request $request, $id, $slug)
     {
-        $menu = $this->menu->getId($id);
+        $menu = $this->menu->getId($id, $slug);
 
         $products = $this->menu->getProduct($menu);
 
