@@ -207,6 +207,7 @@ class ProductService
     {
         return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
+            ->inRandomOrder()
             ->where('id', '!=', $id)
             ->orderByDesc('id')
             ->limit(8)

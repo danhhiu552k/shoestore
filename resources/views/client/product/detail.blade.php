@@ -28,9 +28,9 @@
                         <div class="product-gallery">
                             <figure class="product-main-image">
                                 <span class="product-label label-sale">Sale</span>
-                                <img id="product-zoom" src="/template/client/images/product/home7-product6.jpg"
-                                     data-zoom-image="/template/client/images/product/home7-product6.jpg"
-                                     alt="product image">
+                                <img id="product-zoom" src="{{$product->thumb}}"
+                                     data-zoom-image="{{$product->thumb}}"
+                                     alt="{{$product->name}}">
 
                                 <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                     <i class="icon-arrows"></i>
@@ -38,47 +38,22 @@
                             </figure><!-- End .product-main-image -->
 
                             <div id="product-zoom-gallery" class="product-image-gallery max-col-6">
-                                <a class="product-gallery-item" href="#"
-                                   data-image="/template/client/images/product/home7-product6.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product6.jpg">
-                                    <img src="/template/client/images/product/home7-product6.jpg"
-                                         alt="product side">
-                                </a>
 
                                 <a class="product-gallery-item" href="#"
-                                   data-image="/template/client/images/product/home7-product1-1.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product1-1.jpg">
-                                    <img src="/template/client/images/product/home7-product1-1.jpg"
+                                   data-image="{{$product->thumb}}"
+                                   data-zoom-image="{{$product->thumb}}">
+                                    <img src="{{$product->thumb}}"
                                          alt="product cross">
                                 </a>
 
-                                <a class="product-gallery-item" href="#"
-                                   data-image="/template/client/images/product/home7-product6.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product6.jpg">
-                                    <img src="/template/client/images/product/home7-product6.jpg"
-                                         alt="product side">
-                                </a>
-
-                                <a class="product-gallery-item" href="#"
-                                   data-image="/template/client/images/product/home7-product1-1.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product1-1.jpg">
-                                    <img src="/template/client/images/product/home7-product1-1.jpg"
-                                         alt="product cross">
-                                </a>
-
-                                <a class="product-gallery-item active" href="#"
-                                   data-image="/template/client/images/product/home7-product6.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product6.jpg">
-                                    <img src="/template/client/images/product/home7-product6.jpg"
-                                         alt="product side">
-                                </a>
-
-                                <a class="product-gallery-item" href="#"
-                                   data-image="/template/client/images/product/home7-product1-1.jpg"
-                                   data-zoom-image="/template/client/images/product/home7-product1-1.jpg">
-                                    <img src="/template/client/images/product/home7-product1-1.jpg"
-                                         alt="product cross">
-                                </a>
+                                @foreach($productImage as $item)
+                                    <a class="product-gallery-item" href="#"
+                                       data-image="{{$item->image}}"
+                                       data-zoom-image="{{$item->image}}">
+                                        <img src="{{$item->image}}"
+                                             alt="{{$item->image_name}}">
+                                    </a>
+                                @endforeach
 
                             </div><!-- End .product-image-gallery -->
                         </div><!-- End .product-gallery -->
@@ -120,7 +95,7 @@
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">Số lượng:</label>
                                 <div class="product-details-quantity">
-                                    <input type="number" id="qty" class="form-control" value="1" min="1" max="10"
+                                    <input type="number" name="quantity" class="form-control" value="1" min="1" max="10"
                                            step="1"
                                            data-decimals="0" required>
                                 </div><!-- End .product-details-quantity -->
@@ -302,127 +277,49 @@
                                     }
                                 }
                             }'>
-                    <div class="product product-7 text-center">
-                        <figure class="product-media">
-                            <span class="product-label label-new">New</span>
-                            <a href="product.html">
-                                <img src="/template/client/images/product/home7-product1-1.jpg" alt="Product image"
-                                     class="product-image">
-                            </a>
 
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                   title="Quick view"><span>Quick view</span></a>
-                                <a href="#" class="btn-product-icon btn-compare"
-                                   title="Compare"><span>Compare</span></a>
-                            </div><!-- End .product-action-vertical -->
+                    @foreach($products as $item)
+                        <div class="product product-7 text-center">
+                            <figure class="product-media">
+                                {!!  \App\Helpers\Product::checksale($item->price,$item->price_sale,$item->hot,$item->quantity)!!}
+                                <a href="/san-pham/{{$item->id}}-{{\Illuminate\Support\Str::slug($item->name,'-')}}.html">
+                                    <img src="{{$item->thumb}}" alt="{{$item->name}}"
+                                         class="product-image">
+                                </a>
 
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Thích</span></a>
+                                    <a href="#" class="btn-product-icon btn-quickview btn-expandable"
+                                       title="Xem nhanh"><span>Xem nhanh</span></a>
+                                    <a href="#" class="btn-product-icon btn-compare btn-expandable"
+                                       title="So sách"><span>So sách</span></a>
+                                </div><!-- End .product-action-vertical -->
 
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#">Women</a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="product.html">Brown paperbag waist <br>pencil skirt</a>
-                            </h3>
-                            <!-- End .product-title -->
-                            <div class="product-price">
-                                $60.00
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 2 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>Thêm vào giỏ hàng</span></a>
+                                </div><!-- End .product-action -->
+                            </figure><!-- End .product-media -->
 
-                    <div class="product product-7 text-center">
-                        <figure class="product-media">
-                            <span class="product-label label-out">Out of Stock</span>
-                            <a href="product.html">
-                                <img src="/template/client/images/product/home7-product2.jpg" alt="Product image"
-                                     class="product-image">
-                            </a>
-
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                   title="Quick view"><span>Quick view</span></a>
-                                <a href="#" class="btn-product-icon btn-compare"
-                                   title="Compare"><span>Compare</span></a>
-                            </div><!-- End .product-action-vertical -->
-
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#">Jackets</a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="product.html">Khaki utility boiler jumpsuit</a></h3>
-                            <!-- End .product-title -->
-                            <div class="product-price">
-                                <span class="out-price">$120.00</span>
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 6 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
-
-                    <div class="product product-7 text-center">
-                        <figure class="product-media">
-                            <span class="product-label label-top">Top</span>
-                            <a href="product.html">
-                                <img src="/template/client/images/product/home7-product6.jpg" alt="Product image"
-                                     class="product-image">
-                            </a>
-
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                   title="Quick view"><span>Quick view</span></a>
-                                <a href="#" class="btn-product-icon btn-compare"
-                                   title="Compare"><span>Compare</span></a>
-                            </div><!-- End .product-action-vertical -->
-
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#">Shoes</a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="product.html">Light brown studded Wide fit wedges</a>
-                            </h3>
-                            <!-- End .product-title -->
-                            <div class="product-price">
-                                $110.00
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 1 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#">Shoes</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title">
+                                    <a href="/san-pham/{{$item->id}}-{{\Illuminate\Support\Str::slug($item->name,'-')}}.html">{{$item->name}}</a>
+                                </h3>
+                                <!-- End .product-title -->
+                                <div class="product-price">
+                                    {!!  \App\Helpers\Product::checkprice($item->price,$item->price_sale,$item->quantity)!!}
+                                </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 1 Reviews )</span>
+                                </div><!-- End .rating-container -->
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                    @endforeach
                 </div><!-- End .owl-carousel -->
             </div><!-- End .container -->
         </div><!-- End .page-content -->
@@ -435,21 +332,25 @@
                     <div class="row">
                         <div class="col-6">
                             <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="/template/client/images/product/home7-product6.jpg" alt="Product image">
+                                <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
+                                    <img src="{{$product->thumb}}" alt="{{$product->name}}">
                                 </a>
                             </figure><!-- End .product-media -->
-                            <h4 class="product-title"><a href="product.html">Name</a></h4>
+                            <h4 class="product-title">
+                                <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
+                                    {{$product->name}}
+                                </a>
+                            </h4>
                             <!-- End .product-title -->
                         </div><!-- End .col-6 -->
 
                         <div class="col-6 justify-content-end">
                             <div class="product-price">
-                                $84.00
+                                {!!  \App\Helpers\Product::checkprice($product->price,$product->price_sale,$product->quantity)!!}
                             </div><!-- End .product-price -->
                             <div class="product-details-quantity">
                                 <input type="number" value="1" min="1" max="10"
-                                       step="1" data-decimals="0">
+                                       step="1" data-decimals="0" name="quantity">
                             </div><!-- End .product-details-quantity -->
 
                             <div class="product-details-action">

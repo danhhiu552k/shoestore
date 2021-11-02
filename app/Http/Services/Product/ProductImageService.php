@@ -46,4 +46,10 @@ class ProductImageService
         Session::flash('success', 'Cập nhật hình ảnh sản phẩm thành công');
         return true;
     }
+
+    public function detail($id)
+    {
+        $images = Product_image::select('image', 'image_name')->where('product_id', $id)->inRandomOrder()->take(6)->get();
+        return $images;
+    }
 }
