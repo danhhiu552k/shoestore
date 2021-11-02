@@ -110,14 +110,14 @@ Route::get('/check', function () {
     return view('client.cart.checkout');
 });
 
-Route::get('/about', function () {
+Route::get('/about.html', function () {
     return view('client.infor.about', ['title' => 'Thông tin về chúng tôi']);
 });
 
-Route::get('/login', function () {
+Route::get('/login.html', function () {
     return view('client.login.login', ['title' => 'Đăng Nhập']);
 });
 
-Route::get('/register', function () {
+Route::get('/register.html', function () {
     return view('client.login.register', ['title' => 'Đăng Kí']);
 });

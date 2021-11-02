@@ -19,68 +19,45 @@
 
     </main><!-- End .main -->
 
-    <footer class="footer footer-dark">
-        <div class="cta bg-image bg-dark pt-4 pb-5 mb-0"
-             style="background-image: url(/template/client/images/banner-1.jpg); height: 17em;">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-10 col-md-8 col-lg-6">
-                        <div class="cta-heading text-center">
-                            <h3 class="cta-title text-warning">Đăng ký nhận thông tin sản phẩm của chúng tôi</h3>
-                            <!-- End .cta-title -->
-                        </div><!-- End .text-center -->
-                        <br>
-                        <form action="#">
-                            <div class="input-group input-group-round">
-                                <input type="email" class="form-control form-control-white"
-                                       placeholder="Email" aria-label="Email Adress" required>
-                                <div class="input-group-append">
-                                    <button class="btn btn-white" type="submit"><span>Đăng Kí</span><i
-                                            class="icon-long-arrow-right"></i></button>
-                                </div><!-- .End .input-group-append -->
-                            </div><!-- .End .input-group -->
-                        </form>
-                        <br>
-                        <br>
-                        <br>
-                    </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div><!-- End .cta -->
-        <div class="footer-middle">
+    <footer class="footer">
+        <div class="footer-middle border-0">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
                             <img src="/template/client/images/coutinho.gif" class="footer-logo" alt="Footer Logo"
                                  width="105" height="25">
-                            <br>
-                            <br>
                             <div class="social-icons">
-                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i
+                                <a href="#" class="social-icon facebook" target="_blank" title="Facebook"><i
                                         class="icon-facebook-f"></i></a>
-                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i
+                                <a href="#" class="social-icon twitter" target="_blank" title="Twitter"><i
                                         class="icon-twitter"></i></a>
-                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i
+                                <a href="#" class="social-icon instagrama" target="_blank" title="Instagram"><i
                                         class="icon-instagram"></i></a>
-                                <a href="#" class="social-icon" title="Youtube" target="_blank"><i
+                                <a href="#" class="social-icon youtube" target="_blank" title="Youtube"><i
                                         class="icon-youtube"></i></a>
-                                <a href="#" class="social-icon" title="Pinterest" target="_blank"><i
+                                <a href="#" class="social-icon pinterest" target="_blank" title="Pinterest"><i
                                         class="icon-pinterest"></i></a>
                             </div><!-- End .soial-icons -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
 
                     <div class="col-sm-6 col-lg-3">
-                        {{--                            <div class="widget">--}}
-                        {{--                                <h4 class="widget-title">Menu Nhanh</h4><!-- End .widget-title -->--}}
+                        <div class="widget">
+                            <h4 class="widget-title">Liên kết</h4><!-- End .widget-title -->
 
-                        {{--                                <ul class="widget-list">--}}
-                        {{--                                    <li><a href="about.html">Danh Mục 1</a></li>--}}
-                        {{--                                    <li><a href="#">Danh Mục 2</a></li>--}}
-                        {{--                                    <li><a href="faq.html">Danh Mục 3</a></li>--}}
-                        {{--                                </ul><!-- End .widget-list -->--}}
-                        {{--                            </div><!-- End .widget -->--}}
+                            <ul class="widget-list">
+                                <li><a href="\san-pham.html">Tất cả sản phẩm</a></li>
+                                <li><a href="\about.html">About Us</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Liên hệ</a></li>
+                                @if (Session::get('login'))
+                                    <li><a href="/logout.html">Đăng Xuất</a></li>
+                                @else
+                                    <li><a href="/login.html">Đăng Nhập</a></li>
+                                @endif
+                            </ul><!-- End .widget-list -->
+                        </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
 
                     <div class="col-sm-6 col-lg-3">
@@ -102,7 +79,12 @@
                             <h4 class="widget-title">Tài Khoản Của Tôi</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="/login">Đăng Nhập</a></li>
+                                @if (Session::get('login'))
+                                    <li><a href="/logout.html">Đăng Xuất</a></li>
+                                @else
+                                    <li><a href="/login.html">Đăng Nhập</a></li>
+                                @endif
+
                                 <li><a href="/cart.html">Giỏ Hàng</a></li>
                                 <li><a href="#">Danh Sách Yêu Thích</a></li>
                                 <li><a href="#">Kiểm tra đơn hàng</a></li>
@@ -116,12 +98,15 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <p class="footer-copyright">Copyright © 2021 by Nhóm 4 - Cường - Danh - Linh - Quân. All Rights
-                    Reserved.</p>
+                <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
                 <!-- End .footer-copyright -->
+                <figure class="footer-payments">
+                    <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                </figure><!-- End .footer-payments -->
             </div><!-- End .container -->
         </div><!-- End .footer-bottom -->
     </footer><!-- End .footer -->
+
 </div><!-- End .page-wrapper -->
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
@@ -132,6 +117,69 @@
         alert("Tạo tài khoản thành công");
     </script>
 @endif
+<style>
+    .social-icons .facebook {
+        background: #3b5998;
+    }
+
+    .social-icons .twitter {
+        background: #3cf;
+    }
+
+    .social-icons .instagrama {
+        background: #f09433 !important;
+        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+        background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1) !important;
+    }
+
+    .social-icons .youtube {
+        background: #f30f0f;
+    }
+
+    .social-icons .pinterest {
+        background: #cb2027;
+    }
+
+    .icon-facebook-f {
+        color: #ffffff;
+    }
+
+    .icon-twitter {
+        color: #ffffff;
+    }
+
+    .icon-instagram {
+        color: #ffffff;
+    }
+
+    .icon-youtube {
+        color: #ffffff;
+    }
+
+    .icon-pinterest {
+        color: #ffffff;
+    }
+
+    .social-icon {
+
+        box-sizing: border-box;
+        -moz-border-radius: 138px;
+        -webkit-border-radius: 138px;
+        border-radius: 138px;
+        text-align: center;
+        display: inline-block;
+        line-height: 1px;
+        padding-top: 11px;
+        transition: all 0.5s;
+    }
+
+    .social-icon:hover {
+        transform: rotate(360deg) scale(1.3);
+    }
+</style>
+
 </body>
 
 </html>

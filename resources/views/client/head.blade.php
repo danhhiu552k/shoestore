@@ -29,7 +29,7 @@
                     <ul>
                         <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
 
-                        <li><a href="/register"><i class="icon-user"></i>Đăng Kí</a></li>
+                        <li><a href="/register.html"><i class="icon-user"></i>Đăng Kí</a></li>
                         @if (Session::get('login'))
                             <div class="dropdown">
                                 <button
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         @else
-                            <li><a href="/login"><i class="icon-user"></i>Đăng Nhập</a></li>
+                            <li><a href="/login.html"><i class="icon-user"></i>Đăng Nhập</a></li>
                         @endif
 
                     </ul>

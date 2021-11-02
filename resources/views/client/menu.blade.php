@@ -9,7 +9,7 @@
                 </button>
 
                 <a href="\" class="logo">
-                    <img src="/template/client/images/logo/logo.png" alt="Molla Logo" width="105" height="25">
+                    <img src="/template/client/images/logo/logo.png" class="social-icon mylogo" alt="Molla Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
 
@@ -20,11 +20,11 @@
                             <a href="/" class="">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="/san-pham.html" class="">Sản phẩm</a>
+                            <a href="\san-pham.html" class="">Sản phẩm</a>
                             <ul>{!! \App\Helpers\Menu::menus($menus) !!}</ul>
                         </li>
 
-                        <li><a href="about">About Us</a></li>
+                        <li><a href="\about.html">About Us</a></li>
 
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
