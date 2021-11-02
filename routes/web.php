@@ -110,10 +110,6 @@ Route::get('/check', function () {
     return view('client.cart.checkout');
 });
 
-Route::get('/details', function () {
-    return view('client.product.detail', ['title' => 'Chi tiết']);
-});
-
 Route::get('/about', function () {
     return view('client.infor.about', ['title' => 'Thông tin về chúng tôi']);
 });

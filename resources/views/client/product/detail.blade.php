@@ -308,7 +308,7 @@
                                     <a href="/san-pham/{{$item->id}}-{{\Illuminate\Support\Str::slug($item->name,'-')}}.html">{{$item->name}}</a>
                                 </h3>
                                 <!-- End .product-title -->
-                                <div class="product-price">
+                                <div class="product-price mt-2">
                                     {!!  \App\Helpers\Product::checkprice($item->price,$item->price_sale,$item->quantity)!!}
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">

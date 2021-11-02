@@ -16,6 +16,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                 @if(isset($menu))
+                    <li class="breadcrumb-item active"><a href="#">Danh Mục</a></li>
                     <li class="breadcrumb-item active"><a href="#">{{$menu->name}}</a></li>
                 @else
                     <li class="breadcrumb-item active"><a href="#">{{$title}}</a></li>

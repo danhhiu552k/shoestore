@@ -130,7 +130,7 @@ class Product
                                 </div><!-- End .product-cat -->
                                 <h3 class="product-title"><a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html">' . $item->name . '</a></h3>
                                 <!-- End .product-title -->
-                                <div class="product-price">
+                                <div class="product-price mt-2">
                                     ' . self::checkprice($item->price, $item->price_sale, $item->quantity) . '
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
@@ -189,7 +189,7 @@ class Product
                 } elseif ($price == 0 && $price_sale == 0) {
                     return '<span class="text-dark">Liên hệ</span>';
                 } else {
-                    return '<span class="text-dark">' . number_format($price) . '</span>';
+                    return '<span class="text-primary">' . number_format($price) . '</span>';
                 }
         }
     }
