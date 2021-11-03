@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Services\Product\ProductService;
+use App\Http\Services\Product\ProductServiceClient;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class MainController extends Controller
     protected $menu;
     protected $product;
 
-    public function __construct(SliderService $slider, MenuService $menu, ProductService $product)
+    public function __construct(SliderService $slider, MenuService $menu, ProductServiceClient $product)
     {
         $this->slider = $slider;
         $this->menu = $menu;
@@ -51,6 +52,29 @@ class MainController extends Controller
         return view('client.product.list',
             [
                 'title' => 'Tất cả sản phẩm',
+                'products' => $products
+            ]);
+    }
+
+    public function tag($name){
+        $products=$this->product->tag($name);
+        $title='';
+        switch ($name) {
+            case 'sale':
+                $title='Các sản phẩm sale';
+                break;
+            case 'hot':
+                $title='Các sản phẩm hot';
+                break;
+            case 'new':
+                $title='Các sản phẩm mới nhất';
+                break;
+            default:
+                return 'abc';
+        }
+        return view('client.product.list',
+            [
+                'title' => $title,
                 'products' => $products
             ]);
     }

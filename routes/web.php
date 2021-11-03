@@ -121,3 +121,5 @@ Route::get('/login.html', function () {
 Route::get('/register.html', function () {
     return view('client.login.register', ['title' => 'Đăng Kí']);
 });
+
+Route::get('/tag-{name}.html', [ClientMainController::class, 'tag']);

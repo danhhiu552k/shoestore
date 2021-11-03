@@ -74,10 +74,10 @@
         @if($products_hot->count()!=0)
             <div class="container">
                 <div class="heading  mb-3">
-                    <span class="heading-left title-lg">Các sản phẩm hot</span><!-- End .title -->
+                    <span class="heading-left title-lg">Sản phẩm hot</span><!-- End .title -->
 
                     <span style="float: right;">
-                    <a href="/hot" class="btn btn-link btn-link-dark">
+                    <a href="/tag-hot.html" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
@@ -127,10 +127,10 @@
         @if($products_new->count()!=0)
             <div class="container">
                 <div class="heading  mb-3">
-                    <span class="heading-left title-lg">Các sản phẩm mới</span><!-- End .title -->
+                    <span class="heading-left title-lg">Sản phẩm mới</span><!-- End .title -->
 
                     <span style="float: right;">
-                    <a href="/sale" class="btn btn-link btn-link-dark">
+                    <a href="/tag-new.html" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
@@ -179,10 +179,10 @@
         @if($products_sale->count()!=0)
             <div class="container">
                 <div class="heading  mb-3">
-                    <span class="heading-left title-lg">Các sản phẩm giảm giá sock</span><!-- End .title -->
+                    <span class="heading-left title-lg">Sản phẩm giảm giá</span><!-- End .title -->
 
                     <span style="float: right;">
-                    <a href="/sale" class="btn btn-link btn-link-dark">
+                    <a href="/tag-sale.html" class="btn btn-link btn-link-dark">
                         <span>Xem tất cả</span>
                         <i class="icon-long-arrow-right"></i>
                     </a>
