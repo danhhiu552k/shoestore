@@ -31,6 +31,7 @@ Route::post('admin/login/store', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
+        Route::post('/user/update', [LoginController::class, 'update']);
 
         Route::get('/main', [MainController::class, 'index'])->name('admin');
         Route::get('logout', [LoginController::class, 'logout']);

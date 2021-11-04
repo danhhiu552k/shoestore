@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Traits\UploadFile;
 
 class LoginController extends Controller
 {
+    use UploadFile;
     /**
      * Display a listing of the resource.
      *
@@ -116,9 +118,40 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $firstname = $request -> firstname;
+        $lastname = $request -> lastname;
+        $phone = $request -> phone;
+        $address = $request -> address;
+        $birthday = $request -> birthday;
+
+        $avatar = $this->storageUpload($request ,'avatar', 'adminavatar');
+        
+
+        $user = Auth::user();
+        $user -> firstname = $firstname;
+        $user -> lastname = $lastname;
+        $user -> birthday = $birthday;
+        $user -> phone = $phone;
+        $user -> address = $address;
+        if($avatar != null){
+            $user -> avatar = $avatar['file_data'];
+        }
+        
+        $user -> save();
+
+        Session::flash('success',"Cập nhật thành công!");
+
+        Session::put('admin_firstname', $user->firstname);
+            Session::put('admin_lastname', $user->lastname);
+            Session::put('admin_phone', $user->phone);
+            Session::put('admin_birthday', $user->birthday);
+            Session::put('admin_email', $user->email);
+            Session::put('admin_address', $user->address);
+
+            Session::put('admin_avatar', $user->avatar);
+            return redirect()->route('admin');
     }
 
     /**
@@ -131,4 +164,6 @@ class LoginController extends Controller
     {
         //
     }
+
+
 }

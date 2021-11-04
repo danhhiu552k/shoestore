@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <form method="POST">
+                <form action="/admin/user/update" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-3 ">
                             <div class="row">
@@ -36,7 +36,7 @@
                                     @endif
                                     <div class="form-group">
                                         <label>Thay ảnh</label>
-                                        <input type="file" style="width: 7.5rem" />
+                                        <input type="file" name="avatar" />
                                     </div>
                                 </div>
                             </div>
@@ -50,17 +50,17 @@
 
                                             <div class="form-group">
                                                 <label>Họ</label>
-                                                <input class="form-control"
+                                                <input class="form-control" name="firstname" 
                                                     value="{{ Session::get('admin_firstname') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>E-mail</label>
-                                                <input class="form-control"
+                                                <input class="form-control" name="email" 
                                                     value="{{ Session::get('admin_email') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Địa chỉ</label>
-                                                <input class="form-control"
+                                                <input class="form-control" name="address" 
                                                     value="{{ Session::get('admin_address') }}" />
                                             </div>
                                         </div>
@@ -68,12 +68,12 @@
 
                                             <div class="form-group">
                                                 <label>Tên</label>
-                                                <input class="form-control"
+                                                <input class="form-control" name="lastname" 
                                                     value="{{ Session::get('admin_lastname') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Số điện thoại</label>
-                                                <input class="form-control"
+                                                <input class="form-control" name="phone" 
                                                     value="{{ Session::get('admin_phone') }}" />
                                             </div>
                                             <div class="form-group">

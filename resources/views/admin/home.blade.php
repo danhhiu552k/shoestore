@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+@include('admin.alert')
     <section class="content">
         <div class="container-fluid">
             <div class="mt-5"></div>
