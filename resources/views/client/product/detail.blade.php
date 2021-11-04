@@ -1,5 +1,7 @@
 @extends('client.main')
-
+@section('header')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection
 @section('content')
     <!--MainContent-->
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -123,14 +125,10 @@
 
                                 <div class="social-icons social-icons-sm">
                                     <span class="social-label">Share:</span>
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i
-                                            class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i
-                                            class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i
-                                            class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i
-                                            class="icon-pinterest"></i></a>
+                                    <a href="#" class="fa fa-facebook" title="Facebook"></a>
+                                    <a class="fa fa-youtube" title="Youtube"></a>
+                                    <a href="#" class="fa fa-twitter" title="Twitter"></a>
+                                    <a href="#" class="fa fa-google" title="Google"></a>
                                 </div>
                             </div><!-- End .product-details-footer -->
                         </div><!-- End .product-details -->
@@ -193,21 +191,14 @@
                                             <span class="review-date">6 days ago</span>
                                         </div><!-- End .col -->
                                         <div class="col">
-                                            <h4>Good, perfect size</h4>
 
                                             <div class="review-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum
-                                                    dolores
-                                                    assumenda asperiores facilis porro reprehenderit animi culpa atque
-                                                    blanditiis commodi perspiciatis doloremque, possimus, explicabo,
-                                                    autem
-                                                    fugit
-                                                    beatae quae voluptas!</p>
+                                                <p>Đánh giá của khách hàng 1</p>
                                             </div><!-- End .review-content -->
 
                                             <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                                <a href="#"><i class="icon-thumbs-up"></i>Hữu ích (2)</a>
+                                                <a href="#"><i class="icon-thumbs-down"></i>Không hữu ích (0)</a>
                                             </div><!-- End .review-action -->
                                         </div><!-- End .col-auto -->
                                     </div><!-- End .row -->
@@ -226,20 +217,14 @@
                                             <span class="review-date">5 days ago</span>
                                         </div><!-- End .col -->
                                         <div class="col">
-                                            <h4>Very good</h4>
 
                                             <div class="review-content">
-                                                <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum
-                                                    blanditiis
-                                                    laudantium iste amet. Cum non voluptate eos enim, ab cumque nam,
-                                                    modi,
-                                                    quas
-                                                    iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                                <p>Đánh giá của khách hàng 1</p>
                                             </div><!-- End .review-content -->
 
                                             <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                                <a href="#"><i class="icon-thumbs-up"></i>Hữu ích (2)</a>
+                                                <a href="#"><i class="icon-thumbs-down"></i>Không hữu ích (0)</a>
                                             </div><!-- End .review-action -->
                                         </div><!-- End .col-auto -->
                                     </div><!-- End .row -->
@@ -249,7 +234,7 @@
                     </div><!-- End .tab-content -->
                 </div><!-- End .product-details-tab -->
 
-                <h2 class="title text-center mb-4">Các sản phẩm liên quan</h2><!-- End .title text-center -->
+                <h2 class="title text-center mb-4">Các sản phẩm khác</h2><!-- End .title text-center -->
 
                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                      data-owl-options='{
@@ -323,10 +308,46 @@
                 </div><!-- End .owl-carousel -->
             </div><!-- End .container -->
         </div><!-- End .page-content -->
-    @endsection
+        @endsection
 
-    @section('footer')
-        <!-- Sticky Bar -->
+        @section('footer')
+            <style>
+                .fa {
+                    padding: 0.9rem;
+                    font-size: 1rem;
+                    width: 3rem;
+                    height: 3rem;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 5px 3px;
+                    border-radius: 50%;
+                }
+
+                .fa:hover {
+                    opacity: 0.7;
+                }
+
+                .fa-facebook {
+                    background: #3B5998;
+                    color: white;
+                }
+
+                .fa-twitter {
+                    background: #55ACEE;
+                    color: white;
+                }
+
+                .fa-google {
+                    background: #dd4b39;
+                    color: white;
+                }
+
+                .fa-youtube {
+                    background: #bb0000;
+                    color: white;
+                }
+            </style>
+            <!-- Sticky Bar -->
             <div class="sticky-bar">
                 <div class="container">
                     <div class="row">

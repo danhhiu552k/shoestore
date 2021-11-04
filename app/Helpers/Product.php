@@ -171,7 +171,7 @@ class Product
                     $html .= '<span class="product-label label-sale">-' . self::discount_calculation($price, $price_sale) . '%</span>';
                 }
                 if ($price == 0 && $price_sale == 0) {
-                    $html = '<span class="product-label label-out">Sản phẩm sắp có</span>';
+                    $html .= '<span class="product-label label-out">Sản phẩm sắp có</span>';
                 }
                 return $html;
         }

@@ -162,4 +162,10 @@ class ProductService
         return false;
     }
 
+    public function search($request)
+    {
+        $name = $request->get('name');
+        $products = Product::where('name', 'like', '%' . $name . '%')->get();
+        return $products;
+    }
 }

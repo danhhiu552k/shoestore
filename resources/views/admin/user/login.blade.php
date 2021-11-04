@@ -37,6 +37,10 @@
                                         <span toggle="#password-field"
                                             class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label for="remember">Remember me</label>
+                                        <input type="checkbox" name="remember">
+                                    </div>
                                     @include('admin.alert')
                                     <button class="btn login-form__btn submit w-100">Đăng Nhập</button>
                                     @csrf

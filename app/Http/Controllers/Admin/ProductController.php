@@ -73,4 +73,11 @@ class ProductController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        if ($request->get('name')) {
+            $products = $this->productService->search($request);
+            return $products;
+        }
+    }
 }

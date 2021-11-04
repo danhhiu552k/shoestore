@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('destroy', [ProductController::class, 'destroy']);
 
             Route::get('list-image/{id}', [ProductImageController::class, 'list_image']);
-
+            Route::get('search', [ProductController::class, 'search']);
         });
 
         #Product_image
@@ -107,7 +107,7 @@ Route::get('/cart', function () {
 });
 
 Route::get('/check', function () {
-    return view('client.cart.checkout');
+    return view('client.cart.checkout',['title' => 'Thanh Toán']);
 });
 
 Route::get('/about.html', function () {

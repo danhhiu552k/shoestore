@@ -9,52 +9,65 @@
             <h3 class=" text-center">{{ $title }}</h3>
         </div>
         @include('admin.alert')
+        <div class="row m-3">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            </div>
+            @csrf
+        </div>
         <div class="card-body">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover">
+                        <table id="example" class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th style="width: 45px;text-align: center;">#</th>
-                                <th>Tên Sản Phẩm</th>
-                                <th style="text-align: center;">Giá gốc</th>
-                                <th style="text-align: center;">Ảnh</th>
-                                <th style="text-align: center;width: 100px;">Active</th>
-                                <th style="text-align: center;">Ngày cập nhật</th>
-                                <th style="width: 150px;">&ensp;</th>
+                                <th>#</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá gốc</th>
+                                <th>Ảnh.</th>
+                                <th>Active</th>
+                                <th>Cập nhật</th>
+                                <th style="width: 100px">&nbsp;</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                             {!! \App\Helpers\Product::list($products) !!}
+                            </tbody>
+                            <tbody>
+
                             </tbody>
                         </table>
                     </div>
-                    @if($products->total()!=0)
-                        <div class="col-md-12 mt-4">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
-                                    <a class="page-link" href="{{ $products->url(1) }}">Previous</a>
-                                </li>
-                                @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                    <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
-                                        <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                    <div class="pagin">
+                        @if($products->total()!=0)
+                            <div class="col-md-12 mt-4">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                        <a class="page-link" href="{{ $products->url(1) }}">Previous</a>
                                     </li>
-                                @endfor
-                                <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
-                                    <a class="page-link"
-                                       href="{{ $products->url($products->currentPage()+1) }}">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    @else
-                        <h4>Không có sản phẩm</h4>
-                    @endif
-
+                                    @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                        <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
+                                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                        <a class="page-link"
+                                           href="{{ $products->url($products->currentPage()+1) }}">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else
+                            <h4>Không có sản phẩm</h4>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <div class="col-md-12">
         <div class="panel panel-primary">
@@ -126,8 +139,6 @@
                                 '</a>' +
                                 '</td>'
                             '</tr>';
-
-
                         }
                         document.getElementById("multiple").innerHTML = html;
                     } else {
@@ -137,6 +148,5 @@
             });
         });
     </script>
-
     <script src="/template/admin/js/main.js"></script>
 @endsection

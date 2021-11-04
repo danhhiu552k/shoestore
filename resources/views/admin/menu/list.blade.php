@@ -8,6 +8,14 @@
         <div>
             @include('admin.alert')
         </div>
+
+        <div class="row m-3">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            </div>
+        </div>
+
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -19,7 +27,7 @@
                     <th style="width: 100px">&nbsp;</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                 {!! \App\Helpers\Menu::menu($menus) !!}
                 </tbody>
             </table>
@@ -27,4 +35,15 @@
     </div>
 @endsection
 
-
+@section('footer')
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+@endsection
