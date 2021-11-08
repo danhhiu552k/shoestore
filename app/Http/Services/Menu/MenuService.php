@@ -52,7 +52,7 @@ class MenuService
         $menu->name = $request->input('name');
 
         $menu->description = $request->input('description');
-
+        $menu->slug = Str::slug((string)$request->input('name'), '-');
         $menu->content = $request->input('content');
         $menu->thumb = $request->input('thumb');
         $menu->active = $request->input('active');
