@@ -103,9 +103,6 @@ Route::get('san-pham.html', [ClientMainController::class, 'show']);
 
 Route::get('san-pham/{id}-{slug}.html', [\App\Http\Controllers\Client\ProductController::class, 'index']);
 
-Route::get('/cart', function () {
-    return view('client.cart.list', ['title' => 'Giỏ Hàng']);
-});
 
 Route::get('/check', function () {
     return view('client.cart.checkout',['title' => 'Thanh Toán']);
@@ -124,3 +121,9 @@ Route::get('/register.html', function () {
 });
 
 Route::get('/tag-{name}.html', [ClientMainController::class, 'tag']);
+
+Route::post('/add-cart',[\App\Http\Controllers\Client\CartController::class,'index']);
+
+Route::get('/carts',[\App\Http\Controllers\Client\CartController::class,'show'])->name('carts');
+
+Route::post('update-cart',[\App\Http\Controllers\Client\CartController::class,'update']);

@@ -39,17 +39,17 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e)
-    {
-        if ($this->isHttpException($e)) {
-            $code = $e->getStatusCode();
-            if ($code == 404) {
-                return response()->view('404', ['title'=>'Không có trang tồn tại'], 404);
-            }
-            if ($code == 500) {
-                return response()->view('404', [], 404);
-            }
-        }
-        return parent::render($request, $e);
-    }
+//    public function render($request, Throwable $e)
+//    {
+//        if ($this->isHttpException($e)) {
+//            $code = $e->getStatusCode();
+//            if ($code == 404) {
+//                return response()->view('404', ['title'=>'Không có trang tồn tại'], 404);
+//            }
+//            if ($code == 500) {
+//                return response()->view('404', [], 404);
+//            }
+//        }
+//        return parent::render($request, $e);
+//    }
 }

@@ -94,23 +94,29 @@
                                 </div><!-- End .select-custom -->
                             </div><!-- End .details-filter-row -->
 
-                            <div class="details-filter-row details-row-size">
-                                <label for="qty">Số lượng:</label>
-                                <div class="product-details-quantity">
-                                    <input type="number" name="quantity" class="form-control" value="1" min="1" max="10"
-                                           step="1"
-                                           data-decimals="0" required>
-                                </div><!-- End .product-details-quantity -->
-                            </div><!-- End .details-filter-row -->
+                            <form action="/add-cart" method="post">
+                                @if($product->price != null)
+                                @csrf
+                                <div class="details-filter-row details-row-size">
+                                    <label for="qty">Số lượng:</label>
+                                    <div class="product-details-quantity">
+                                        <input type="number" name="quantity" class="form-control">
+                                    </div><!-- End .product-details-quantity -->
+                                    <input name="productid" type="hidden" value="{{$product->id}}">
 
-                            <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart"><span>Thêm vào giỏ hàng</span></a>
+{{--                                    <input name="productgia" type="hidden" value="{{$product->price}}">--}}
+                                </div><!-- End .details-filter-row -->
 
-                                <div class="details-action-wrapper">
-                                    <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào danh sách
-                                            yêu thích</span></a>
-                                </div><!-- End .details-action-wrapper -->
-                            </div><!-- End .product-details-action -->
+                                <div class="product-details-action">
+                                    <input value="Thêm vào giỏ hàng" type="submit" class="btn-product btn-cart">
+
+                                    <div class="details-action-wrapper">
+{{--                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào danh sách--}}
+{{--                                            yêu thích</span></a>--}}
+                                    </div><!-- End .details-action-wrapper -->
+                                </div><!-- End .product-details-action -->
+                                @endif
+                            </form>
 
                             <div class="product-details-footer">
                                 <div class="product-cat">
