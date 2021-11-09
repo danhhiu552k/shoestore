@@ -37,4 +37,9 @@ class CartController extends Controller
             'carts' => Session::get('carts')
         ]);
     }
+    public function update(Request $request)
+    {
+       $this->cartService->update($request);
+       return redirect('/carts');
+    }
 }
