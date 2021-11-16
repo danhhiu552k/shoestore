@@ -127,3 +127,7 @@ Route::post('/add-cart',[\App\Http\Controllers\Client\CartController::class,'ind
 Route::get('/carts',[\App\Http\Controllers\Client\CartController::class,'show'])->name('carts');
 
 Route::post('update-cart',[\App\Http\Controllers\Client\CartController::class,'update']);
+
+Route::get('/carts/delete/{id}',[\App\Http\Controllers\Client\CartController::class,'remove']);
+
+Route::post('/carts',[\App\Http\Controllers\Client\CartController::class,'addGioHang']);

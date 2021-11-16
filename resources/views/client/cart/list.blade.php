@@ -22,6 +22,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         @php $total = 0; @endphp
+                        @if(count($products)!=0)
                         <table class="table table-cart table-mobile">
                             <thead>
                                 <tr>
@@ -29,6 +30,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>&nbsp;</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -61,13 +63,14 @@
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
                                     <td class="total-col">{{number_format($priceEnd,0,'','.')}}</td>
-                                    <td class="remove-col"><button class="btn-remove"><i
-                                                class="icon-close"></i></button></td>
+                                    <td class="remove-col"><a href="/carts/delete/{{$product->id}}">Xóa</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table><!-- End .table table-wishlist -->
-
+                        @else
+                            <div class="text-center"><h2>Giỏ hàng trống</h2></div>
+                        @endif
                         <div class="cart-bottom">
                             <div class="cart-discount">
                                 <form action="#">
@@ -91,6 +94,7 @@
 
                             <table class="table table-summary">
                                 <tbody>
+
 {{--                                    <tr class="summary-subtotal">--}}
 {{--                                        <td>Subtotal:</td>--}}
 {{--                                        <td>$160.00</td>--}}
@@ -145,10 +149,36 @@
                                         <td>{{number_format($total,0,'','.')}}</td>
                                     </tr><!-- End .summary-total -->
                                 </tbody>
-                            </table><!-- End .table table-summary -->
 
-                            <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
-                                CHECKOUT</a>
+                            </table><!-- End .table table-summary -->
+                            <div >
+                                <span>Thông tin khách hàng :</span>
+                                <br>
+                                <br>
+                                <div >
+                                    <input type="text" name="name" placeholder="Tên khách hàng" >
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="text" name="phone" placeholder="Số điện thoại" >
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="text" name="address" placeholder="Địa chỉ giao hàng" >
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="text" name="email" placeholder="Email liên hệ" >
+                                </div>
+                                <br>
+
+                                <div>
+                                    <textarea  name="content" ></textarea>
+                                </div>
+                                <br>
+                                <button>Đặt hàng</button>
+                            </div>
+
                         </div><!-- End .summary -->
 
                         <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE

@@ -42,4 +42,18 @@ class CartController extends Controller
        $this->cartService->update($request);
        return redirect('/carts');
     }
+
+    public function remove($id =0)
+    {
+        $this->cartService->remove($id);
+
+        return redirect('/carts');
+    }
+
+    public function addGioHang(Request $request)
+    {
+        $this->cartService->addCarts($request);
+
+        return redirect()->back();
+    }
 }

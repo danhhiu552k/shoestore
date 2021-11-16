@@ -44,58 +44,46 @@
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static">
                         <i class="icon-shopping-cart"></i>
-                        <span class="cart-count">2</span>
+                        <span class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
+                        @php $sumPriceCart =0;
+                        @endphp
                         <div class="dropdown-cart-products">
+                            @if(count($products) >0)
+                                @foreach($products as $key => $product)
+                                    @php $price =\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity) ;
+                                    $sumPriceCart+=$product->price_sale!=0 ? $product->price_sale : $product->price;
+                                    @endphp
                             <div class="product">
                                 <div class="product-cart-details">
                                     <h4 class="product-title">
-                                        <a href="product.html">Beige knitted elastic runner shoes</a>
+                                        <a href="product.html">{{$product->name}}</a>
                                     </h4>
 
                                     <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
-                                        x $84.00
+                                        <span class="cart-product-qty">{!!$price!!}</span>
+
                                     </span>
                                 </div><!-- End .product-cart-details -->
 
                                 <figure class="product-image-container">
                                     <a href="product.html" class="product-image">
-                                        <img src="/template/client/images/product/home7-product1-1.jpg" alt="product">
+                                        <img src="{{$product->thumb}}" alt="product">
                                     </a>
                                 </figure>
                                 <a href="#" class="btn-remove" title="Remove Product"><i
                                         class="icon-close"></i></a>
                             </div><!-- End .product -->
-
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
-                                        x $76.00
-                                    </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="/template/client/images/product/home7-product2.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i
-                                        class="icon-close"></i></a>
-                            </div><!-- End .product -->
+                                @endforeach
+                            @endif
                         </div><!-- End .cart-product -->
 
                         <div class="dropdown-cart-total">
                             <span>Total</span>
 
-                            <span class="cart-total-price">$160.00</span>
+                            <span class="cart-total-price">{{number_format($sumPriceCart,'0','','.')}}</span>
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
