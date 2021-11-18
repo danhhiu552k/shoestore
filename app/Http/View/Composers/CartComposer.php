@@ -2,7 +2,6 @@
 
 namespace App\Http\View\Composers;
 
-use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;

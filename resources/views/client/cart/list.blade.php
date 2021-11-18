@@ -21,6 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
+                        @include('admin.alert')
                         @php $total = 0; @endphp
                         @if(count($products)!=0)
                         <table class="table table-cart table-mobile">

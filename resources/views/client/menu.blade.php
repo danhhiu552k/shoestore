@@ -9,7 +9,8 @@
                 </button>
 
                 <a href="\" class="logo">
-                    <img src="/template/client/images/logo/logo.png" class="social-icon mylogo" alt="Molla Logo" width="105" height="25">
+                    <img src="/template/client/images/logo/logo.png" class="social-icon mylogo" alt="Molla Logo"
+                         width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
 
@@ -36,7 +37,7 @@
                             <label for="q" class="sr-only">Tìm kiếm</label>
                             <input type="search" class="form-control" name="products" placeholder="Tên sản phẩm"
                                    required>
-                        </div><!-- End .header-search-wrapper -->S
+                        </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
 
@@ -44,38 +45,39 @@
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static">
                         <i class="icon-shopping-cart"></i>
-                        <span class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>
+                        <span
+                            class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         @php $sumPriceCart =0;
                         @endphp
                         <div class="dropdown-cart-products">
-                            @if(count($products) >0)
+                            @if(count(array($products)) >0)
                                 @foreach($products as $key => $product)
                                     @php $price =\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity) ;
                                     $sumPriceCart+=$product->price_sale!=0 ? $product->price_sale : $product->price;
                                     @endphp
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">{{$product->name}}</a>
-                                    </h4>
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <a href="product.html">{{$product->name}}</a>
+                                            </h4>
 
-                                    <span class="cart-product-info">
+                                            <span class="cart-product-info">
                                         <span class="cart-product-qty">{!!$price!!}</span>
 
                                     </span>
-                                </div><!-- End .product-cart-details -->
+                                        </div><!-- End .product-cart-details -->
 
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="{{$product->thumb}}" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i
-                                        class="icon-close"></i></a>
-                            </div><!-- End .product -->
+                                        <figure class="product-image-container">
+                                            <a href="product.html" class="product-image">
+                                                <img src="{{$product->thumb}}" alt="product">
+                                            </a>
+                                        </figure>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i
+                                                class="icon-close"></i></a>
+                                    </div><!-- End .product -->
                                 @endforeach
                             @endif
                         </div><!-- End .cart-product -->
