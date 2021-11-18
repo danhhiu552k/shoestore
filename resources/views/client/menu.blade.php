@@ -41,6 +41,7 @@
                     </form>
                 </div><!-- End .header-search -->
 
+<<<<<<< HEAD
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static">
@@ -95,6 +96,66 @@
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
+=======
+{{--                <div class="dropdown cart-dropdown">--}}
+{{--                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"--}}
+{{--                       aria-expanded="false" data-display="static">--}}
+{{--                        <i class="icon-shopping-cart"></i>--}}
+{{--                        <span--}}
+{{--                            class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>--}}
+{{--                    </a>--}}
+
+{{--                    <div class="dropdown-menu dropdown-menu-right">--}}
+{{--                        @php--}}
+{{--                            echo dd($products);--}}
+{{--                            $sumPriceCart =0;--}}
+{{--                        @endphp--}}
+
+{{--                        <div class="dropdown-cart-products">--}}
+{{--                            @if(count($products)>0)--}}
+{{--                                @foreach($products as $key => $product)--}}
+{{--                                    @php--}}
+{{--                                        $sumPriceCart += $product->price_sale!=0 ? $product->price_sale : $product->price;--}}
+{{--                                    @endphp--}}
+{{--                                    <div class="product">--}}
+{{--                                        <div class="product-cart-details">--}}
+{{--                                            <h4 class="product-title">--}}
+{{--                                                <a href="product.html">{{$product->name}}</a>--}}
+{{--                                            </h4>--}}
+
+{{--                                            <span class="cart-product-info">--}}
+{{--                                        <span--}}
+{{--                                            class="cart-product-qty">{!!\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity)!!}</span>--}}
+
+{{--                                    </span>--}}
+{{--                                        </div><!-- End .product-cart-details -->--}}
+
+{{--                                        <figure class="product-image-container">--}}
+{{--                                            <a href="product.html" class="product-image">--}}
+{{--                                                <img src="{{$product->thumb}}" alt="product">--}}
+{{--                                            </a>--}}
+{{--                                        </figure>--}}
+{{--                                        <a href="#" class="btn-remove" title="Remove Product"><i--}}
+{{--                                                class="icon-close"></i></a>--}}
+{{--                                    </div><!-- End .product -->--}}
+{{--                                @endforeach--}}
+{{--                            @endif--}}
+{{--                        </div><!-- End .cart-product -->--}}
+
+{{--                        <div class="dropdown-cart-total">--}}
+{{--                            <span>Total</span>--}}
+
+{{--                            <span class="cart-total-price">{{number_format($sumPriceCart,'0','','.')}}</span>--}}
+{{--                        </div><!-- End .dropdown-cart-total -->--}}
+
+{{--                        <div class="dropdown-cart-action">--}}
+{{--                            <a href="/cart" class="btn btn-primary">View Cart</a>--}}
+{{--                            <a href="/check" class="btn btn-outline-primary-2"><span>Checkout</span><i--}}
+{{--                                    class="icon-long-arrow-right"></i></a>--}}
+{{--                        </div><!-- End .dropdown-cart-total -->--}}
+{{--                    </div><!-- End .dropdown-menu -->--}}
+{{--                </div><!-- End .cart-dropdown -->--}}
+>>>>>>> 8a2e3cc1ee6f33b18cd74bd985e656ca43a664f4
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
