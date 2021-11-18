@@ -4,8 +4,10 @@
 namespace App\Http\Services\Product;
 
 
+use App\Models\Cart;
 use App\Models\Menu;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductServiceClient
 {
@@ -17,8 +19,14 @@ class ProductServiceClient
         $date = date("m");
         $products = '';
         if ($value == 'hot') {
+            $ids = Cart::select('product_id', DB::raw('count(distinct(product_id)) as count'))
+                ->groupBy('product_id')->orderBy('count')->get();
+            $arr = array();
+            foreach ($ids as $id){
+                $arr[]=$id->product_id;
+            }
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'hot')
-                ->where('active', 1)->inRandomOrder()->where($value, 1)->take(7)->get();
+                ->where('active', 1)->inRandomOrder()->whereIn('id',$arr)->take(7)->get();
         } elseif ($value == 'price_sale') {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'hot')
                 ->where('active', 1)->inRandomOrder()->whereNotNull($value)->take(7)->get();
