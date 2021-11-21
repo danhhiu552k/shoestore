@@ -121,4 +121,17 @@ class CartService
         return Cart::insert($data);
     }
 
+    public function getCustomer()
+    {
+        return Customercart::orderByDesc('id')->paginate(15);
+    }
+
+    public function getProductForCart($customer)
+    {
+        return $customer->carts()->with(['product'=>function($query){
+            $query->select('id','name','thumb');
+        }])->get();
+
+    }
+
 }
