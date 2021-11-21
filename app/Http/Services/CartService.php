@@ -38,8 +38,8 @@ class CartService
         if ($exists) {
 
             $carts[$product_id] = $carts[$product_id] + $qty;
-
             Session::put('carts', $carts);
+            return true;
 
         }
         $carts[$product_id]=$qty;
