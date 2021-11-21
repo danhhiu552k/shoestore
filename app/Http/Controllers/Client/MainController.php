@@ -39,7 +39,7 @@ class MainController extends Controller
     {
         $key_product = $request->products;
         $products = Product::where('active', 1)->where('name', 'LIKE', '%' . $key_product . '%')->paginate(8);
-        return view('client.product.list',
+        return view('client.product.listproducts',
             [
                 'title' => 'Tìm kiếm sản phẩm',
             ])->with( 'products', $products);
@@ -49,7 +49,7 @@ class MainController extends Controller
     {
         $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
             ->where('active', 1)->paginate(12);
-        return view('client.product.list',
+        return view('client.product.listproducts',
             [
                 'title' => 'Tất cả sản phẩm',
                 'products' => $products
@@ -72,7 +72,7 @@ class MainController extends Controller
             default:
                 return 'abc';
         }
-        return view('client.product.list',
+        return view('client.product.listproducts',
             [
                 'title' => $title,
                 'products' => $products

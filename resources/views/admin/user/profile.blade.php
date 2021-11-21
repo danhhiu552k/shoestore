@@ -50,17 +50,17 @@
 
                                             <div class="form-group">
                                                 <label>Họ</label>
-                                                <input class="form-control" name="firstname" 
+                                                <input class="form-control" name="firstname"
                                                     value="{{ Session::get('admin_firstname') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>E-mail</label>
-                                                <input class="form-control" name="email" 
+                                                <input class="form-control" name="email"
                                                     value="{{ Session::get('admin_email') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Địa chỉ</label>
-                                                <input class="form-control" name="address" 
+                                                <input class="form-control" name="address"
                                                     value="{{ Session::get('admin_address') }}" />
                                             </div>
                                         </div>
@@ -68,12 +68,12 @@
 
                                             <div class="form-group">
                                                 <label>Tên</label>
-                                                <input class="form-control" name="lastname" 
+                                                <input class="form-control" name="lastname"
                                                     value="{{ Session::get('admin_lastname') }}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Số điện thoại</label>
-                                                <input class="form-control" name="phone" 
+                                                <input class="form-control" name="phone"
                                                     value="{{ Session::get('admin_phone') }}" />
                                             </div>
                                             <div class="form-group">
