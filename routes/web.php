@@ -105,7 +105,7 @@ Route::get('san-pham/{id}-{slug}.html', [\App\Http\Controllers\Client\ProductCon
 
 
 Route::get('/check', function () {
-    return view('client.cart.checkout',['title' => 'Thanh Toán']);
+    return view('client.cart.checkout', ['title' => 'Thanh Toán']);
 });
 
 Route::get('/about.html', function () {
@@ -122,12 +122,14 @@ Route::get('/register.html', function () {
 
 Route::get('/tag-{name}.html', [ClientMainController::class, 'tag']);
 
-Route::post('/add-cart',[\App\Http\Controllers\Client\CartController::class,'index']);
+Route::post('/add-cart', [\App\Http\Controllers\Client\CartController::class, 'index']);
 
-Route::get('/carts',[\App\Http\Controllers\Client\CartController::class,'show'])->name('carts');
+Route::get('/carts', [\App\Http\Controllers\Client\CartController::class, 'show'])->name('carts');
 
-Route::post('update-cart',[\App\Http\Controllers\Client\CartController::class,'update']);
+Route::post('update-cart', [\App\Http\Controllers\Client\CartController::class, 'update']);
 
-Route::get('/carts/delete/{id}',[\App\Http\Controllers\Client\CartController::class,'remove']);
+Route::get('/carts/delete/{id}', [\App\Http\Controllers\Client\CartController::class, 'remove']);
 
-Route::post('/carts',[\App\Http\Controllers\Client\CartController::class,'addGioHang']);
+Route::post('/carts', [\App\Http\Controllers\Client\CartController::class, 'addGioHang']);
+
+Route::get('filter', [\App\Http\Controllers\Client\FilterController::class, 'filter']);
