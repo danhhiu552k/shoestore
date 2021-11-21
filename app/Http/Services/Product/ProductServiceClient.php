@@ -22,11 +22,11 @@ class ProductServiceClient
             $ids = Cart::select('product_id', DB::raw('count(distinct(product_id)) as count'))
                 ->groupBy('product_id')->orderBy('count')->get();
             $arr = array();
-            foreach ($ids as $id){
-                $arr[]=$id->product_id;
+            foreach ($ids as $id) {
+                $arr[] = $id->product_id;
             }
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'hot')
-                ->where('active', 1)->inRandomOrder()->whereIn('id',$arr)->take(7)->get();
+                ->where('active', 1)->inRandomOrder()->whereIn('id', $arr)->take(7)->get();
         } elseif ($value == 'price_sale') {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'hot')
                 ->where('active', 1)->inRandomOrder()->whereNotNull($value)->take(7)->get();
@@ -65,8 +65,8 @@ class ProductServiceClient
         $menus = Menu::select('id', 'parent_id')->where('active', 1)->get();
         $menu_parent = Menu::select('parent_id')->where('id', $menu_id)->get();
         $menus_id = Product::select('menu_id')->where('id', $id)->get();
-        $m='';
-        $p='';
+        $m = '';
+        $p = '';
         foreach ($menus_id as $item) {
             $m = $item->menu_id;
         }
@@ -76,7 +76,7 @@ class ProductServiceClient
 
         return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
-            ->whereIn('menu_id',$this->isChild($menus, $m, $p))
+            ->whereIn('menu_id', $this->isChild($menus, $m, $p))
             ->inRandomOrder()
             ->where('id', '!=', $id)
             ->orderByDesc('id')
@@ -107,8 +107,14 @@ class ProductServiceClient
                 return $products;
                 break;
             case 'hot':
-                $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                    ->where('active', 1)->inRandomOrder()->where('hot', 1)->take(7)->paginate(12);
+                $ids = Cart::select('product_id', DB::raw('count(distinct(product_id)) as count'))
+                    ->groupBy('product_id')->orderBy('count')->get();
+                $arr = array();
+                foreach ($ids as $id) {
+                    $arr[] = $id->product_id;
+                }
+                $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity', 'hot')
+                    ->where('active', 1)->inRandomOrder()->whereIn('id', $arr)->take(7)->paginate(12);
                 return $products;
                 break;
             case 'new':
