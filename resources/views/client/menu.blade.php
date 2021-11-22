@@ -9,7 +9,7 @@
                 </button>
 
                 <a href="\" class="logo">
-                    <img src="/template/client/images/logo/logo.png" class="social-icon mylogo" alt="Molla Logo"
+                    <img src="/template/client/images/logo/logo.png" class="mylogo" alt="Molla Logo"
                          width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
