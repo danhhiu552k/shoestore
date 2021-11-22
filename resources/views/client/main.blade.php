@@ -6,6 +6,7 @@
 
 <head>
     @include('client.header')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -101,7 +102,7 @@
                 <p class="footer-copyright">Copyright © 2021 Nhóm 4 - CNPM</p>
                 <!-- End .footer-copyright -->
                 <figure class="footer-payments">
-                    <img src="template/client/images/payments-summary.png" alt="Payment methods" >
+                    <img src="template/client/images/payments-summary.png" alt="Payment methods">
                 </figure><!-- End .footer-payments -->
             </div><!-- End .container -->
         </div><!-- End .footer-bottom -->
@@ -117,9 +118,45 @@
         alert("Tạo tài khoản thành công");
     </script>
 @endif
+
+@if(Session::has('success_addcart'))
+    <script>
+        swal({
+            title: "{{Session::get('success_addcart')}}",
+            text: "",
+            icon: "success",
+            button: false,
+        });
+    </script>
+@endif
+@if(Session::has('success_order'))
+    <script>
+        swal({
+            title: "{{Session::get('success_order')}}",
+            text: "",
+            icon: "success",
+            button: false,
+        });
+    </script>
+@endif
+
+@if(Session::has('error_order'))
+    <script>
+        swal({
+            title: "{{Session::get('success_order')}}",
+            text: "",
+            icon: "success",
+            button: false,
+        });
+    </script>
+@endif
 <style>
     .social-icons .facebook {
         background: #3b5998;
+    }
+
+    .swal-modal {
+        height: 250px !important;
     }
 
     .social-icons .twitter {

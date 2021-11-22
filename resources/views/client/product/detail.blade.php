@@ -45,7 +45,7 @@
                                    data-image="{{$product->thumb}}"
                                    data-zoom-image="{{$product->thumb}}">
                                     <img src="{{$product->thumb}}"
-                                         alt="product cross">
+                                         alt="{{$product->name}}">
                                 </a>
 
                                 @foreach($productImage as $item)

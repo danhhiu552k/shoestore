@@ -21,11 +21,8 @@ class CartController extends Controller
     public function index(Request $request)
     {
 
-        $result=$this->cartService -> addcartproduct($request);
-        if ($result==false){
-            return redirect()->back();
-        }
-        return redirect()->route('carts');
+        $this->cartService -> addcartproduct($request);
+        return redirect()->back();
     }
 
     public function show()

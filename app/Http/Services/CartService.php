@@ -44,6 +44,7 @@ class CartService
         }
         $carts[$product_id]=$qty;
         Session::put('carts', $carts);
+        Session::flash('success_addcart','Thêm vào giỏ hàng thành công');
         return true;
     }
 
@@ -90,14 +91,14 @@ class CartService
             ]);
             $this->infoProductCart($carts,$customer->id);
             DB::commit();
-            Session::flash('success','Đặt hàng thành công');
+            Session::flash('success_order','Đặt hàng thành công');
 
             SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
 
             Session::forget('carts');
         }catch (\Exception $err){
             DB::rollBack();
-            Session::flash('error','Đặt hàng lỗi');
+            Session::flash('error_order','Đặt hàng lỗi');
             return false;
         }
         return true;
