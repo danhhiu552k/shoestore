@@ -14,33 +14,39 @@ class CartController extends Controller
 
     public function __construct(CartService $cartService)
     {
-        $this->cartService=$cartService;
+        $this->cartService = $cartService;
 
     }
 
     public function index(Request $request)
     {
 
-        $this->cartService -> addcartproduct($request);
+        $result = $this->cartService->addcartproduct($request);
+        if($result){
+            Session::flash('success_addcart','Thêm vào giỏ hàng thành công');
+        }else{
+            Session::flash('error_addcart','Thêm vào giỏ hàng lỗi');
+        }
         return redirect()->back();
     }
 
     public function show()
     {
-        $products =$this->cartService->getProduct();
+        $products = $this->cartService->getProduct();
         return view('client.cart.list', [
             'title' => 'Giỏ Hàng',
-            'products'=>$products,
+            'products' => $products,
             'carts' => Session::get('carts')
         ]);
     }
+
     public function update(Request $request)
     {
-       $this->cartService->update($request);
-       return redirect('/carts');
+        $this->cartService->update($request);
+        return redirect('/carts');
     }
 
-    public function remove($id =0)
+    public function remove($id = 0)
     {
         $this->cartService->remove($id);
 
@@ -50,7 +56,6 @@ class CartController extends Controller
     public function addGioHang(Request $request)
     {
         $this->cartService->addCarts($request);
-
         return redirect()->back();
     }
 }

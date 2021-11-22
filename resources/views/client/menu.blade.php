@@ -45,7 +45,7 @@
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static">
-                        <a href="carts" style="font-size: 30px;" class="icon-shopping-cart"></a>
+                        <a href="/carts" style="font-size: 30px;" class="icon-shopping-cart"></a>
                         <span
                             class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>
                     </a>
@@ -92,7 +92,7 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="/cart" class="btn btn-primary">View Cart</a>
+                            <a href="/carts" class="btn btn-primary">View Cart</a>
                             <a href="/check" class="btn btn-outline-primary-2"><span>Checkout</span><i
                                     class="icon-long-arrow-right"></i></a>
                         </div><!-- End .dropdown-cart-total -->

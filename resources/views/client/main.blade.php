@@ -129,6 +129,16 @@
         });
     </script>
 @endif
+@if(Session::has('error_addcart'))
+    <script>
+        swal({
+            title: "{{Session::get('error_addcart')}}",
+            text: "",
+            icon: "error",
+            button: false,
+        });
+    </script>
+@endif
 @if(Session::has('success_order'))
     <script>
         swal({
@@ -140,16 +150,6 @@
     </script>
 @endif
 
-@if(Session::has('error_order'))
-    <script>
-        swal({
-            title: "{{Session::get('success_order')}}",
-            text: "",
-            icon: "success",
-            button: false,
-        });
-    </script>
-@endif
 <style>
     .social-icons .facebook {
         background: #3b5998;
