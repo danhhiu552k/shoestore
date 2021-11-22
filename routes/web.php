@@ -133,3 +133,5 @@ Route::get('/carts/delete/{id}', [\App\Http\Controllers\Client\CartController::c
 Route::post('/carts', [\App\Http\Controllers\Client\CartController::class, 'addGioHang']);
 
 Route::get('filter', [\App\Http\Controllers\Client\FilterController::class, 'filter']);
+
+Route::get('quickView', [\App\Http\Controllers\Client\ProductController::class, 'quick']);

@@ -51,21 +51,20 @@ class Product
             $html .= '<div class="product product-3 text-center">
                             <figure class="product-media">
                             <div>
-                               ' . self::checksale($item->price, $item->price_sale, $item->hot, $item->quantity) . '
+                               ' . self::checksale($item->price, $item->price_sale, $item->quantity) . '
                               </div
                                 <a href="' . $item->thumb . '">
                                     <img src="' . $item->thumb . '" alt="' . $item->name . '" class="product-image">
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+
                                 </div><!-- End .product-action-vertical -->
-                            </figure><!-- End .product-media -->
+                            </figure><!-- End .product-media     -->
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">Men’s</a>,
-                                    <a href="#">Boots</a>
+
                                 </div><!-- End .product-cat -->
                                 <h3 class="product-title"><a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html">' . $item->name . '</a></h3><!-- End .product-title -->
                                 <div class="product-price">
@@ -87,8 +86,7 @@ class Product
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
-                                    <a href="" class="btn-product btn-quickview" title="Xem nhanh"></a>
-                                    <a href="#" class="btn-product btn-compare" title="Thêm vào danh sách yêu thích"></a>
+                                    <a href="" class="btn-product btnview" data-id="' . $item->id . '" data-toggle="modal" data-target="#myModal" title="Xem nhanh"></a>
                                 </div><!-- End .product-action -->
                             </div>
                         </div>';
@@ -107,7 +105,7 @@ class Product
 
                             <figure class="product-media">
 
-                                ' . self::checksale($item->price, $item->price_sale, $item->hot, $item->quantity) . '
+                                ' . self::checksale($item->price, $item->price_sale, $item->quantity) . '
                                 <a href="/detail">
                                     <img src="' . $item->thumb . '" alt="' . $item->name . '"
                                          class="product-image">
@@ -157,16 +155,13 @@ class Product
         return round($result * 100);
     }
 
-    public static function checksale($price, $price_sale, $hot, $quantity)
+    public static function checksale($price, $price_sale, $quantity)
     {
         switch ($quantity) {
             case 0:
-                return '<span class="product-label label-hot">Hot</span>' . '<span class="product-label label-out">Hết hàng</span>';
+                return '<span class="product-label label-out">Hết hàng</span>';
             default:
                 $html = '';
-                if ($hot == 1) {
-                    $html = '<span class="product-label label-hot">Hot</span>';
-                }
                 if ($price_sale != null || $price_sale != 0) {
                     $html .= '<span class="product-label label-sale">-' . self::discount_calculation($price, $price_sale) . '%</span>';
                 }

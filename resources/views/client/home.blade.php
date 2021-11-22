@@ -235,6 +235,8 @@
 @endsection
 
 @section('ban')
+
+
     <footer class="footer footer-dark">
         <div class="cta bg-image bg-dark pt-4 pb-5 mb-0"
              style="background-image: url(/template/client/images/demo-3.jpg); ">
@@ -340,3 +342,32 @@
     </footer><!-- End .footer -->
 @endsection
 
+@section('footer')
+    <script src="/template/client/js/bootstrap.bundle.min.js"></script>
+    <script src="/template/client/js/jquery.elevateZoom.min.js"></script>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg" style="max-width: 800px !important;" id="ok">
+            @include('client.product.quick')
+        </div>
+    </div>
+    <style>
+        .btnview:before {
+            content: '\f145';
+        }
+    </style>
+    <script>
+        $('.btnview').click(function () {
+            var id = $(this).attr('data-id');
+
+            $.ajax({
+                type: 'GET',
+                datatype: 'JSON',
+                data: {id},
+                url: "/quickView",
+                success: function (result) {
+                    $('#ok').html(result);
+                }
+            });
+        });
+    </script>
+@endsection
