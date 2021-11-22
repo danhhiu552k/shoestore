@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Product\ProductImageService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Product\ProductServiceClient;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -31,6 +32,18 @@ class ProductController extends Controller
                 'menus' => $this->product->getMenu(),
                 'productImage' => $productImage,
                 'products' => $productsMore
+            ]);
+    }
+
+    public function quick(Request $request)
+    {
+        $id = $request->id;
+        $product = $this->product->detail($id);
+        $productImage = $this->productImage->detail($id);
+        return view('client.product.quick',
+            [
+                'product' => $product,
+                'productImage' => $productImage,
             ]);
     }
 }
