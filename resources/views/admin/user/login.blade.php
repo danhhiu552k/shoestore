@@ -41,6 +41,12 @@
                                         <label for="remember">Remember me</label>
                                         <input type="checkbox" name="remember">
                                     </div>
+                                    @error('password')
+                                    <div class="text text-danger mb-3">{{ $message }}</div>
+                                    @enderror
+                                    @error('email')
+                                    <div class="text text-danger mb-3">{{ $message }}</div>
+                                    @enderror
                                     @include('admin.alert')
                                     <button class="btn login-form__btn submit w-100">Đăng Nhập</button>
                                     @csrf
