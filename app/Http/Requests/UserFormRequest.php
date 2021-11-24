@@ -24,8 +24,8 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'bail|required|email:filter',
-            'password' => 'bail|required'
+            'email' => 'Bail|required|email:filter',
+            'password' => 'Bail|required'
         ];
     }
 

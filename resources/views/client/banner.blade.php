@@ -10,11 +10,11 @@
                             </a>
 
                             <div class="banner-content banner-content-right">
-                                <h4 class="banner-subtitle"><a href="#">New Arrivals</a></h4>
+                                <h4 class="banner-subtitle"><a href="#">Sản phẩm mới</a></h4>
                                 <!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="#">Sneakers & <br>Athletic Shoes</a></h3>
+                                <h3 class="banner-title text-white"><a href="#"> <br>Giày thể thao</a></h3>
                                 <!-- End .banner-title -->
-                                <a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
+                                <a href="#" class="btn btn-outline-white banner-link btn-round">Xem thêm</a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
                     </div><!-- End .col-sm-6 -->
@@ -26,11 +26,11 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle bright-black"><a href="#">Clearance</a></h4>
+                                <h4 class="banner-subtitle bright-black"><a href="#">Sản phẩm hot</a></h4>
                                 <!-- End .banner-subtitle -->
-                                <h3 class="banner-title"><a href="#">Sandals</a></h3><!-- End .banner-title -->
-                                <div class="banner-text"><a href="#">up to 70% off</a></div><!-- End .banner-text -->
-                                <a href="#" class="btn btn-outline-gray banner-link btn-round">Shop Now</a>
+                                <h3 class="banner-title"><a href="#">Giày sân cỏ nhân tạo</a></h3><!-- End .banner-title -->
+                                <div class="banner-text"><a href="#">Giảm giá đến 30%</a></div><!-- End .banner-text -->
+                                <a href="#" class="btn btn-outline-gray banner-link btn-round">Đến ngay</a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
                     </div><!-- End .col-sm-6 -->
@@ -42,11 +42,11 @@
                     </a>
 
                     <div class="banner-content">
-                        <h4 class="banner-subtitle text-white"><a href="#">On Sale</a></h4><!-- End .banner-subtitle -->
-                        <h3 class="banner-title text-white"><a href="#">Slip-On Loafers</a></h3>
-                        <!-- End .banner-title -->
-                        <div class="banner-text text-white"><a href="#">up to 30% off</a></div><!-- End .banner-text -->
-                        <a href="#" class="btn btn-outline-white banner-link btn-round">Shop Now</a>
+                        <h4 class="banner-subtitle text-white"><a href="#">Đang giảm giá</a></h4><!-- End .banner-subtitle -->
+{{--                        <h3 class="banner-title text-white"><a href="#">Hè cháy</a></h3>--}}
+{{--                        <!-- End .banner-title -->--}}
+{{--                        <div class="banner-text text-white"><a href="#">up to 30% off</a></div><!-- End .banner-text -->--}}
+                        <a href="#" class="btn btn-outline-white banner-link btn-round">Đến ngay</a>
                     </div><!-- End .banner-content -->
                 </div><!-- End .banner -->
             </div><!-- End .col-lg-8 -->
@@ -58,11 +58,11 @@
                     </a>
 
                     <div class="banner-content banner-content-bottom">
-                        <h4 class="banner-subtitle text-white"><a href="#">On Sale</a></h4><!-- End .banner-subtitle -->
-                        <h3 class="banner-title text-white"><a href="#">Amazing <br>Lace Up Boots</a></h3>
+                        <h4 class="banner-subtitle text-white"><a href="#">Đang giảm giá</a></h4><!-- End .banner-subtitle -->
+                        <h3 class="banner-title text-white"><a href="#">Giày Mizuno<br></a></h3>
                         <!-- End .banner-title -->
-                        <div class="banner-text text-white"><a href="#">from $39.00</a></div><!-- End .banner-text -->
-                        <a href="#" class="btn btn-outline-white banner-link btn-round">Discover Now</a>
+                        <div class="banner-text text-white"><a href="#">Giá từ 100.000</a></div><!-- End .banner-text -->
+                        <a href="#" class="btn btn-outline-white banner-link btn-round">Mua ngay</a>
                     </div><!-- End .banner-content -->
                 </div><!-- End .banner -->
             </div><!-- End .col-lg-4 -->

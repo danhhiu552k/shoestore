@@ -45,3 +45,4 @@
 <script src="/template/client/js/main.js"></script>
 <script src="/template/client/js/demos/demo-10.js"></script>
 @yield('footer')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

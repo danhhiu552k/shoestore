@@ -47,6 +47,7 @@ class ProductController extends Controller
         return view('admin.products.edit', [
             'title' => 'Chỉnh sửa sản phẩm',
             'product' => $product,
+            'sizes' => $this->productService->sizes($product->id),
             'menus' => $this->menu->getAll()
         ]);
     }

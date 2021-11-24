@@ -117,6 +117,8 @@
         alert("Tạo tài khoản thành công");
     </script>
 @endif
+
+@include('client.alert')
 <style>
     .social-icons .facebook {
         background: #3b5998;

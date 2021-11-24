@@ -6,17 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Product\ProductImageService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Product\ProductServiceClient;
+use App\Http\Services\Product\ProductSizeService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     protected $product;
     protected $productImage;
+    protected $productSize;
 
-    public function __construct(ProductServiceClient $product, ProductImageService $productImage)
+    public function __construct(ProductServiceClient $product, ProductImageService $productImage, ProductSizeService $productSizeService)
     {
         $this->product = $product;
         $this->productImage = $productImage;
+        $this->productSize = $productSizeService;
     }
 
     public function index($id, $slug)
@@ -24,6 +27,7 @@ class ProductController extends Controller
         $product = $this->product->detail($id);
         $productsMore = $this->product->more($id, $product->menu_id);
         $productImage = $this->productImage->detail($id);
+        $productSize = $this->productSize->detail($id);
 
         return view('client.product.detail',
             [
@@ -31,6 +35,7 @@ class ProductController extends Controller
                 'product' => $product,
                 'menus' => $this->product->getMenu(),
                 'productImage' => $productImage,
+                'productSizes' => $productSize,
                 'products' => $productsMore
             ]);
     }
@@ -40,10 +45,12 @@ class ProductController extends Controller
         $id = $request->id;
         $product = $this->product->detail($id);
         $productImage = $this->productImage->detail($id);
+        $productSize = $this->productSize->detail($id);
         return view('client.product.quick',
             [
                 'product' => $product,
                 'productImage' => $productImage,
+                'productSizes' => $productSize
             ]);
     }
 }

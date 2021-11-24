@@ -19,8 +19,8 @@ class ProductServiceClient
         $date = date("m");
         $products = '';
         if ($value == 'hot') {
-            $ids = Cart::select('product_id', DB::raw('count(distinct(product_id)) as count'))
-                ->groupBy('product_id')->orderBy('count')->get();
+            $ids = Cart::select('product_id', DB::raw('count(product_id) as count'))
+                ->groupBy('product_id')->orderByDesc('count')->get();
             $arr = array();
             foreach ($ids as $id) {
                 $arr[] = $id->product_id;
