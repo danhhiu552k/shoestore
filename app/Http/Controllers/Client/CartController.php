@@ -23,9 +23,9 @@ class CartController extends Controller
 
         $result = $this->cartService->addcartproduct($request);
         if($result){
-            Session::flash('success_addcart','Thêm vào giỏ hàng thành công');
+            Session::flash('cart_add_success','Thêm vào giỏ hàng thành công');
         }else{
-            Session::flash('error_addcart','Thêm vào giỏ hàng lỗi');
+            Session::flash('cart_add_error','Thêm vào giỏ hàng lỗi');
         }
         return redirect()->back();
     }
@@ -46,9 +46,9 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
-    public function remove($id = 0)
+    public function remove($productid = 0, $size)
     {
-        $this->cartService->remove($id);
+        $this->cartService->remove($productid, $size);
 
         return redirect('/carts');
     }

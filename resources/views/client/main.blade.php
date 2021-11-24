@@ -112,42 +112,55 @@
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
 @include('client.footer')
-@if (Session::has('create-account'))
-    {{ Session::forget('create-account') }}
-    <script>
-        alert("Tạo tài khoản thành công");
-    </script>
-@endif
 
-@if(Session::has('success_addcart'))
+@if(Session::has('cart_add_success'))
     <script>
         swal({
-            title: "{{Session::get('success_addcart')}}",
-            text: "",
+            title: "{{Session::get('cart_add_success')}}",
             icon: "success",
             button: false,
         });
+
     </script>
+
 @endif
-@if(Session::has('error_addcart'))
+
+@if(Session::has('cart_add_error'))
     <script>
         swal({
-            title: "{{Session::get('error_addcart')}}",
-            text: "",
+            title: "{{Session::get('cart_add_error')}}",
             icon: "error",
             button: false,
         });
+
     </script>
+
 @endif
-@if(Session::has('success_order'))
+
+
+@if(Session::has('order_success'))
     <script>
         swal({
-            title: "{{Session::get('success_order')}}",
-            text: "",
+            title: "{{Session::get('order_success')}}",
             icon: "success",
             button: false,
         });
+
     </script>
+
+@endif
+
+
+@if(Session::has('order_error'))
+    <script>
+        swal({
+            title: "{{Session::get('order_error')}}",
+            icon: "error",
+            button: false,
+        });
+
+    </script>
+
 @endif
 
 <style>
@@ -156,7 +169,7 @@
     }
 
     .swal-modal {
-        height: 250px !important;
+        height: 280px !important;
     }
 
     .social-icons .twitter {

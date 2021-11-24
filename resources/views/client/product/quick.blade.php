@@ -47,14 +47,13 @@
                                 @if($product->price != null)
                                     @csrf
                                     <div class="details-filter-row details-row-size" >
-                                        <label style="text-transform: inherit !important;">Kích cỡ:</label>
+                                        <label for="size">Kích cỡ:</label>
                                         <div class="select-custom">
-                                            <select name="size" id="size" class="form-control">
-                                                <option value="#" selected="selected">Chọn kích cỡ</option>
-                                                <option value="s">40</option>
-                                                <option value="m">41</option>
-                                                <option value="l">42</option>
-                                                <option value="xl">43</option>
+                                            <select name="size" class="form-control">
+                                                <option selected="selected">Chọn kích cỡ</option>
+                                                @foreach($productSizes as $item)
+                                                    <option value="{{$item->size}}">{{$item->size}}</option>
+                                                @endforeach
                                             </select>
                                         </div><!-- End .select-custom -->
                                     </div>

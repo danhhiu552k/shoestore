@@ -81,41 +81,45 @@
                                 {!!  \App\Helpers\Product::checkprice($product->price,$product->price_sale,$product->quantity)!!}
                             </div><!-- End .product-price -->
 
-                            <div class="details-filter-row details-row-size">
-                                <label for="size">Kích cỡ:</label>
-                                <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="#" selected="selected">Chọn kích cỡ</option>
-                                        <option value="s">40</option>
-                                        <option value="m">41</option>
-                                        <option value="l">42</option>
-                                        <option value="xl">43</option>
-                                    </select>
-                                </div><!-- End .select-custom -->
-                            </div><!-- End .details-filter-row -->
-
                             <form action="/add-cart" method="post">
                                 @if($product->price != null)
-                                @csrf
-                                <div class="details-filter-row details-row-size">
-                                    <label for="qty">Số lượng:</label>
-                                    <div class="product-details-quantity">
-                                        <input type="number" name="quantity" class="form-control">
-                                    </div><!-- End .product-details-quantity -->
-                                    <input name="productid" type="hidden" value="{{$product->id}}">
+                                    @csrf
+                                    <div class="details-filter-row details-row-size">
+                                        <label for="size">Kích cỡ:</label>
+                                        <div class="select-custom">
+                                            <select name="size" class="form-control">
+                                                <option selected="selected">Chọn kích cỡ</option>
+                                                @foreach($productSizes as $item)
+                                                    <option value="{{$item->size}}">{{$item->size}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div><!-- End .select-custom -->
+                                    </div><!-- End .details-filter-row -->
+                                    <div class="details-filter-row details-row-size">
+                                        <label for="qty">Số lượng:</label>
+                                        <div class="product-details-quantity">
+                                            <input type="number" name="quantity" class="form-control">
+                                        </div><!-- End .product-details-quantity -->
+                                        <input name="productid" type="hidden" value="{{$product->id}}">
 
-{{--                                    <input name="productgia" type="hidden" value="{{$product->price}}">--}}
-                                </div><!-- End .details-filter-row -->
+                                        {{--                                    <input name="productgia" type="hidden" value="{{$product->price}}">--}}
+                                    </div><!-- End .details-filter-row -->
 
-                                <div class="product-details-action">
-                                    <input value="Thêm vào giỏ hàng" type="submit" class="btn-product btn-cart">
+                                    <div class="product-details-action">
+                                        <input value="Thêm vào giỏ hàng" type="submit" class="btn-product btn-cart">
 
-                                    <div class="details-action-wrapper">
-{{--                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào danh sách--}}
-{{--                                            yêu thích</span></a>--}}
-                                    </div><!-- End .details-action-wrapper -->
-                                </div><!-- End .product-details-action -->
+                                        <div class="details-action-wrapper">
+                                            {{--                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào danh sách--}}
+                                            {{--                                            yêu thích</span></a>--}}
+                                        </div><!-- End .details-action-wrapper -->
+                                    </div><!-- End .product-details-action -->
                                 @endif
+                                @error('quantity')
+                                <div class="text text-danger mb-3">{{ $message }}</div>
+                                @enderror
+                                @error('size')
+                                <div class="text text-danger mb-3">{{ $message }}</div>
+                                @enderror
                             </form>
 
                             <div class="product-details-footer">

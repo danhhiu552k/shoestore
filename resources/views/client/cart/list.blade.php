@@ -27,46 +27,18 @@
                         <table class="table table-cart table-mobile">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Size</th>
+                                    <th>Tổng</th>
                                     <th>&nbsp;</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                            @foreach($products as $key =>$product)
-                                @php
-                                    $price =$product->price_sale != 0 ? $product->price_sale:$product->price;
-                                    $priceEnd=$price* $carts[$product->id];
-                                    $total+=$priceEnd;
-                                @endphp
-                                <tr>
-                                    <td class="product-col">
-                                        <div class="product">
-                                            <figure class="product-media">
-                                                <a href="#">
-                                                    <img src="{{$product->thumb}}" alt="product cross">
-                                                </a>
-                                            </figure>
-
-                                            <h3 class="product-title">
-                                                <a href="#">{{$product->name}}</a>
-                                            </h3><!-- End .product-title -->
-                                        </div><!-- End .product -->
-                                    </td>
-                                    <td class="price-col">{{number_format($price,0,'','.')}}</td>
-                                    <td class="quantity-col">
-                                        <div class="cart-product-quantity">
-                                            <input name="num_product[{{$product->id}}]" type="number" class="form-control" value="{{$carts[$product->id]}}" required>
-                                        </div><!-- End .cart-product-quantity -->
-                                    </td>
-                                    <td class="total-col">{{number_format($priceEnd,0,'','.')}}</td>
-                                    <td class="remove-col"><a href="/carts/delete/{{$product->id}}">Xóa</a></td>
-                                </tr>
-                            @endforeach
+                            {!! \App\Helpers\Cart::productscart($carts) !!}
                             </tbody>
                         </table><!-- End .table table-wishlist -->
                         @else
@@ -85,7 +57,7 @@
                                 </form>
                             </div><!-- End .cart-discount -->
 
-                            <input value="UPDATE CART" type="submit"  formaction="/update-cart" class="btn btn-outline-dark-2">
+                            <input value="Cập nhật" type="submit"  formaction="/update-cart" class="btn btn-outline-dark-2">
                             @csrf
                         </div><!-- End .cart-bottom -->
                     </div><!-- End .col-lg-9 -->
