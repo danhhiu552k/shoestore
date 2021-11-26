@@ -5,14 +5,31 @@
             @if($products->hasPages())
                 <div class="col-md-12 mt-4">
                     <ul class="pagination">
-                        <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $products->url(1) }}">Sau</a>
-                        </li>
+                        @if(isset($_GET['products']))
+                            <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link"
+                                   href="?sort={{$_GET['products']}}&page={{$products->currentPage()-1}}">Sau</a>
+                            </li>
+                        @elseif(isset($_GET['sort']))
+                            <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link"
+                                   href="?sort={{$_GET['sort']}}&page={{$products->currentPage()-1}}">Sau</a>
+                            </li>
+                        @else
+                            <li class="paginate_button page-item {{($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $products->url(1) }}">Sau</a>
+                            </li>
+                        @endif
                         @for ($i = 1; $i <= $products->lastPage(); $i++)
                             @if(isset($_GET['products']))
                                 <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
                                     <a class="page-link"
                                        href="{{ '?products='.$_GET['products'].'&page='.$i }}">{{ $i }}</a>
+                                </li>
+                            @elseif(isset($_GET['sort']))
+                                <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
+                                    <a class="page-link"
+                                       href="{{ '?sort='.$_GET['sort'].'&page='.$i }}">{{ $i }}</a>
                                 </li>
                             @else
                                 <li class="paginate_button page-item {{($products->currentPage() == $i) ? ' active' : '' }}">
@@ -20,10 +37,23 @@
                                 </li>
                             @endif
                         @endfor
-                        <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link"
-                               href="{{ $products->url($products->currentPage()+1) }}">Trước</a>
-                        </li>
+                        @if(isset($_GET['products']))
+                            <li class="paginate_button page-item {{($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link"
+                                   href="?sort={{$_GET['products']}}&page={{$products->currentPage()+1}}">Sau</a>
+                            </li>
+                        @elseif(isset($_GET['sort']))
+                            <li class="paginate_button page-item {{($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link"
+                                   href="?sort={{$_GET['sort']}}&page={{$products->currentPage()+1}}">Sau</a>
+                            </li>
+                        @else
+                            <li class="paginate_button page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link"
+                                   href="{{ $products->url($products->currentPage()+1) }}">Trước</a>
+                            </li>
+                        @endif
+
                     </ul>
                 </div>
             @else
@@ -36,6 +66,6 @@
     </div><!-- End .row -->
 
     <div class="load-more-container text-center">
-        <a href="#" class="btn btn-outline-darker btn-load-more">More Products <i class="icon-refresh"></i></a>
+{{--        <a href="#" class="btn btn-outline-darker btn-load-more">More Products <i class="icon-refresh"></i></a>--}}
     </div><!-- End .load-more-container -->
 </div><!-- End .products -->

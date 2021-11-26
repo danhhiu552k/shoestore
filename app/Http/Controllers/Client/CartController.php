@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddCartFormRequest;
+use App\Http\Requests\OrderFormRequest;
 use App\Http\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +20,7 @@ class CartController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(AddCartFormRequest $request)
     {
 
         $result = $this->cartService->addcartproduct($request);
@@ -40,7 +42,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(AddCartFormRequest $request)
     {
         $this->cartService->update($request);
         return redirect('/carts');
@@ -53,7 +55,7 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
-    public function addGioHang(Request $request)
+    public function addGioHang(OrderFormRequest $request)
     {
         $this->cartService->addCarts($request);
         return redirect()->back();

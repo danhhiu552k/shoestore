@@ -54,8 +54,8 @@
                         @php $sumPriceCart =0;
                         @endphp
                         <div class="dropdown-cart-products">
-                            @if(isset($products))
-                                @foreach($products as $key => $product)
+                            @if(isset($products_cart))
+                                @foreach($products_cart as $key => $product)
                                     @php $price =\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity) ;
                                     $sumPriceCart+=$product->price_sale!=0 ? $product->price_sale : $product->price;
                                     @endphp
@@ -92,8 +92,8 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="/carts" class="btn btn-primary">View Cart</a>
-                            <a href="/check" class="btn btn-outline-primary-2"><span>Checkout</span><i
+                            <a href="/cart.html" class="btn btn-primary">Giỏ hàng</a>
+                            <a href="/check" class="btn btn-outline-primary-2"><span>Thanh toán</span><i
                                     class="icon-long-arrow-right"></i></a>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->

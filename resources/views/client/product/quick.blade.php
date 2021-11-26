@@ -3,7 +3,8 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title ml-3 mt-1" id="exampleModalLabel">Xem Nhanh</h5>
-            <button type="button" class="close" style="padding: 1.5rem 1rem;margin: 0rem -1rem -1rem auto;" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" style="padding: 1.5rem 1rem;margin: 0rem -1rem -1rem auto;"
+                    data-dismiss="modal" aria-label="Close">
                 <span style="font-size: 3rem" aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -46,7 +47,7 @@
                             <form action="/add-cart" method="post">
                                 @if($product->price != null)
                                     @csrf
-                                    <div class="details-filter-row details-row-size" >
+                                    <div class="details-filter-row details-row-size">
                                         <label for="size">Kích cỡ:</label>
                                         <div class="select-custom">
                                             <select name="size" class="form-control">
@@ -74,6 +75,12 @@
                                         <input value="Thêm vào giỏ hàng" type="submit" class="btn-product btn-cart">
                                     </div>
                                 @endif
+                                @error('quantity')
+                                <div class="text text-danger mb-3">{{ $message }}</div>
+                                @enderror
+                                @error('size')
+                                <div class="text text-danger mb-3">{{ $message }}</div>
+                                @enderror
                             </form>
                         </div>
                     </div>

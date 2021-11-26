@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\User;
@@ -14,11 +15,13 @@ class MainController extends Controller
     {
         $products = Product::get();
         $users = Customer::get();
+        $carts = Cart::get();
         return view('admin.home',
             [
                 'title' => 'Trang Quản Trị Admin',
                 'products' => $products,
-                'users' => $users
+                'users' => $users,
+                'carts' => $carts
             ]);
     }
 }

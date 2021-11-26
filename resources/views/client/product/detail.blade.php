@@ -98,7 +98,10 @@
                                     <div class="details-filter-row details-row-size">
                                         <label for="qty">Số lượng:</label>
                                         <div class="product-details-quantity">
-                                            <input type="number" name="quantity" class="form-control">
+                                            <input type="number" name="quantity" value="1" min="1"
+                                                   max="10"
+                                                   step="1"
+                                                   data-decimals="0" class="form-control">
                                         </div><!-- End .product-details-quantity -->
                                         <input name="productid" type="hidden" value="{{$product->id}}">
 

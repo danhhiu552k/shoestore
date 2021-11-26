@@ -19,13 +19,12 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('customer')->attempt($arr)) {
-            Session::flash('login', true);
             $user = Customer::select('firstname', 'lastname', 'email', 'address', 'phone')->where('active', 1)->where('email', $request->input('email'))->get();
-            Session::put('firstname', $user[0]->firstname);
-            Session::put('lastname',  $user[0]->lastname );
-            Session::put('email', $user[0]->email);
-            Session::put('address', $user[0]->address);
-            Session::put('phone', $user[0]->phone);
+            Session::put('firstname_client', $user[0]->firstname);
+            Session::put('lastname_client',  $user[0]->lastname );
+            Session::put('email_client', $user[0]->email);
+            Session::put('address_client', $user[0]->address);
+            Session::put('phone_client', $user[0]->phone);
             return redirect()->route('home');
         } else {
             Session::flash('error', 'Email hoặc mật khẩu không đúng');

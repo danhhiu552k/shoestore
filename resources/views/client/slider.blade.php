@@ -6,7 +6,7 @@
                 <figure class="slide-image">
                     <picture>
                         <source media="(max-width: 480px)" srcset="{{ $slider->thumb }}">
-                        <img src="{{ $slider->thumb }}" alt="{{ $slider->name }}">
+                        <img src="{{ $slider->thumb }}" style="max-height: 900px;max-width: 100%;" alt="{{ $slider->name }}">
                     </picture>
                 </figure><!-- End .slide-image -->
 
@@ -15,7 +15,7 @@
                     <h1 class="intro-title text-white">{{ $slider->name }}</h1><!-- End .intro-title -->
 
                     {{-- <div class="intro-price text-white">from $9.99</div><!-- End .intro-price --> --}}
-
+                    <br><br>
                     <a href="{{ $slider->link }}" class="btn btn-white-primary btn-round">
                         <span>Mua ngay</span>
                         <i class="icon-long-arrow-right"></i>

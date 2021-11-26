@@ -76,7 +76,7 @@
 }
 
 .header.header-8 .top-menu:not(.top-link-menu) ul {
-    min-width: 180px
+    min-width: 0px
 }
 
 .title-lg {

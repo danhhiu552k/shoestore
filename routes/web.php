@@ -127,13 +127,13 @@ Route::get('/tag-{name}.html', [ClientMainController::class, 'tag']);
 
 Route::post('/add-cart', [\App\Http\Controllers\Client\CartController::class, 'index']);
 
-Route::get('/carts', [\App\Http\Controllers\Client\CartController::class, 'show'])->name('carts');
+Route::get('/cart.html', [\App\Http\Controllers\Client\CartController::class, 'show'])->name('carts');
 
 Route::post('update-cart', [\App\Http\Controllers\Client\CartController::class, 'update']);
 
 Route::get('/carts/delete/{productid}-{size}', [\App\Http\Controllers\Client\CartController::class, 'remove']);
 
-Route::post('/carts', [\App\Http\Controllers\Client\CartController::class, 'addGioHang']);
+Route::post('/cart.html', [\App\Http\Controllers\Client\CartController::class, 'addGioHang']);
 
 Route::get('filter', [\App\Http\Controllers\Client\FilterController::class, 'filter']);
 

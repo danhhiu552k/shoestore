@@ -54,4 +54,18 @@ class Cart
         }
         return $html;
     }
+
+    public static function total_carts($carts)
+    {
+        $total = 0;
+        foreach (array_keys($carts) as $item) {
+            $id = explode('-', $item)[0];
+            $product = self::getProduct($id)[0];
+            $price = $product->price_sale != 0 ? $product->price_sale : $product->price;
+            $priceEnd = $price * $carts[$item];
+            $total += $priceEnd;
+        }
+
+        return '<td>' . number_format($total, 0, '', '.') . '</td >';
+    }
 }

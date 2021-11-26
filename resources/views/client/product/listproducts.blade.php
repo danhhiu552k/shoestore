@@ -45,15 +45,25 @@
 
                 <div class="toolbox-right">
                     <div class="toolbox-sort">
-                        <form method="GET" action="/">
-                            <label for="sortby">Sắp xếp:</label>
-                            <div class="select-custom">
-                                <select name="sortby" id="sortby" class="form-control">
-                                    <option value="random" selected="selected">Ngẫu nhiên</option>
-                                    <option value="asc">Giá Tăng</option>
-                                    <option value="desc">Giá Giảm</option>
-                                </select>
+                        <form method="GET" action="#">
+                            <div class="row">
+                                <div class="col-8">
+                                    <label for="sortby">Sắp xếp:</label>
+                                    <div class="select-custom">
+                                        <select name="sort" id="sortby" class="form-control">
+                                            <option value="random" selected="selected">Ngẫu nhiên</option>
+                                            <option value="asc">Giá Tăng</option>
+                                            <option value="desc">Giá Giảm</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <br>
+                                    <input type="submit" class="form-control btn-outline-primary-2 btn-other" value="Sắp xếp">
+                                </div>
                             </div>
+
                         </form>
                     </div><!-- End .toolbox-sort -->
                 </div><!-- End .toolbox-right -->
@@ -182,24 +192,47 @@
         nav.flex {
             display: none;
         }
+        .btn-other{
+            border: 1px solid #000;
+        }
+        .btnview:before {
+            content: '\f145';
+        }
     </style>
-
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg" style="max-width: 800px !important;" id="ok">
+            @include('client.product.quick')
+        </div>
+    </div>
     <script>
+        $('.btnview').click(function () {
+            var id = $(this).attr('data-id');
+
+            $.ajax({
+                type: 'GET',
+                datatype: 'JSON',
+                data: {id},
+                url: "/quickView",
+                success: function (result) {
+                    $('#ok').html(result);
+                }
+            });
+        });
         $('#sortby').change(function () {
             var name = '{{ isset($_GET['products'])?$_GET['products']:'' }}';
             var slug = '{{ isset($menu->slug)?$menu->slug:'' }}';
             var id = '{{ isset($menu->id)?$menu->id:'' }}';
             var sort = $(this).val();
 
-            $.ajax({
-                type: 'GET',
-                datatype: 'JSON',
-                data: {id, slug, sort},
-                url: "/filter",
-                success: function (result) {
-                    $('#test').html(result);
-                }
-            });
+            // $.ajax({
+            //     type: 'GET',
+            //     datatype: 'JSON',
+            //     data: {id, slug, sort},
+            //     url: "/filter",
+            //     success: function (result) {
+            //         $('#test').html(result);
+            //     }
+            // });
         })
     </script>
 @endsection

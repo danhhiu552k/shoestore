@@ -117,7 +117,7 @@ class Product
 
                                 <div class="product-action action-icon-top">
                                     <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Xem nhanh"></a>
+                                    <a href="popup/quickView.html" class="btn-product btnview" data-id="' . $item->id . '" data-toggle="modal" data-target="#myModal" title="Xem nhanh"></a>
                                     <a href="#" class="btn-product btn-compare" title="Thêm vào danh sách yêu thích"></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->

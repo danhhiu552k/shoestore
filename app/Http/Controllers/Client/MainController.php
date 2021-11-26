@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Product\ProductServiceClient;
 use App\Models\Product;
+use App\Traits\Filter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Menu\MenuService;
@@ -42,13 +43,20 @@ class MainController extends Controller
         return view('client.product.listproducts',
             [
                 'title' => 'Tìm kiếm sản phẩm',
-            ])->with( 'products', $products);
+            ])->with('products', $products);
     }
 
-    public function show()
+    use Filter;
+
+    public function show(Request $request)
     {
-        $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-            ->where('active', 1)->paginate(12);
+        $sort = $request->sort;
+        if (isset($sort)) {
+            $products = $this->filtersort2($sort);
+        } else {
+            $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                ->where('active', 1)->paginate(12);
+        }
         return view('client.product.listproducts',
             [
                 'title' => 'Tất cả sản phẩm',
@@ -56,18 +64,19 @@ class MainController extends Controller
             ]);
     }
 
-    public function tag($name){
-        $products=$this->product->tag($name);
-        $title='';
+    public function tag($name)
+    {
+        $products = $this->product->tag($name);
+        $title = '';
         switch ($name) {
             case 'sale':
-                $title='Các sản phẩm sale';
+                $title = 'Các sản phẩm sale';
                 break;
             case 'hot':
-                $title='Các sản phẩm hot';
+                $title = 'Các sản phẩm hot';
                 break;
             case 'new':
-                $title='Các sản phẩm mới nhất';
+                $title = 'Các sản phẩm mới nhất';
                 break;
             default:
                 return 'abc';

@@ -16,51 +16,50 @@ trait Filter
         $this->menuService = $menuService;
     }
 
-    public function filtersort($sort, $id, $slug)
+    public function filtersort($sort, $menu)
     {
-        if ($id != '' && $slug != '') {
-            $menu = $this->menuService->getId($id, $slug);
-            switch ($sort) {
-                case "asc":
-                    $products = $menu->products()
-                        ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
-                        ->where('active', 1)->orderBy('sort')->paginate(12);
-                    return $products;
-                case "desc":
-                    $products = $menu->products()
-                        ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
-                        ->where('active', 1)->orderByDesc('sort')->paginate(12);
-                    return $products;
-                case "random":
-                    $products = $menu->products()
-                        ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->where('active', 1)->inRandomOrder()->paginate(12);
-                    return $products;
-                default:
-                    return null;
-            }
-        } else {
-            switch ($sort) {
-                case "asc":
-                    $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
-                        ->where('active', 1)->orderBy('sort')->paginate(12);
-                    return $products;
-                case "desc":
-                    $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
-                        ->where('active', 1)->orderByDesc('sort')->paginate(12);
-                    return $products;
-                case "random":
-                    $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
-                        ->where('active', 1)->inRandomOrder()->paginate(12);
-                    return $products;
-                default:
-                    return null;
-            }
+        switch ($sort) {
+            case "asc":
+                $products = $menu->products()
+                    ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
+                    ->where('active', 1)->orderBy('sort')->paginate(12);
+                return $products;
+            case "desc":
+                $products = $menu->products()
+                    ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
+                    ->where('active', 1)->orderByDesc('sort')->paginate(12);
+                return $products;
+            case "random":
+                $products = $menu->products()
+                    ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->where('active', 1)->inRandomOrder()->paginate(12);
+                return $products;
+            default:
+                return null;
         }
+    }
 
+    public function filtersort2($sort)
+    {
+        switch ($sort) {
+            case "asc":
+                $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
+                    ->where('active', 1)->orderBy('sort')->paginate(12);
+                return $products;
+            case "desc":
+                $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->selectRaw(" CASE WHEN price_sale is null THEN price ELSE price_sale END AS sort")
+                    ->where('active', 1)->orderByDesc('sort')->paginate(12);
+                return $products;
+            case "random":
+                $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+                    ->where('active', 1)->inRandomOrder()->paginate(12);
+                return $products;
+            default:
+                return null;
+        }
     }
 }

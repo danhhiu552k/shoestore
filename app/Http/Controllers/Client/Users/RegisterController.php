@@ -5,19 +5,16 @@ namespace App\Http\Controllers\Client\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserFormRequest;
 use App\Models\Customer;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
     public function logout(Request $request)
     {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         Session::flush();
-        Session::put('login', false);
-        Session::put('firstname', null);
-        Session::put('lastname', null);
-        Session::put('email', null);
         return redirect('/');
     }
 
@@ -45,10 +42,11 @@ class RegisterController extends Controller
                 ]);
 
                 $user = Customer::select('firstname', 'lastname', 'id', 'email')->where('email', $request->input('email'))->first();
-                Session::put('login', true);
-                Session::put('firstname', $user->firstname);
-                Session::put('lastname', $user->lastname);
-                Session::put('email', $user->email);
+                Session::put('firstname_client', $user->firstname);
+                Session::put('lastname_client',  $user->lastname );
+                Session::put('email_client', $user->email);
+                Session::put('address_client', $user->address);
+                Session::put('phone_client', $user->phone);
                 return redirect()->route('home');
             } else {
                 Session::flash('error', 'Tài khoản đã tồn tại');

@@ -18,7 +18,7 @@ class CartComposer
             ->where('active', 1)
             ->whereIn('id', $productId)
             ->get();
-        $view->with('products',$products);
+        $view->with('products_cart',$products);
 
     }
 }
