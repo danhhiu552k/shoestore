@@ -52,7 +52,7 @@ class CartController extends Controller
     {
         $this->cartService->remove($productid, $size);
 
-        return redirect('/carts');
+        return redirect('/cart.html');
     }
 
     public function addGioHang(OrderFormRequest $request)

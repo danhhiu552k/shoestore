@@ -150,7 +150,6 @@
 
 @endif
 
-
 @if(Session::has('order_error'))
     <script>
         swal({

@@ -103,17 +103,10 @@ class CartService
             Session::flash('order_success', 'Đặt hàng thành công');
             Session::forget('carts');
         } catch (\Exception $err) {
-            DB::rollBack();
-            Session::flash('error', 'Đặt hàng lỗi');
             Session::flash('order_error', 'Đặt hàng lỗi');
-
-            SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
-
-            Session::forget('carts');
-        } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error_order', 'Đặt hàng lỗi');
-
+            SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
+            Session::forget('carts');
             return false;
         }
         return true;
@@ -129,23 +122,28 @@ class CartService
 
     protected function infoProductCart($carts, $customer_id)
     {
-        $data = [];
-        foreach (array_keys($carts) as $item) {
-            $id = explode('-', $item)[0];
-            $size = explode('-', $item)[1];
-            $product = self::getProduct2($id)[0];
-            $price = $product->price_sale != 0 ? $product->price_sale : $product->price;
-            $data[] = [
-                'customer_id' => $customer_id,
-                'product_id' => $product->id,
-                'pty' => $carts[$product->id . '-' . $size],
-                'price' => $price,
-                'size' => $size
-            ];
-        }
+        try {
+            $data = [];
+            foreach (array_keys($carts) as $item) {
+                $id = explode('-', $item)[0];
+                $size = explode('-', $item)[1];
+                $product = self::getProduct2($id)[0];
+                $price = $product->price_sale != 0 ? $product->price_sale : $product->price;
+                $data[] = [
+                    'customer_id' => $customer_id,
+                    'product_id' => $product->id,
+                    'pty' => $carts[$product->id . '-' . $size],
+                    'price' => $price,
+                    'size' => $size
+                ];
+            }
 
-        Session::flash('order_success', 'Đặt hàng thành công');
-        return Cart::insert($data);
+            Session::flash('order_success', 'Đặt hàng thành công');
+            return Cart::insert($data);
+        }catch (\Exception $err){
+            Session::flash('order_error', 'Đặt hàng lỗi');
+            return false;
+        }
     }
 
     public function getCustomer()
