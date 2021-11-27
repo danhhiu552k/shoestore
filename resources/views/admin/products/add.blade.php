@@ -1,6 +1,7 @@
 @extends('admin.main')
 @section('header')
     <script src="/template/admin/ckeditor/ckeditor.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 @endsection
 @section('content')
     <div class="card">
@@ -116,6 +117,21 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label>Size</label>
+                    <select class="js-example-basic-multiple form-control" name="size[]" multiple="multiple">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label>Mô tả</label>
@@ -138,7 +154,16 @@
 @endsection
 
 @section('footer')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        CKEDITOR.replace('content');
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2({
+                theme: "classic",
+                tags: true
+            });
+            CKEDITOR.replace('content');
+
+        });
+
     </script>
 @endsection

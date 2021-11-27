@@ -9,6 +9,7 @@ use App\Models\Product;
 
 
 use App\Models\Product_image;
+use App\Models\Size;
 use App\Traits\UploadFile;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -75,6 +76,17 @@ class ProductService
                 'updated_at' => $date
             ]);
 
+            if ($request->has('size')) {
+                $sizes = $request->input('size');
+                foreach ($sizes as $item) {
+                    $product->sizes()->create([
+                        'size' => $item,
+                        'created_at' => $date,
+                        'updated_at' => $date
+                    ]);
+                }
+            }
+
             if ($request->hasFile('path_image')) {
                 $image_multiple = $request->file('path_image');
                 foreach ($image_multiple as $item) {
@@ -133,7 +145,14 @@ class ProductService
                 ]);
             }
         }
-
+        if ($request->has('size')) {
+            $sizes = $request->input('size');
+            foreach ($sizes as $item) {
+                $product->sizes()->firstOrCreate([
+                    'size' => $item,
+                ]);
+            }
+        }
         $product->name = $name;
         $product->menu_id = $menu_id;
         $product->active = $active;
@@ -155,8 +174,9 @@ class ProductService
     {
         $product = Product::where('id', $request->input('id'))->first();
         if ($product) {
-            $product->delete();
             Product_image::where('product_id', $request->input('id'))->delete();
+            Size::where('product_id', $request->input('id'))->delete();
+            $product->delete();
             return true;
         }
         return false;
@@ -167,5 +187,11 @@ class ProductService
         $name = $request->get('name');
         $products = Product::where('name', 'like', '%' . $name . '%')->get();
         return $products;
+    }
+
+    public function sizes($id)
+    {
+        $size = Size::where('product_id', $id)->get();
+        return $size;
     }
 }

@@ -74,7 +74,7 @@
                                         </div><!-- End .product-cart-details -->
 
                                         <figure class="product-image-container">
-                                            <a href="product.html" class="product-image">
+                                            <a href="/san-pham/{{$product->id }} - {{Str::slug($product->name, '-') }}.html" class="product-image">
                                                 <img src="{{$product->thumb}}" alt="product">
                                             </a>
                                         </figure>

@@ -1,6 +1,7 @@
 @extends('admin.main')
 @section('header')
     <script src="/template/admin/ckeditor/ckeditor.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -123,6 +124,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Size</label>
+                        <select class="js-example-basic-multiple form-control" name="size[]" multiple="multiple">
+                            @foreach($sizes as $size)
+                                <option selected value="{{$size->size}}">{{$size->size}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label>Mô tả</label>
                         <textarea class="form-control" name="description" rows="5">{{$product->description}}</textarea>
                     </div>
@@ -144,8 +154,16 @@
 @endsection
 
 @section('footer')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2({
+                theme: "classic",
+                tags: true
+            });
+            CKEDITOR.replace('content');
 
-        CKEDITOR.replace('content');
+        });
+
     </script>
 @endsection

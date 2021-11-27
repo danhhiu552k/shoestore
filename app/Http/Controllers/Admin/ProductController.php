@@ -7,6 +7,7 @@ use App\Http\Requests\ProductFormRequest;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Menu\MenuService;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -47,6 +48,7 @@ class ProductController extends Controller
         return view('admin.products.edit', [
             'title' => 'Chỉnh sửa sản phẩm',
             'product' => $product,
+            'sizes' => $this->productService->sizes($product->id),
             'menus' => $this->menu->getAll()
         ]);
     }
@@ -80,4 +82,6 @@ class ProductController extends Controller
             return $products;
         }
     }
+
+
 }
