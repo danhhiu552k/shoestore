@@ -46,7 +46,7 @@ class CreateUserFormRequest extends FormRequest
             'password.confirmed' => 'Mật khẩu khác nhau',
             'firstname.required' => 'Bạn phải nhập họ',
             'lastname.required' => 'Bạn phải nhập tên',
-            'checked.required'=>'Bạn phải đồng ý điều kiện với được đăng kí'
+            'checked.required'=>'Bạn phải đồng ý điều kiện mới được đăng kí'
         ];
     }
 }

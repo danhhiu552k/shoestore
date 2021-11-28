@@ -21,10 +21,9 @@
             <div class="cart">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-9">
-
-                            @php $total = 0; @endphp
-                            @if(count($products)!=0)
+                        @php $total = 0; @endphp
+                        @if(count($products)!=0)
+                            <div class="col-lg-9">
                                 <table class="table table-cart table-mobile">
                                     <thead>
                                     <tr>
@@ -42,100 +41,119 @@
                                     {!! \App\Helpers\Cart::productscart($carts) !!}
                                     </tbody>
                                 </table><!-- End .table table-wishlist -->
-                            @else
-                                <div class="text-center"><h2>Giỏ hàng trống</h2></div>
-                            @endif
-                            <div class="cart-bottom">
-                                <div class="cart-discount">
-                                    <form action="#">
-                                        <div class="input-group">
-                                            {{--                                        <input type="text" class="form-control" required placeholder="coupon code">--}}
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary-2" type="submit"><i
-                                                        class="icon-long-arrow-right"></i></button>
-                                            </div><!-- .End .input-group-append -->
-                                        </div><!-- End .input-group -->
-                                    </form>
-                                </div><!-- End .cart-discount -->
 
-                                <input value="Cập nhật" type="submit" formaction="/update-cart"
-                                       class="btn btn-outline-dark-2">
-                                @csrf
-                            </div><!-- End .cart-bottom -->
-                        </div><!-- End .col-lg-9 -->
-                        <aside class="col-lg-3">
-                            <div class="summary summary-cart">
-                                <h3 class="summary-title">Đơn hàng</h3><!-- End .summary-title -->
+                                <div class="cart-bottom">
+                                    <div class="cart-discount">
+                                        <form action="#">
+                                            <div class="input-group">
+                                                {{--                                        <input type="text" class="form-control" required placeholder="coupon code">--}}
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-primary-2" type="submit"><i
+                                                            class="icon-long-arrow-right"></i></button>
+                                                </div><!-- .End .input-group-append -->
+                                            </div><!-- End .input-group -->
+                                        </form>
+                                    </div><!-- End .cart-discount -->
 
-                                <table class="table table-summary">
-                                    <tbody>
-                                    <tr class="summary-total">
-                                        <td>Tổng:</td>
-                                        @if(isset($cart))
-                                            {!! \App\Helpers\Cart::total_carts($carts) !!}
-                                        @endif
-                                    </tr><!-- End .summary-total -->
-                                    </tbody>
+                                    <input value="Cập nhật" type="submit" formaction="/update-cart"
+                                           class="btn btn-outline-dark-2">
+                                    @csrf
+                                </div><!-- End .cart-bottom -->
+                            </div><!-- End .col-lg-9 -->
+                        @else
+                            <div class="col-12 mb-4">
+                                <h2 class="text-center">Giỏ hàng trống</h2>
+                            </div>
 
-                                </table><!-- End .table table-summary -->
-                                <div>
-                                    <span>Thông tin khách hàng :</span>
-                                    <br>
-                                    <br>
-                                    <div>
-                                        <input class="form-control text-other" type="text" name="name"
-                                               @if(Session::has('firstname_client'))
-                                               value="{{Session::get('firstname_client') . ' ' . Session::get('lastname_client')}}"
-                                               @endif
-                                               placeholder="Tên khách hàng">
-                                    </div>
-                                    @error('name')
-                                    <div class="text text-danger mb-3">{{ $message }}</div>
-                                    @enderror
-
-                                    <div>
-                                        <input class="form-control text-other" type="text" name="phone" placeholder="Số điện thoại"
-                                               @if(Session::has('phone_client'))
-                                               value="{{Session::get('phone_client')}}"
-                                        @endif" >
-                                    </div>
-                                    @error('phone')
-                                    <div class="text text-danger mb-3">{{ $message }}</div>
-                                    @enderror
-
-                                    <div>
-                                        <input class="form-control text-other" type="text" name="address" placeholder="Địa chỉ giao hàng"
-                                               @if(Session::has('address_client'))
-                                               value="{{Session::get('address_client')}}"
-                                            @endif>
-                                    </div>
-                                    @error('address')
-                                    <div class="text text-danger mb-3">{{ $message }}</div>
-                                    @enderror
-
-                                    <div>
-                                        <input class="form-control text-other" type="text" name="email" placeholder="Email liên hệ"
-                                               @if(Session::has('email_client'))
-                                               value="{{Session::get('email_client')}}" s
-                                            @endif>
-                                    </div>
-                                    @error('email')
-                                    <div class="text text-danger mb-3">{{ $message }}</div>
-                                    @enderror
-                                    <div>
-                                        <textarea class="form-control text-other" name="content"></textarea>
-                                    </div>
-
-                                    <button class="btn btn-outline-primary-2">Đặt hàng</button>
-                                </div>
-
-                            </div><!-- End .summary -->
-
-                            <a href="/" class="btn btn-outline-dark-2 btn-block mb-3">
+                            <div class="col-5"></div>
+                            <div class="col-2">
+                                <a href="/" class="btn btn-outline-dark-2 btn-block mb-3">
                                 <span>
                                     Tiếp tục mua hàng
                                 </span><i class="icon-refresh"></i></a>
-                        </aside><!-- End .col-lg-3 -->
+                            </div>
+                            <div class="col-5"></div>
+
+                        @endif
+
+
+                        @if(isset($cart))
+                            <aside class="col-lg-3">
+                                <div class="summary summary-cart">
+                                    <h3 class="summary-title">Đơn hàng</h3><!-- End .summary-title -->
+
+                                    <table class="table table-summary">
+                                        <tbody>
+                                        <tr class="summary-total">
+                                            <td>Tổng:</td>
+
+                                            {!! \App\Helpers\Cart::total_carts($carts) !!}
+
+                                        </tr><!-- End .summary-total -->
+                                        </tbody>
+
+                                    </table><!-- End .table table-summary -->
+                                    <div>
+                                        <span>Thông tin khách hàng :</span>
+                                        <br>
+                                        <br>
+                                        <div>
+                                            <input class="form-control text-other" type="text" name="name"
+                                                   @if(Session::has('firstname_client'))
+                                                   value="{{Session::get('firstname_client') . ' ' . Session::get('lastname_client')}}"
+                                                   @endif
+                                                   placeholder="Tên khách hàng">
+                                        </div>
+                                        @error('name')
+                                        <div class="text text-danger mb-3">{{ $message }}</div>
+                                        @enderror
+
+                                        <div>
+                                            <input class="form-control text-other" type="text" name="phone"
+                                                   placeholder="Số điện thoại"
+                                                   @if(Session::has('phone_client'))
+                                                   value="{{Session::get('phone_client')}}"
+                                            @endif" >
+                                        </div>
+                                        @error('phone')
+                                        <div class="text text-danger mb-3">{{ $message }}</div>
+                                        @enderror
+
+                                        <div>
+                                            <input class="form-control text-other" type="text" name="address"
+                                                   placeholder="Địa chỉ giao hàng"
+                                                   @if(Session::has('address_client'))
+                                                   value="{{Session::get('address_client')}}"
+                                                @endif>
+                                        </div>
+                                        @error('address')
+                                        <div class="text text-danger mb-3">{{ $message }}</div>
+                                        @enderror
+
+                                        <div>
+                                            <input class="form-control text-other" type="text" name="email"
+                                                   placeholder="Email liên hệ"
+                                                   @if(Session::has('email_client'))
+                                                   value="{{Session::get('email_client')}}" s
+                                                @endif>
+                                        </div>
+                                        @error('email')
+                                        <div class="text text-danger mb-3">{{ $message }}</div>
+                                        @enderror
+                                        <div>
+                                            <textarea class="form-control text-other" name="content"></textarea>
+                                        </div>
+
+                                        <button class="btn btn-outline-primary-2">Đặt hàng</button>
+                                    </div>
+                                </div><!-- End .summary -->
+
+                                <a href="/" class="btn btn-outline-dark-2 btn-block mb-3">
+                                <span>
+                                    Tiếp tục mua hàng
+                                </span><i class="icon-refresh"></i></a>
+                            </aside><!-- End .col-lg-3 -->
+                        @endif
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .cart -->
@@ -146,7 +164,7 @@
 
 @section('footer')
     <style>
-        .text-other{
+        .text-other {
             font-weight: 400;
             letter-spacing: 0.2px;
             color: #445f84;
