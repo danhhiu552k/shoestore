@@ -13,12 +13,8 @@ class CartComposer
         $carts = Session::get('carts');
         if (is_null($carts)) return [];
 
-        $productId = array_keys($carts);
-        $products= Product::select('id', 'name', 'price', 'price_sale', 'thumb','quantity')
-            ->where('active', 1)
-            ->whereIn('id', $productId)
-            ->get();
-        $view->with('products_cart',$products);
+        $products = Session::get('carts');
+        $view->with('products_cart', $products);
 
     }
 }

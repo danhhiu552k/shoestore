@@ -27,13 +27,15 @@ $('#upload').change(function() {
             } else {
                 alert('Upload File Lỗi');
             }
+        },error: function(){
+            alert('error!');
         }
     });
 });
 
 
 /**
- * 
+ *
  * @param {*} id : id cần xoá
  * @param {*} url : route đường link sửa phần nào
  */
@@ -52,6 +54,8 @@ function removeRow(id, url) {
                 } else {
                     alert('Xóa không thành công');
                 }
+            },error: function(){
+                alert('error!');
             }
         })
     }

@@ -26,3 +26,4 @@
 @yield('header')
 
 <link rel="stylesheet" href="/template/client/css/plugins/nouislider/nouislider.css">
+

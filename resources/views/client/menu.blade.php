@@ -45,7 +45,7 @@
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static">
-                        <a href="/carts" style="font-size: 30px;" class="icon-shopping-cart"></a>
+                        <a href="/cart.html" style="font-size: 30px;" class="icon-shopping-cart"></a>
                         <span
                             class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>
                     </a>
@@ -55,40 +55,15 @@
                         @endphp
                         <div class="dropdown-cart-products">
                             @if(isset($products_cart))
-                                @foreach($products_cart as $key => $product)
-                                    @php $price =\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity) ;
-                                    $sumPriceCart+=$product->price_sale!=0 ? $product->price_sale : $product->price;
-                                    @endphp
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="/san-pham/{{$product->id }} - {{Str::slug($product->name, '-') }}.html">
-                                                    {{$product->name}}
-                                                </a>
-                                            </h4>
-
-                                            <span class="cart-product-info">
-                                        <span class="cart-product-qty">{!!$price!!}</span>
-
-                                    </span>
-                                        </div><!-- End .product-cart-details -->
-
-                                        <figure class="product-image-container">
-                                            <a href="/san-pham/{{$product->id }} - {{Str::slug($product->name, '-') }}.html" class="product-image">
-                                                <img src="{{$product->thumb}}" alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="/carts/delete/{{$product->id}}" class="btn-remove" title="Xóa sản phẩm trong giỏ hàng"><i
-                                                class="icon-close"></i></a>
-                                    </div><!-- End .product -->
-                                @endforeach
+                                {!! \App\Helpers\Cart::cart_composer($products_cart) !!}
                             @endif
                         </div><!-- End .cart-product -->
 
                         <div class="dropdown-cart-total">
                             <span>Tổng</span>
 
-                            <span class="cart-total-price">{{number_format($sumPriceCart,'0','','.')}}</span>
+                            <span
+                                class="cart-total-price"> @if(isset($products_cart)) {!! \App\Helpers\Cart::total_carts($products_cart) !!} @endif</span>
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
@@ -98,68 +73,9 @@
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
-{{--                <div class="dropdown cart-dropdown">--}}
-{{--                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"--}}
-{{--                       aria-expanded="false" data-display="static">--}}
-{{--                        <i class="icon-shopping-cart"></i>--}}
-{{--                        <span--}}
-{{--                            class="cart-count">{{!is_null(\Session::get('carts'))? count(\Session::get('carts')):0}}</span>--}}
-{{--                    </a>--}}
-
-{{--                    <div class="dropdown-menu dropdown-menu-right">--}}
-{{--                        @php--}}
-{{--                            echo dd($products);--}}
-{{--                            $sumPriceCart =0;--}}
-{{--                        @endphp--}}
-
-{{--                        <div class="dropdown-cart-products">--}}
-{{--                            @if(count($products)>0)--}}
-{{--                                @foreach($products as $key => $product)--}}
-{{--                                    @php--}}
-{{--                                        $sumPriceCart += $product->price_sale!=0 ? $product->price_sale : $product->price;--}}
-{{--                                    @endphp--}}
-{{--                                    <div class="product">--}}
-{{--                                        <div class="product-cart-details">--}}
-{{--                                            <h4 class="product-title">--}}
-{{--                                                <a href="product.html">{{$product->name}}</a>--}}
-{{--                                            </h4>--}}
-
-{{--                                            <span class="cart-product-info">--}}
-{{--                                        <span--}}
-{{--                                            class="cart-product-qty">{!!\App\Helpers\Product::checkprice($product->price ,$product->price_sale,$product->quantity)!!}</span>--}}
-
-{{--                                    </span>--}}
-{{--                                        </div><!-- End .product-cart-details -->--}}
-
-{{--                                        <figure class="product-image-container">--}}
-{{--                                            <a href="product.html" class="product-image">--}}
-{{--                                                <img src="{{$product->thumb}}" alt="product">--}}
-{{--                                            </a>--}}
-{{--                                        </figure>--}}
-{{--                                        <a href="#" class="btn-remove" title="Remove Product"><i--}}
-{{--                                                class="icon-close"></i></a>--}}
-{{--                                    </div><!-- End .product -->--}}
-{{--                                @endforeach--}}
-{{--                            @endif--}}
-{{--                        </div><!-- End .cart-product -->--}}
-
-{{--                        <div class="dropdown-cart-total">--}}
-{{--                            <span>Total</span>--}}
-
-{{--                            <span class="cart-total-price">{{number_format($sumPriceCart,'0','','.')}}</span>--}}
-{{--                        </div><!-- End .dropdown-cart-total -->--}}
-
-{{--                        <div class="dropdown-cart-action">--}}
-{{--                            <a href="/cart" class="btn btn-primary">View Cart</a>--}}
-{{--                            <a href="/check" class="btn btn-outline-primary-2"><span>Checkout</span><i--}}
-{{--                                    class="icon-long-arrow-right"></i></a>--}}
-{{--                        </div><!-- End .dropdown-cart-total -->--}}
-{{--                    </div><!-- End .dropdown-menu -->--}}
-{{--                </div><!-- End .cart-dropdown -->--}}
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
-
 
 </header><!-- End .header -->
 

@@ -57,6 +57,9 @@
 
                         </div>
                         <input type="hidden" name="thumb" id="thumb">
+                        @error('thumb')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">

@@ -366,6 +366,8 @@
                 url: "/quickView",
                 success: function (result) {
                     $('#ok').html(result);
+                },error: function(){
+                    alert('error!');
                 }
             });
         });

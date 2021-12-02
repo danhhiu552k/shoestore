@@ -98,7 +98,7 @@ class MenuService
             ->select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
             ->where('active', 1)
             ->orderBy('id')
-            ->paginate(3);
+            ->paginate(8);
 
         return $products;
     }

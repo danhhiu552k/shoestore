@@ -191,57 +191,7 @@
                              aria-labelledby="product-review-link">
                             <div class="reviews">
                                 <h3>Đánh giá (2)</h3>
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a href="#">Samanta J.</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">6 days ago</span>
-                                        </div><!-- End .col -->
-                                        <div class="col">
 
-                                            <div class="review-content">
-                                                <p>Đánh giá của khách hàng 1</p>
-                                            </div><!-- End .review-content -->
-
-                                            <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Hữu ích (2)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Không hữu ích (0)</a>
-                                            </div><!-- End .review-action -->
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
-
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a href="#">John Doe</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 100%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">5 days ago</span>
-                                        </div><!-- End .col -->
-                                        <div class="col">
-
-                                            <div class="review-content">
-                                                <p>Đánh giá của khách hàng 1</p>
-                                            </div><!-- End .review-content -->
-
-                                            <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Hữu ích (2)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Không hữu ích (0)</a>
-                                            </div><!-- End .review-action -->
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
                             </div><!-- End .reviews -->
                         </div><!-- .End .tab-pane -->
                     </div><!-- End .tab-content -->
@@ -319,85 +269,97 @@
                         </div><!-- End .product -->
                     @endforeach
                 </div><!-- End .owl-carousel -->
+            </div>
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
+@endsection
+
+@section('footer')
+    <style>
+        .fa {
+            padding: 0.9rem;
+            font-size: 1rem;
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 3px;
+            border-radius: 50%;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-google {
+            background: #dd4b39;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+    </style>
+    <!-- Sticky Bar -->
+    <form action="/add-cart" method="post">
+        @csrf
+        <div class="sticky-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <figure class="product-media">
+                            <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
+                                <img src="{{$product->thumb}}" alt="{{$product->name}}">
+                            </a>
+                        </figure><!-- End .product-media -->
+                        <h4 class="product-title">
+                            <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
+                                {{$product->name}}
+                            </a>
+                        </h4>
+                        <!-- End .product-title -->
+                    </div><!-- End .col-6 -->
+
+                    <div class="col-6 justify-content-end">
+                        <input name="productid" type="hidden" value="{{$product->id}}">
+                        <div class="product-price">
+                            {!!  \App\Helpers\Product::checkprice($product->price,$product->price_sale,$product->quantity)!!}
+                        </div><!-- End .product-price -->
+                        <div class="product-details-quantity">
+                            <input type="number" value="1" min="1" max="10"
+                                   step="1" data-decimals="0" name="quantity">
+                        </div><!-- End .product-details-quantity -->
+                        <div class="details-filter-row details-row-size" style="margin-bottom: 0px !important;">
+                            <div class="select-custom">
+                                <select name="size" class="form-control">
+                                    <option selected="selected">Chọn kích cỡ</option>
+                                    @foreach($productSizes as $item)
+                                        <option value="{{$item->size}}">{{$item->size}}</option>
+                                    @endforeach
+                                </select>
+                            </div><!-- End .select-custom -->
+                        </div>
+                        <div class="product-details-action">
+                            <input type="submit" value="Thêm vào giỏ hàng" class="btn-product btn-cart">
+                        </div><!-- End .product-details-action -->
+                    </div><!-- End .col-6 -->
+                </div><!-- End .row -->
             </div><!-- End .container -->
-        </div><!-- End .page-content -->
-        @endsection
-
-        @section('footer')
-            <style>
-                .fa {
-                    padding: 0.9rem;
-                    font-size: 1rem;
-                    width: 3rem;
-                    height: 3rem;
-                    text-align: center;
-                    text-decoration: none;
-                    margin: 5px 3px;
-                    border-radius: 50%;
-                }
-
-                .fa:hover {
-                    opacity: 0.7;
-                }
-
-                .fa-facebook {
-                    background: #3B5998;
-                    color: white;
-                }
-
-                .fa-twitter {
-                    background: #55ACEE;
-                    color: white;
-                }
-
-                .fa-google {
-                    background: #dd4b39;
-                    color: white;
-                }
-
-                .fa-youtube {
-                    background: #bb0000;
-                    color: white;
-                }
-            </style>
-            <!-- Sticky Bar -->
-            <div class="sticky-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-                            <figure class="product-media">
-                                <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
-                                    <img src="{{$product->thumb}}" alt="{{$product->name}}">
-                                </a>
-                            </figure><!-- End .product-media -->
-                            <h4 class="product-title">
-                                <a href="/san-pham/{{$product->id}}-{{\Illuminate\Support\Str::slug($product->name,'-')}}.html">
-                                    {{$product->name}}
-                                </a>
-                            </h4>
-                            <!-- End .product-title -->
-                        </div><!-- End .col-6 -->
-
-                        <div class="col-6 justify-content-end">
-                            <div class="product-price">
-                                {!!  \App\Helpers\Product::checkprice($product->price,$product->price_sale,$product->quantity)!!}
-                            </div><!-- End .product-price -->
-                            <div class="product-details-quantity">
-                                <input type="number" value="1" min="1" max="10"
-                                       step="1" data-decimals="0" name="quantity">
-                            </div><!-- End .product-details-quantity -->
-
-                            <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                <a href="#" class="btn-product btn-wishlist"
-                                   title="Wishlist"><span>Add to Wishlist</span></a>
-                            </div><!-- End .product-details-action -->
-                        </div><!-- End .col-6 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .sticky-bar -->
-            <script src="/template/client/js/bootstrap.bundle.min.js"></script>
-            <script src="/template/client/js/jquery.elevateZoom.min.js"></script>
+        </div><!-- End .sticky-bar -->
+    </form>
+    <script src="/template/client/js/bootstrap.bundle.min.js"></script>
+    <script src="/template/client/js/jquery.elevateZoom.min.js"></script>
 @endsection
 
 

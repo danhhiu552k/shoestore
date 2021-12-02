@@ -77,7 +77,7 @@
                         @endif
 
 
-                        @if(isset($cart))
+                        @if(isset($carts))
                             <aside class="col-lg-3">
                                 <div class="summary summary-cart">
                                     <h3 class="summary-title">Đơn hàng</h3><!-- End .summary-title -->

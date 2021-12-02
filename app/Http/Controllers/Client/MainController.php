@@ -52,7 +52,7 @@ class MainController extends Controller
     {
         $sort = $request->sort;
         if (isset($sort)) {
-            $products = $this->filtersort2($sort);
+            $products = $this->filtersort_all($sort);
         } else {
             $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
                 ->where('active', 1)->paginate(12);

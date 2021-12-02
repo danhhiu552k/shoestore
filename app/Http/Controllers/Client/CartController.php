@@ -45,14 +45,14 @@ class CartController extends Controller
     public function update(AddCartFormRequest $request)
     {
         $this->cartService->update($request);
-        return redirect('/carts');
+        return redirect('/cart.html');
     }
 
     public function remove($productid = 0, $size)
     {
         $this->cartService->remove($productid, $size);
 
-        return redirect('/cart.html');
+        return redirect()->back();
     }
 
     public function addGioHang(OrderFormRequest $request)

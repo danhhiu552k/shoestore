@@ -18,5 +18,5 @@
 <link rel="stylesheet" href="/template/admin/dist/css/custom.css">
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
+<link rel="icon" type="image/png" sizes="16x16" href="http://shoestore.com:82/storage/uploads/2021/11/30/pngtree-user-vector-icon-png-image_328702-removebg-preview.png">
 @yield('header')

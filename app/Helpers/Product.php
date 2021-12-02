@@ -85,8 +85,8 @@ class Product
                                 </div><!-- End .product-nav -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
                                     <a href="" class="btn-product btnview" data-id="' . $item->id . '" data-toggle="modal" data-target="#myModal" title="Xem nhanh"></a>
+                                    <a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html" style="font-size: 25px;" class="btn-product" title="Xem chi tiết"><i class="icon-eye"></i></a>
                                 </div><!-- End .product-action -->
                             </div>
                         </div>';
@@ -111,14 +111,9 @@ class Product
                                          class="product-image">
                                 </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
-
                                 <div class="product-action action-icon-top">
-                                    <a href="#" class="btn-product btn-cart" title="Thêm vào giỏ hàng"></a>
-                                    <a href="popup/quickView.html" class="btn-product btnview" data-id="' . $item->id . '" data-toggle="modal" data-target="#myModal" title="Xem nhanh"></a>
-                                    <a href="#" class="btn-product btn-compare" title="Thêm vào danh sách yêu thích"></a>
+                                  <a href="" class="btn-product btnview" data-id="' . $item->id . '" data-toggle="modal" data-target="#myModal" title="Xem nhanh"></a>
+                                    <a href="/san-pham/' . $item->id . '-' . Str::slug($item->name, '-') . '.html" style="font-size: 25px;" class="btn-product" title="Xem chi tiết"><i class="icon-eye"></i></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 

@@ -88,13 +88,16 @@ class CartService
             DB::beginTransaction();
             $carts = Session::get('carts');
             if (is_null($carts)) return false;
-
+            date_default_timezone_set("Asia/Ho_Chi_Minh");
+            $date = date("Y-m-d H:i:s");
             $customer = Customercart::create([
                 'name' => $request->input('name'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
                 'email' => $request->input('email'),
-                'content' => $request->input('content')
+                'content' => $request->input('content'),
+                'created_at' => $date,
+                'updated_at' => $date
             ]);
             $this->infoProductCart($carts, $customer->id);
             DB::commit();
@@ -140,7 +143,7 @@ class CartService
 
             Session::flash('order_success', 'Đặt hàng thành công');
             return Cart::insert($data);
-        }catch (\Exception $err){
+        } catch (\Exception $err) {
             Session::flash('order_error', 'Đặt hàng lỗi');
             return false;
         }

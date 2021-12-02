@@ -26,6 +26,7 @@ class SliderRequest extends FormRequest
         return [
            "link"=>"required",
             "name"=>"required",
+            "thumb"=>"required",
         ];
     }
     public function messages()
@@ -33,6 +34,7 @@ class SliderRequest extends FormRequest
         return [
             'link.required' => 'Link bị trống',
             'name.required' => 'Bạn phải nhập tên',
+            'thumb.required' => 'Bạn phải chọn ảnh',
         ];
     }
 }
