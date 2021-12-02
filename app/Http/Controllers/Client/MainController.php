@@ -31,8 +31,7 @@ class MainController extends Controller
             'sliders' => $this->slider->show(),
             'products_sale' => $this->product->show('price_sale'),
             'products_new' => $this->product->show('new'),
-            'products_hot' => $this->product->show('hot'),
-            'banners' => $this->slider->show()
+            'products_hot' => $this->product->show('hot')
         ]);
     }
 

@@ -62,21 +62,9 @@ class ProductServiceClient
 
     public function more($id, $menu_id)
     {
-        $menus = Menu::select('id', 'parent_id')->where('active', 1)->get();
-        $menu_parent = Menu::select('parent_id')->where('id', $menu_id)->get();
-        $menus_id = Product::select('menu_id')->where('id', $id)->get();
-        $m = '';
-        $p = '';
-        foreach ($menus_id as $item) {
-            $m = $item->menu_id;
-        }
-        foreach ($menu_parent as $item) {
-            $p = $item->parent_id;
-        }
-
         return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
-            ->whereIn('menu_id', $this->isChild($menus, $m, $p))
+            ->where('menu_id', $menu_id)
             ->inRandomOrder()
             ->where('id', '!=', $id)
             ->orderByDesc('id')
